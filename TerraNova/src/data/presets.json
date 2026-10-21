@@ -1,0 +1,38 @@
+[
+  {
+    "id": "artemis-south-pole",
+    "nameEn": "Artemis south-pole highlands",
+    "nameAr": "مرتفعات القطب الجنوبي لبرنامج أرتميس",
+    "body": "moon",
+    "weights": {
+      "polar_permafrost": 3,
+      "anorthosite": 2,
+      "impact_crater": 1,
+      "glacial_ice": 1
+    }
+  },
+  {
+    "id": "mars-ancient-lake",
+    "nameEn": "Mars ancient lake / evaporites",
+    "nameAr": "بحيرات المريخ القديمة والمتبخرات",
+    "body": "mars",
+    "weights": {
+      "paleolake_fluvial": 3,
+      "evaporite_salt": 3,
+      "hydrothermal": 1,
+      "ancient_terrain": 1
+    }
+  },
+  {
+    "id": "lava-tube-habitat",
+    "nameEn": "Lava-tube habitat",
+    "nameAr": "موئل داخل أنابيب الحمم",
+    "body": "both",
+    "weights": {
+      "lava_tube": 3,
+      "basalt_volcanic": 2,
+      "cave_karst": 1,
+      "polar_permafrost": 1
+    }
+  }
+]

@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap');
+
+:root {
+  font-family: 'DM Sans', 'IBM Plex Sans Arabic', Arial, sans-serif;
+  color: #e9f0eb;
+  background: #071719;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  --bg: #071719;
+  --panel: #0b1e20;
+  --panel-raised: #102528;
+  --line: rgba(178, 206, 192, 0.14);
+  --line-strong: rgba(178, 206, 192, 0.25);
+  --text: #e9f0eb;
+  --muted: #8da49b;
+  --soft: #b6c6bd;
+  --mint: #a8e6c1;
+  --mint-strong: #61c38e;
+  --orange: #f4b87b;
+  --mono: 'DM Mono', Consolas, monospace;
+  font-synthesis: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+button,
+select,
+input {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+button:focus-visible,
+select:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--mint);
+  outline-offset: 3px;
+}
+
+::selection {
+  color: #081817;
+  background: var(--mint);
+}

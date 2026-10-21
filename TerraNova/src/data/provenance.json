@@ -1,0 +1,38 @@
+{
+  "datasetTitle": "Verified Planetary Analog Sites (NASA / ESA / CSA / ISRO)",
+  "counts": {
+    "original": 44,
+    "verified": 43,
+    "filteredOut": 1
+  },
+  "filteredOutSites": [
+    {
+      "ID": 29,
+      "Site_Name_AR": "تراكيب أركينو",
+      "Site_Name_EN": "Arkenu Structures",
+      "Country_Region": "ليبيا - شرق ليبيا بالصحراء الليبية",
+      "Coordinates_Dimensions_Elevation": "زوج من التراكيب الجيولوجية الدائرية المتجاورة",
+      "Target_Planetary_Body_and_Feature": "المريخ والقمر - التراكيب الدائرية المتآكلة بالرياح",
+      "Analog_Category": "تراكيب حلقية صحراوية وتآكل ريحي",
+      "Geology_Mineralogy_Geochemistry": "صخور رملية ورسوبية متآكلة بشدة بفعل الرياح المحملة بالرمال في بيئة فائقة الجفاف",
+      "Environment_Physics_Astrobiology": "رياح صحراوية نشطة تشكل تضاريس الياردانغ والفنتيفاكت حول الهياكل الدائرية",
+      "Mission_Application_and_Instruments": "دراسة تداخل العمليات الجيولوجية الهيكلية مع التعرية الريحية الصحراوية",
+      "Verified_Source": "Reimold & Koeberl (2014) Journal of African Earth Sciences (Impact structures in Africa: A review - Arkenu disproved as impact structure)",
+      "Filter_Reason": "تم استبعاده كفوهة نيزكية: أثبتت المراجعات الجيولوجية الميدانية (Reimold & Koeberl, 2014 - Journal of African Earth Sciences) عدم وجود أي أدلة على تحول صدمي (Shock Metamorphism)، وتم شطبه من السجل العالمي للفوهات التصادمية باعتباره معقدات صخرية نارية حلقية متآكلة (Eroded Igneous Ring Complexes)."
+    }
+  ],
+  "structuralFixesApplied": [
+    "ID 14 (Makgadikgadi Salt Pans): تم إصلاح إزاحة الأعمدة الناتجة عن الفواصل في الاسم الإنجليزي (Sua, Ntwetwe, Nxai) وحذف الأعمدة الزائدة Column11 وColumn12."
+  ],
+  "scientificCorrectionsApplied": [
+    "ID 7 (Kazumura & HI-SEAS): تصحيح طول كهف كازومورا إلى 65.5 كم، والفصل الجغرافي بين أنابيب بركان كيلاويا ومحطة HI-SEAS الواقعة على بركان ماونا لوا.",
+    "ID 10 (Galápagos Lava Tubes): استبعاد كهف تايوس (Tayos Cave) من هذا السجل لأنه كهف كارستي جيري رسوبي في غابات الأمازون وليس أنبوب حمم بركاني، والإبقاء على أنابيب سانتا كروز والبركان الثلاثي البركانية في غالاباغوس.",
+    "ID 12 (Xianren Cave): تحديد الموقع الدقيق في جزيرة هاينان (حقل هايكو البركاني) لتمييزه عن كهف شيانرن الكارستي الشهير في مقاطعة جيانغشي.",
+    "ID 13 (Qaidam Basin): توضيح أن مساحة 34,900 كم² تخص الصحراء الوسطى داخل الحوض، بينما تبلغ المساحة الكلية لحوض قيدام حوالي 120,000 كم².",
+    "ID 27 (Tenoumer Crater): تصحيح العمر الجيولوجي وفق التأريخ الإشعاعي الحديث (Schultze et al., 2016) إلى 1.57 مليون سنة (بليستوسين) بدلاً من وصفها بالفوهة الحديثة جداً.",
+    "ID 30 (Wabar & Saqqar): التمييز بين فوهات وبار (فوهات رملية سطحية حديثة غنية بالزجاج التصادمي) وفوهة سقار (بنية تصادمية معقدة مدفونة بقطر 34 كم تحت ~400 متر من الرواسب).",
+    "ID 32 (Oddanchatram & Sittampundi): توضيح أن محاكي الثرى القمري الرسمي لبعثات تشاندرايان (LSS-ISAC-1) صُنع أساساً من معقد سيتامبوندي للأنورثوزيت إلى جانب دراسات أودانتشاترام.",
+    "ID 36 (Canadian Craters): حذف معلومة فوهة تشاريتي شول (عمق >450 م) لكونها بنية غير مؤكدة تصادمياً وعمقها الفعلي في بحيرة أونتاريو 19 متراً فقط، وتصحيح أقطار فوهتي كليرووتر (36 كم و26 كم).",
+    "ID 40 (Antarctic Dry Valleys): الفصل بين وديان ماكموردو الجافة (الخالية تماماً من الغطاء الجليدي السطحي) وبين الدرع الجليدي القطبي المجاور الذي يتجاوز سمكه 4000 متر."
+  ]
+}

@@ -1,0 +1,69 @@
+siteId,label,lat,lon,confidence,note
+2,Fiskenaesset Complex,63.10,-50.70,approximate,Approximate site center; review against field references
+3,Kamil Crater,22.00,26.10,approximate,Approximate crater location; review against published coordinates
+4,Jingpo Lake Volcanic Field,44.00,128.90,approximate,Approximate field center; review against GIS data
+5,Undara Lava Tube System,-18.20,144.60,approximate,Approximate lava tube system center; review against GIS data
+6,La Corona Lava Tube,29.03,-13.72,approximate,Approximate Lanzarote location; review against cave survey
+6,Jameo Agujerado,29.18,-13.40,approximate,Approximate Lanzarote location; review against cave survey
+7,Nahuku-Thurston Lava Tube,19.42,-155.29,approximate,Approximate cave entrance; review against cave survey
+7,HI-SEAS station,19.59,-155.50,approximate,Approximate Mauna Loa station location; review against project GIS data
+8,Manjanggul Cave,33.53,126.77,approximate,Approximate cave location; review against official survey
+9,Ana Heva Lava Tube,-27.10,-109.30,approximate,Approximate Rapa Nui location; review against cave survey
+10,Santa Cruz Lava Tubes,-0.63,-90.35,approximate,Approximate island location; review against cave survey
+10,Volcan Trillizo Lava Tubes,-0.50,-91.10,approximate,Approximate island location; review against cave survey
+11,Craters of the Moon National Monument,43.42,-113.52,approximate,Approximate monument center; review against GIS data
+12,Xianren Cave,19.70,110.40,approximate,Approximate Haikou volcanic field location; review against cave survey
+13,Qaidam Basin,37.20,95.00,approximate,Approximate basin center; review against GIS data
+13,Dalangtan,38.70,92.30,approximate,Approximate site location; review against GIS data
+13,Aiken Spring,38.20,93.70,approximate,Approximate site location; review against GIS data
+15,Rio Tinto,37.70,-6.60,approximate,Approximate river district location; review against GIS data
+15,Jaroso Ravine,37.20,-2.30,approximate,Approximate ravine location; review against GIS data
+16,Lost Hammer Spring,79.40,-90.70,approximate,Approximate Axel Heiberg Island location; review against field GIS
+17,Svalbard AMASE field area,78.20,15.60,approximate,Approximate expedition area; review against expedition coordinates
+18,Bayuda Volcanic Field,17.50,32.50,approximate,Approximate field center; review against GIS data
+18,El Muweilih Crater,18.30,32.90,approximate,Approximate crater location; review against GIS data
+19,Waw an Namus Volcano,24.96,17.76,approximate,Approximate volcano location; review against GIS data
+20,Trou au Natron,19.80,18.60,approximate,Approximate caldera location; review against GIS data
+20,Emi Koussi,19.80,18.50,approximate,Approximate volcano location; review against GIS data
+21,White Desert (Farafra Oasis),27.20,28.10,approximate,Approximate protected area center; review against GIS data
+22,Black Desert,28.35,28.90,approximate,Approximate desert location; review against GIS data
+22,Bahariya Oasis,28.30,28.90,approximate,Approximate oasis location; review against GIS data
+23,Siwa Oasis,29.20,25.50,approximate,Approximate oasis location; review against GIS data
+23,Marmarica Formation,31.30,25.00,approximate,Approximate formation center; review against GIS data
+24,Eastern Sahara paleoriver area,22.00,29.50,approximate,Approximate regional center; review against GIS data
+25,Tadrart Rouge,24.80,9.00,approximate,Approximate region center; review against GIS data
+25,Talemzane Crater,33.70,6.00,approximate,Approximate crater location; review against GIS data
+26,Chott el Jerid,33.80,8.40,approximate,Approximate salt-pan center; review against GIS data
+26,Chott el Gharsa,33.90,8.90,approximate,Approximate salt-pan center; review against GIS data
+28,Agoudal Impact Site,31.50,-5.50,approximate,Approximate impact site; review against published coordinates
+30,Wabar Craters,21.50,50.50,approximate,Approximate crater-field center; review against published coordinates
+30,Saqqar Crater,26.00,44.00,approximate,Approximate buried structure center; review against geophysical data
+31,Dasht-e Lut,29.80,59.00,approximate,Approximate desert center; review against GIS data
+32,Oddanchatram,10.50,77.50,approximate,Approximate locality; review against geological mapping
+32,Sittampundi Anorthosite Complex,11.80,77.90,approximate,Approximate complex center; review against geological mapping
+32,Sambhar Lake,26.90,75.20,approximate,Approximate lake center; review against GIS data
+33,Rogaland Anorthosite Province,58.80,6.00,approximate,Approximate province center; review against geological mapping
+34,Ries Crater,48.90,10.60,approximate,Approximate crater center; review against published coordinates
+34,Rochechouart Crater,45.80,0.80,approximate,Approximate crater center; review against published coordinates
+34,Steinheim Crater,48.70,10.10,approximate,Approximate crater center; review against published coordinates
+35,Araguainha Impact Structure,-16.80,-52.80,approximate,Approximate structure center; review against published coordinates
+36,Clearwater East Crater,56.10,-74.30,approximate,Approximate crater center; review against published coordinates
+36,Clearwater West Crater,56.20,-74.10,approximate,Approximate crater center; review against published coordinates
+36,Sudbury Basin,46.50,-81.00,approximate,Approximate basin center; review against GIS data
+36,Haughton Crater,75.40,-89.70,approximate,Approximate crater center; review against published coordinates
+36,Gow Crater,56.40,-104.50,approximate,Approximate crater center; review against published coordinates
+36,Whitecourt Impact Crater,54.00,-115.60,approximate,Approximate crater location; review against published coordinates
+37,Meteor (Barringer) Crater,35.03,-111.02,approximate,Approximate crater center; review against published coordinates
+38,Vredefort Crater,-27.00,27.50,approximate,Approximate crater center; review against published coordinates
+38,Limpopo Belt,-24.00,28.00,approximate,Approximate belt location; review against geological mapping
+39,Goat Paddock Crater,-22.80,116.80,approximate,Approximate crater location; review against published coordinates
+39,Mount Narryer,-26.80,116.50,approximate,Approximate locality; review against geological mapping
+39,Pilbara,-22.00,118.00,approximate,Approximate region center; review against geological mapping
+40,McMurdo Dry Valleys,-77.50,162.00,approximate,Approximate valley region; review against Antarctic GIS data
+40,Ventifact Knobs,-77.50,161.00,approximate,Approximate feature area; review against Antarctic GIS data
+41,Salar de Uyuni,-20.20,-67.50,approximate,Approximate salt-flat center; review against GIS data
+41,Arbol de Piedra,-22.20,-67.80,approximate,Approximate feature location; review against GIS data
+41,Llano de Caldera,-23.80,-68.20,approximate,Approximate feature location; review against GIS data
+42,Dyngjusandur Sandsheet,64.80,-16.80,approximate,Approximate sandsheet area; review against GIS data
+43,Ol Doinyo Lengai Volcano,-3.00,35.90,approximate,Approximate volcano location; review against published coordinates
+44,Lake Bagno dell'Acqua,36.80,12.00,approximate,Approximate lake location; review against GIS data

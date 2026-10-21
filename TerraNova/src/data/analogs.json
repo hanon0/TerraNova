@@ -1,0 +1,1425 @@
+[
+  {
+    "id": 1,
+    "nameAr": "فوهة بحيرة ميستاستين (كاميستاستين)",
+    "nameEn": "Mistastin (Kamestastin) Lake Crater",
+    "countryRegionAr": "كندا - شمال لابرادور",
+    "categoryAr": "فوهة تصادمية معقدة في الأنورثوزيت",
+    "geologyAr": "أنورثوزيت نادر أرضيا، صهارة اصطدام أنورثوزيتية، بريشيا تصادمية، مخاريط تشظي، وتمعدن حراري مائي",
+    "environmentAr": "بيئة قطبية شمالية معزولة وقاسية (ICE) تستغرق الرحلة إليها 3 أيام بطائرات Twin Otter",
+    "missionAr": "تدريب رواد أرتميس وأرتميس 2 على أخذ العينات وتطبيق برنامج Lunar Targeting Plan",
+    "source": "NASA / Canadian Space Agency (CSA) Artemis II Lunar Analog Training; Marion et al. (2020) Planetary and Space Science",
+    "targetBodies": "moon",
+    "targetFeatureAr": "القمر - المرتفعات القمرية والقطب الجنوبي (أرتميس)",
+    "tags": [
+      "impact_crater",
+      "anorthosite",
+      "polar_permafrost",
+      "hydrothermal",
+      "paleolake_fluvial"
+    ],
+    "locations": [
+      {
+        "label": "Mistastin (Kamestastin) Lake Crater",
+        "lat": 55.88333333333333,
+        "lon": -63.31111111111111,
+        "confidence": "verified",
+        "note": "Parsed from the verified source record"
+      }
+    ],
+    "dimensionsAr": "قطر 28 كم | ارتفاع الحافة 50 م | عمر 36 مليون سنة"
+  },
+  {
+    "id": 2,
+    "nameAr": "معقد فيسكيناسيت للأنورثوزيت",
+    "nameEn": "Fiskenaesset Anorthosite Complex (FAC)",
+    "countryRegionAr": "جرينلاند - جنوب غرب",
+    "categoryAr": "قشرة أنورثوزيتية طبقية أركية",
+    "geologyAr": "بلاجيوكليز كلسي متجانس An87±1 يصل إلى An93-100، بلورات عملاقة 30 سم، كروميتيت، إلمنيت، وFe2O3 بين 0.07-1.03 wt%",
+    "environmentAr": "تبلور من صهارة ثولييتية جافة تماما عند ضغط أقل من 3 كيلوبار مما سمح بطفو البلاجيوكليز للأعلى",
+    "missionAr": "معايرة نماذج تبلور محيط الصهارة القمري الأولي ومقارنة أطياف المرتفعات القمرية",
+    "source": "Myers (1985) Grønlands Geologiske Undersøgelse; Polat et al. (2009) Precambrian Research (Fiskenaesset Complex)",
+    "targetBodies": "moon",
+    "targetFeatureAr": "القمر - قشرة محيط الصهارة القمري الأولي والمرتفعات",
+    "tags": [
+      "anorthosite",
+      "ancient_terrain"
+    ],
+    "locations": [
+      {
+        "label": "Fiskenaesset Complex",
+        "lat": 63.1,
+        "lon": -50.7,
+        "confidence": "approximate",
+        "note": "Approximate site center; review against field references"
+      }
+    ],
+    "dimensionsAr": "مساحة 2500 كم مربع | عمر 2.97 مليار سنة | تحول عند 2.7 مليار سنة"
+  },
+  {
+    "id": 3,
+    "nameAr": "فوهة كامل النيزكية",
+    "nameEn": "Kamil Crater",
+    "countryRegionAr": "مصر - شرق العوينات بالصحراء الغربية",
+    "categoryAr": "فوهة اصطدام فائقة السرعة بأشعة مقذوفات",
+    "geologyAr": "نيزك حديدي أتاكسيت (19.8% نيكل)، زجاج صهارة تصادمي، كريات أكسيد الحديد والنيكل، وطور TiO2-II",
+    "environmentAr": "اصطدام مائل بزاوية 45 درجة بسرعة 3.5 كم/ثانية، ضغط صدمة أكبر من 60 جيجاباسكال، و3 أشعة بطول 170-300 م",
+    "missionAr": "الحقيقة الأرضية المرجعية للاصطدامات الصغيرة ومعايرة بيانات LRO Diviner ونماذج تفتت النيازك",
+    "source": "Folco et al. (2010) Science (Discovery of Kamil Crater); Urbini et al. (2012) Meteoritics & Planetary Science",
+    "targetBodies": "moon",
+    "targetFeatureAr": "القمر وعطارد - الفوهات البسيطة الحديثة ذات الأشعة",
+    "tags": [
+      "impact_crater",
+      "sand_dunes",
+      "meteorite_analog"
+    ],
+    "locations": [
+      {
+        "label": "Kamil Crater",
+        "lat": 22,
+        "lon": 26.1,
+        "confidence": "approximate",
+        "note": "Approximate crater location; review against published coordinates"
+      }
+    ],
+    "dimensionsAr": "قطر 45 م | عمق 10 م | ردم 6 م | ميل 12% | عمر أقل من 5000 سنة"
+  },
+  {
+    "id": 4,
+    "nameAr": "حقل بحيرة جينغبو البركاني",
+    "nameEn": "Jingpo Lake Volcanic Field (JLVF)",
+    "countryRegionAr": "الصين - شمال شرق",
+    "categoryAr": "أنابيب بركانية وأخاديد متعرجة وبقع ماريا",
+    "geologyAr": "بازلت باهويهوي صفائحي، شقوق انتفاخ، مخاريط خبث، ومنخفضات ذات حافة حادة وخندق محيط",
+    "environmentAr": "تحول خنادق الانهيار من مقطع U إلى V، وتفسير بقع الماريا غير المنتظمة (IMPs) كانهيار ضحل لقشرة الحمم",
+    "missionAr": "تقييم صلاحية الأنابيب القمرية كملاجئ بشرية وسد فجوة الدقة المكانية بطائرات UAV",
+    "source": "Chen et al. (2023) Remote Sensing / JGR Planets (Jingpo Lake Volcanic Field lava tubes & lunar Marius Hills analog)",
+    "targetBodies": "moon",
+    "targetFeatureAr": "القمر - تلال ماريوس (Marius Hills) ومنطقة غرويثويزن",
+    "tags": [
+      "lava_tube",
+      "basalt_volcanic",
+      "paleolake_fluvial"
+    ],
+    "locations": [
+      {
+        "label": "Jingpo Lake Volcanic Field",
+        "lat": 44,
+        "lon": 128.9,
+        "confidence": "approximate",
+        "note": "Approximate field center; review against GIS data"
+      }
+    ],
+    "dimensionsAr": "أنابيب بركانية بطول أكبر من 20 كم | مخاريط بزاوية 90 درجة | ميل 0-88 درجة"
+  },
+  {
+    "id": 5,
+    "nameAr": "نظام أنابيب أندارا البركاني",
+    "nameEn": "Undara Lava Tube System",
+    "countryRegionAr": "أستراليا - شمال كوينزلاند",
+    "categoryAr": "أنظمة أنابيب بركانية طويلة متراكبة",
+    "geologyAr": "تدفقات بازلتية طويلة مع عمليات أسر رأسي وأفقي للأنابيب تدمج الشبكات البركانية",
+    "environmentAr": "عزل حراري فائق داخل الأنابيب سمح للحمم بالوصول لمسافات قياسية مع حفظ ممتاز للأنفاق",
+    "missionAr": "اختبار التحليل الزلزالي الدقيق (Microseismic) للكشف عن الأنابيب البركانية الضحلة تحت السطح",
+    "source": "Atkinson et al. (1975) Bulletin Volcanologique; Stephenson et al. (1998) Undara Lava Tube System",
+    "targetBodies": "both",
+    "targetFeatureAr": "القمر والمريخ - تدفقات الحمم الطويلة وفوهات الحفر المنهارة",
+    "tags": [
+      "lava_tube",
+      "basalt_volcanic"
+    ],
+    "locations": [
+      {
+        "label": "Undara Lava Tube System",
+        "lat": -18.2,
+        "lon": 144.6,
+        "confidence": "approximate",
+        "note": "Approximate lava tube system center; review against GIS data"
+      }
+    ],
+    "dimensionsAr": "أنبوب بركاني منفرد بطول حوالي 160 كم (أكثر من 100 ميل)"
+  },
+  {
+    "id": 6,
+    "nameAr": "أنبوب لاه كورونا ومدخل جاميو أغوجيرادو",
+    "nameEn": "La Corona Lava Tube & Jameo Agujerado",
+    "countryRegionAr": "إسبانيا - جزيرة لانزاروت بجزر الكناري",
+    "categoryAr": "أنابيب بركانية حديثة ونوافذ انهيار بازلتية",
+    "geologyAr": "بازلت حديث خال من التربة والنباتات، كومة صخور منهارة في المدخل، ورواسب كبريتات وصواعد",
+    "environmentAr": "يؤوي مجتمعات ميكروبية جوفية، ونسبة كربون عضوي كلي (TOC) بين 0.08% و0.77%",
+    "missionAr": "معايرة نماذج رادار الفتحة التركيبية المداري (SAR) لاكتشاف الكهوف الكوكبية وحساب أبعادها",
+    "source": "Sauro et al. (2020) Earth-Science Reviews; ESA PANGAEA Planetary Analog Training (Lanzarote La Corona Tube)",
+    "targetBodies": "both",
+    "targetFeatureAr": "القمر والمريخ والزهرة - نوافذ الأسقف المنهارة (Skylights)",
+    "tags": [
+      "lava_tube",
+      "basalt_volcanic",
+      "cave_karst",
+      "hydrogen_sulfide"
+    ],
+    "locations": [
+      {
+        "label": "La Corona Lava Tube",
+        "lat": 29.03,
+        "lon": -13.72,
+        "confidence": "approximate",
+        "note": "Approximate Lanzarote location; review against cave survey"
+      },
+      {
+        "label": "Jameo Agujerado",
+        "lat": 29.18,
+        "lon": -13.4,
+        "confidence": "approximate",
+        "note": "Approximate Lanzarote location; review against cave survey"
+      }
+    ],
+    "dimensionsAr": "يمتد شمال لانزاروت ويحاكي نوافذ بركانية بأبعاد مئات الأمتار"
+  },
+  {
+    "id": 7,
+    "nameAr": "كهف كازومورا وأنبوب ناهوكو-ثرستون وHI-SEAS",
+    "nameEn": "Kazumura Cave & Nahuku-Thurston & HI-SEAS",
+    "countryRegionAr": "الولايات المتحدة - هاواي",
+    "categoryAr": "أنابيب حمم عملاقة ومعادن ثانوية تحت سطحية",
+    "geologyAr": "تدفقات حمم بازلتية أولية ومعادن ثانوية متشكلة داخل أنابيب كيلاويا البركانية، وتضاريس بازلتية حديثة حول محطة HI-SEAS في ماونا لوا",
+    "environmentAr": "بيئات كهفية بركانية نشطة تستخدم لدراسة تطور الأنسجة البترولوجية أثناء تبريد الحمم",
+    "missionAr": "محاكاة المهمات المأهولة طويلة الأمد ودراسة المعادن الثانوية كنظير لباطن المريخ",
+    "source": "Allred & Allred (1997) Kazumura Cave Survey; NASA HI-SEAS Mission Reports (Mauna Loa & Kilauea analogs)",
+    "targetBodies": "both",
+    "targetFeatureAr": "القمر والمريخ - الأنابيب البركانية والبيئة تحت السطحية",
+    "tags": [
+      "basalt_volcanic",
+      "cave_karst"
+    ],
+    "locations": [
+      {
+        "label": "Kilauea volcanic field",
+        "lat": 19.379,
+        "lon": -155.078,
+        "confidence": "verified",
+        "note": "Parsed from the verified source record"
+      },
+      {
+        "label": "Nahuku-Thurston Lava Tube",
+        "lat": 19.42,
+        "lon": -155.29,
+        "confidence": "approximate",
+        "note": "Approximate cave entrance; review against cave survey"
+      },
+      {
+        "label": "HI-SEAS station",
+        "lat": 19.59,
+        "lon": -155.5,
+        "confidence": "approximate",
+        "note": "Approximate Mauna Loa station location; review against project GIS data"
+      }
+    ],
+    "dimensionsAr": "طول كازومورا 65.5 كم وعرضه أكبر من 20 م (بركان كيلاويا ) | محطة HI-SEAS على ارتفاع 2500 م ببركان ماونا لوا"
+  },
+  {
+    "id": 8,
+    "nameAr": "كهف مانجانغول البركاني",
+    "nameEn": "Manjanggul Cave (Jeju Island)",
+    "countryRegionAr": "كوريا الجنوبية - جزيرة جيجو",
+    "categoryAr": "أنبوب حمم بازلتي وبيئة حيوية جوفية",
+    "geologyAr": "جدران وأسقف بازلتية مع رواسب معدنية ثانوية وصواعد كهفية",
+    "environmentAr": "يدعم مجتمعات ميكروبية بدائية النوى وحصائر ميكروبية ملونة على الأسقف والجدران",
+    "missionAr": "دراسة الهياكل الجينومية للميكروبات في الكهوف البركانية وتحديد البصمات الحيوية",
+    "source": "Woo et al. (2019) Geoheritage & Geomicrobiology of Manjanggul Lava Tube, Jeju Island",
+    "targetBodies": "both",
+    "targetFeatureAr": "القمر والمريخ - الكهوف البركانية والملاذات الميكروبية",
+    "tags": [
+      "lava_tube",
+      "basalt_volcanic",
+      "cave_karst"
+    ],
+    "locations": [
+      {
+        "label": "Manjanggul Cave",
+        "lat": 33.53,
+        "lon": 126.77,
+        "confidence": "approximate",
+        "note": "Approximate cave location; review against official survey"
+      }
+    ],
+    "dimensionsAr": "أنبوب حمم بازلتي ضخم متعدد المستويات في جزيرة جيجو"
+  },
+  {
+    "id": 9,
+    "nameAr": "أنبوب أنا هيفا البركاني",
+    "nameEn": "Ana Heva Lava Tube",
+    "countryRegionAr": "تشيلي - جزيرة القيامة (رابا نوي)",
+    "categoryAr": "أنبوب حمم غني بالسيليكا الحيوية",
+    "geologyAr": "صواعد مرجانية من سيليكات المغنيسيوم غير المتبلورة والأوبال (Opal-A) وكالسيت محفور حيويا",
+    "environmentAr": "يحفظ خلايا كروية وعصوية متسلكنة في EPS، وكريات أكبر من 1 ميكرومتر، وطبعات أبواغ شوكية",
+    "missionAr": "معايرة أجهزة الفحص المجهري الإلكتروني (FESEM) لاكتشاف الكائنات المتسلكنة في كهوف المريخ",
+    "source": "Miller et al. (2014, 2015) Microscopy and Microanalysis (Siliceous speleothems & Opal-A in Ana Heva Lava Tube, Rapa Nui)",
+    "targetBodies": "mars",
+    "targetFeatureAr": "المريخ - البيئات الجوفية البركانية الحاضنة للبصمات المتسلكنة",
+    "tags": [
+      "lava_tube",
+      "basalt_volcanic",
+      "cave_karst",
+      "silica_rocks"
+    ],
+    "locations": [
+      {
+        "label": "Ana Heva Lava Tube",
+        "lat": -27.1,
+        "lon": -109.3,
+        "confidence": "approximate",
+        "note": "Approximate Rapa Nui location; review against cave survey"
+      }
+    ],
+    "dimensionsAr": "كهف بركاني تحت سطحي غني بالصواعد المرجانية الدقيقة"
+  },
+  {
+    "id": 10,
+    "nameAr": "أنابيب جزيرة سانتا كروز والبركان الثلاثي (غالاباغوس)",
+    "nameEn": "Santa Cruz & Volcán Trillizo Lava Tubes (Galápagos)",
+    "countryRegionAr": "الإكوادور - أرخبيل غالاباغوس (جزيرتا سانتا كروز وإيزابيلا)",
+    "categoryAr": "كهوف بركانية غنية برواسب حليب القمر",
+    "geologyAr": "صواعد مرجانية ورواسب حليب القمر (Moonmilk) الغنية بألياف الكالسيت وكربونات الكالسيوم",
+    "environmentAr": "نشاط بكتيريا Crossiella التي تقوم بتثبيت النيتروجين وتفكيك المركبات العطرية ودورة الكبريت",
+    "missionAr": "تحليل المركبات العضوية في كبريتات وصواعد الأنابيب بواسطة التحلل الحراري (Pyrolysis GC/MS)",
+    "source": "Miller et al. (2020) & Gonzalez-Pimentel et al. (2021) Microorganisms (Moonmilk & Crossiella in Santa Cruz Lava Tubes, Galápagos)",
+    "targetBodies": "mars",
+    "targetFeatureAr": "المريخ - الكهوف البركانية ورواسب الكربونات والكبريتات",
+    "tags": [
+      "lava_tube",
+      "basalt_volcanic",
+      "cave_karst",
+      "hydrogen_sulfide"
+    ],
+    "locations": [
+      {
+        "label": "Santa Cruz Lava Tubes",
+        "lat": -0.63,
+        "lon": -90.35,
+        "confidence": "approximate",
+        "note": "Approximate island location; review against cave survey"
+      },
+      {
+        "label": "Volcan Trillizo Lava Tubes",
+        "lat": -0.5,
+        "lon": -91.1,
+        "confidence": "approximate",
+        "note": "Approximate island location; review against cave survey"
+      }
+    ],
+    "dimensionsAr": "شبكة أنابيب بركانية بازلتية في جزيرة سانتا كروز وحجرة صهارة البركان الثلاثي في سييرا نيغرا"
+  },
+  {
+    "id": 11,
+    "nameAr": "نصب فوهات القمر الوطني",
+    "nameEn": "Craters of the Moon National Monument",
+    "countryRegionAr": "الولايات المتحدة - أيداهو",
+    "categoryAr": "حقل بازلتي وأنابيب حمم",
+    "geologyAr": "تدفقات بازلتية ورواسب كهفية ثانوية غنية بالكالسيت الليفي",
+    "environmentAr": "انتشار واسع لبكتيريا Crossiella النادرة داخل بيئة الأنابيب البركانية القاحلة",
+    "missionAr": "اختبار المعدات الجيولوجية والروبوتات ودراسة الميكروبيوم الجوفي في التضاريس البازلتية",
+    "source": "NASA FINESSE & BASALT Research Programs (Craters of the Moon National Monument planetary analog field tests)",
+    "targetBodies": "both",
+    "targetFeatureAr": "المريخ والقمر - السهول البازلتية والأنابيب البركانية",
+    "tags": [
+      "lava_tube",
+      "basalt_volcanic",
+      "cave_karst"
+    ],
+    "locations": [
+      {
+        "label": "Craters of the Moon National Monument",
+        "lat": 43.42,
+        "lon": -113.52,
+        "confidence": "approximate",
+        "note": "Approximate monument center; review against GIS data"
+      }
+    ],
+    "dimensionsAr": "حقل حمم بازلتية واسع يضم أنابيب بركانية ومخاريط خبث"
+  },
+  {
+    "id": 12,
+    "nameAr": "كهف شيانرن البركاني",
+    "nameEn": "Xianren Cave",
+    "countryRegionAr": "الصين - جزيرة هاينان (حقل هايكو البركاني)",
+    "categoryAr": "أنبوب حمم بازلتي",
+    "geologyAr": "تكوينات بازلتية جوفية تحاكي هندسة الأنفاق الكوكبية",
+    "environmentAr": "بيئة كهفية مستقرة هندسيا تصلح للنمذجة المكانية الدقيقة",
+    "missionAr": "بناء نماذج سحب نقاط الليدار ثلاثية الأبعاد (3D LiDAR) لاختبار ملاحة الروبوتات داخل الكهوف",
+    "source": "3D LiDAR Lava Tube Crack Detection Study (2025/2026) - Xianren Cave, Haikou Volcanic Cluster, Hainan, China",
+    "targetBodies": "both",
+    "targetFeatureAr": "القمر والمريخ - الأنابيب البركانية تحت السطحية",
+    "tags": [
+      "lava_tube",
+      "basalt_volcanic",
+      "cave_karst"
+    ],
+    "locations": [
+      {
+        "label": "Xianren Cave",
+        "lat": 19.7,
+        "lon": 110.4,
+        "confidence": "approximate",
+        "note": "Approximate Haikou volcanic field location; review against cave survey"
+      }
+    ],
+    "dimensionsAr": "نفق بركاني بازلتي ممسوح بالكامل بتقنيات الليدار"
+  },
+  {
+    "id": 13,
+    "nameAr": "حوض قيدام وبحيرة دالانغتان وينبوع أيكن",
+    "nameEn": "Qaidam Basin & Dalangtan & Aiken Spring",
+    "countryRegionAr": "الصين - شمال هضبة التبت",
+    "categoryAr": "حوض تبخيري مرتفع وحقول ياردانغ وينابيع غازية",
+    "geologyAr": "هاليت، ميرابليت، جبس، قشور ملحية مضلعة، تلال ياردانغ، وانبعاثات CO2 من ينبوع أيكن",
+    "environmentAr": "حرارة من -20 إلى +40 مئوية، إشعاع UV مرتفع، مياه مالحة لا تتجمد، ومتضمنات مائعية تحفظ الجزيئات الحيوية",
+    "missionAr": "اختيار مواقع الهبوط عبر شبكات السيامي العصبية (معاملات اختلاف 0.05 إلى 0.38) ودراسة حبس الغازات",
+    "source": "Xiao et al. (2017) Earth-Science Reviews; Ang et al. (2025, arXiv:2501.08584) Qaidam Basin Mars Analog",
+    "targetBodies": "mars",
+    "targetFeatureAr": "المريخ - مواقع الهبوط والبحيرات المتبخرة وأقمار الجليد",
+    "tags": [
+      "evaporite_salt",
+      "aeolian_yardang",
+      "hydrothermal",
+      "paleolake_fluvial",
+      "sand_dunes",
+      "glacial_ice",
+      "high_altitude"
+    ],
+    "locations": [
+      {
+        "label": "Qaidam Basin",
+        "lat": 37.2,
+        "lon": 95,
+        "confidence": "approximate",
+        "note": "Approximate basin center; review against GIS data"
+      },
+      {
+        "label": "Dalangtan",
+        "lat": 38.7,
+        "lon": 92.3,
+        "confidence": "approximate",
+        "note": "Approximate site location; review against GIS data"
+      },
+      {
+        "label": "Aiken Spring",
+        "lat": 38.2,
+        "lon": 93.7,
+        "confidence": "approximate",
+        "note": "Approximate site location; review against GIS data"
+      }
+    ],
+    "dimensionsAr": "مساحة الحوض ~120,000 كم مربع (الصحراء الوسطى 34,900 كم مربع) | ارتفاع 2500 إلى 3000 متر فوق سطح البحر"
+  },
+  {
+    "id": 14,
+    "nameAr": "حوض وملاحات ماكغاديكغادي (سوا ونتويتوي ونكساي)",
+    "nameEn": "Makgadikgadi Salt Pans (Sua, Ntwetwe, Nxai)",
+    "countryRegionAr": "بوتسوانا - وسط صحراء كالاهاري",
+    "categoryAr": "أكبر حوض تبخيري داخلي وبحيرة قديمة متجففة",
+    "geologyAr": "قاعدة بازلت ستورمبيرغ (185 مليون سنة)، قشور ترونا وهاليت وميرابليت، طين مونتموريلونيت، وسيلكريت",
+    "environmentAr": "نهاية الأخدود الأفريقي حيث تتحكم الصدوع في المياه الغنية بالسيليكا، وحصائر ميكروبية تمتص عند 0.7 ميكرومتر",
+    "missionAr": "منشأة Europlanet لمعايرة الرادار المخترق للأرض (GPR) والمقاومة (ERT) والمطيافية (VNIR)",
+    "source": "Franchi et al. (2020) Planetary and Space Science; Europlanet Makgadikgadi Salt Pans TA2 Facility (Botswana)",
+    "targetBodies": "mars",
+    "targetFeatureAr": "المريخ - البحيرات القديمة والسبخات التبخيرية والأنظمة النهرية",
+    "tags": [
+      "basalt_volcanic",
+      "evaporite_salt",
+      "paleolake_fluvial",
+      "sand_dunes",
+      "silica_rocks",
+      "ancient_terrain"
+    ],
+    "locations": [
+      {
+        "label": "Makgadikgadi Salt Pans (Sua, Ntwetwe, Nxai)",
+        "lat": -20.8,
+        "lon": 25.5,
+        "confidence": "verified",
+        "note": "Parsed from the verified source record"
+      }
+    ],
+    "dimensionsAr": "سمك رواسب 50-300 م | 5 شواطئ أحفورية عند 945 و936 و920 م"
+  },
+  {
+    "id": 15,
+    "nameAr": "نهر ريو تينتو وخندق جاروسو",
+    "nameEn": "Rio Tinto & Jaroso Ravine",
+    "countryRegionAr": "إسبانيا - حزام البيريت الإيبيري",
+    "categoryAr": "بيئة مائية شديدة الحموضة غنية بالجاروسيت والحديد",
+    "geologyAr": "جاروسيت، شويرتمانيت، جبس، جوثيت عنقودي، هيماتيت، ومعادن ثقيلة (Fe, Cu, Zn, As)",
+    "environmentAr": "حموضة pH 2.3 (و3.5 جوفيا)، جهد أكسدة +280 إلى +650 mV، وحجب كامل للأشعة فوق البنفسجية بسمك 500 ميكرومتر جاروسيت",
+    "missionAr": "إثبات حفظ الجوثيت للأحافير النانوية ومحو الهيماتيت لها، ومعايرة مطياف رامان وموسباور",
+    "source": "Amils et al. (2007, 2014) Planetary and Space Science / Astrobiology (Río Tinto & Jaroso Ravine Mars Analog)",
+    "targetBodies": "mars",
+    "targetFeatureAr": "المريخ - ميريدياني بلانوم وحافة فيرا روبن وفوهة جيزيرو",
+    "tags": [
+      "paleolake_fluvial",
+      "astrobiology"
+    ],
+    "locations": [
+      {
+        "label": "Rio Tinto",
+        "lat": 37.7,
+        "lon": -6.6,
+        "confidence": "approximate",
+        "note": "Approximate river district location; review against GIS data"
+      },
+      {
+        "label": "Jaroso Ravine",
+        "lat": 37.2,
+        "lon": -2.3,
+        "confidence": "approximate",
+        "note": "Approximate ravine location; review against GIS data"
+      }
+    ],
+    "dimensionsAr": "طول النهر 92 كم | مساحة الحوض 1700 كم مربع"
+  },
+  {
+    "id": 16,
+    "nameAr": "ينبوع لوست هامر (جزيرة أكسل هايبرغ)",
+    "nameEn": "Lost Hammer Spring (Axel Heiberg Island)",
+    "countryRegionAr": "كندا - إقليم نونافوت بالقطب الشمالي",
+    "categoryAr": "ينبوع قطبي فائق الملوحة تحت الصفر ينفث الميثان",
+    "geologyAr": "رواسب ملحية وكبريتات وتربة صقيعية تتدفق عبرها مياه مالحة غنية بغاز الميثان",
+    "environmentAr": "حرارة تحت الصفر، ملوحة فائقة، انعدام الأكسجين (Anoxic)، وبكتيريا نشطة تؤكسد الميثان لاهوائيا",
+    "missionAr": "النموذج المرجعي لتفسير أعمدة الميثان المريخية وإمكانية الحياة في المياه الجوفية المتجمدة",
+    "source": "Whyte et al. / Magnuson et al. (2022) ISME Journal (Lost Hammer Spring, Axel Heiberg Island subzero hypersaline methane seep)",
+    "targetBodies": "mars",
+    "targetFeatureAr": "المريخ - أعمدة الميثان والمحاليل الملحية الجوفية المتجمدة",
+    "tags": [
+      "evaporite_salt",
+      "polar_permafrost",
+      "hydrothermal",
+      "hydrogen_sulfide",
+      "astrobiology"
+    ],
+    "locations": [
+      {
+        "label": "Lost Hammer Spring",
+        "lat": 79.4,
+        "lon": -90.7,
+        "confidence": "approximate",
+        "note": "Approximate Axel Heiberg Island location; review against field GIS"
+      }
+    ],
+    "dimensionsAr": "يقع في أقصى القطب الشمالي الكندي ضمن التربة الصقيعية"
+  },
+  {
+    "id": 17,
+    "nameAr": "أرخبيل سفالبارد (بعثات AMASE)",
+    "nameEn": "Svalbard (AMASE Expeditions)",
+    "countryRegionAr": "النرويج - المحيط المتجمد الشمالي",
+    "categoryAr": "بيئة قطبية بازلتية حاضنة لكريات الكربونات",
+    "geologyAr": "صخور بركانية بازلتية تحتوي على كريات الكربونات (Carbonate globules) المطابقة للنيزك المريخي ALH84001",
+    "environmentAr": "بيئة قطبية باردة لدراسة التفاعلات الجيوكيميائية والنظائرية وحفظ البصمات الحيوية في البازلت",
+    "missionAr": "اختبار وتطوير أجهزة تحليل الغازات المتطايرة (Evolved gas techniques) وأدوات الكشف عن الحياة",
+    "source": "Steele et al. (2007, 2012) Astrobiology (AMASE Svalbard Expeditions & ALH84001 carbonate globule analogs)",
+    "targetBodies": "mars",
+    "targetFeatureAr": "المريخ - التضاريس البازلتية القطبية والنيزك ALH84001",
+    "tags": [
+      "basalt_volcanic",
+      "polar_permafrost",
+      "hydrothermal",
+      "glacial_ice",
+      "meteorite_analog",
+      "astrobiology"
+    ],
+    "locations": [
+      {
+        "label": "Svalbard AMASE field area",
+        "lat": 78.2,
+        "lon": 15.6,
+        "confidence": "approximate",
+        "note": "Approximate expedition area; review against expedition coordinates"
+      }
+    ],
+    "dimensionsAr": "أرخبيل قطبي يضم تضاريس بازلتية وجليدية وينابيع"
+  },
+  {
+    "id": 18,
+    "nameAr": "حقل بيوضة البركاني وفوهة المويلح",
+    "nameEn": "Bayuda Volcanic Field & El Muweilih Crater",
+    "countryRegionAr": "السودان - صحراء بيوضة",
+    "categoryAr": "براكين مائية-صهارية (فوهات مار وحلقات طف)",
+    "geologyAr": "زجاج بركاني مائي وبلاغونيتي، طين غني بالنطرون في فوهة المويلح، سميكتيت، زيوليت، أوبال، وجبس",
+    "environmentAr": "حرارة تصل إلى 55 مئوية، انفجارات فرياكتوماغماتية تحولت لثورانات جافة، وحفظ حيوي في الزجاج البركاني",
+    "missionAr": "التمييز بين الزجاج البركاني والتصادمي وتحديد أهداف استرجاع عينات المريخ",
+    "source": "Lenhardt et al. (2018) Journal of African Earth Sciences (Bayuda Volcanic Field & El Muweilih natron maar)",
+    "targetBodies": "mars",
+    "targetFeatureAr": "المريخ - فوهتا جيزيرو وغيل ومنطقة أرابيا تيرا",
+    "tags": [
+      "basalt_volcanic",
+      "sand_dunes",
+      "silica_rocks"
+    ],
+    "locations": [
+      {
+        "label": "Bayuda Volcanic Field",
+        "lat": 17.5,
+        "lon": 32.5,
+        "confidence": "approximate",
+        "note": "Approximate field center; review against GIS data"
+      },
+      {
+        "label": "El Muweilih Crater",
+        "lat": 18.3,
+        "lon": 32.9,
+        "confidence": "approximate",
+        "note": "Approximate crater location; review against GIS data"
+      }
+    ],
+    "dimensionsAr": "عصر رباعي | أقطار المار 20-3000 م وعمق 5-200 م"
+  },
+  {
+    "id": 19,
+    "nameAr": "بركان وكالديرا واو الناموس",
+    "nameEn": "Waw an Namus Volcano",
+    "countryRegionAr": "ليبيا - إقليم فزان بالصحراء الكبرى",
+    "categoryAr": "كالديرا بركانية بازلتية وبحيرات مالحة داخلية",
+    "geologyAr": "رماد وتفرا بازلتية سوداء داكنة تحيط بالكالديرا وسط رمال الصحراء مع رواسب أملاح متبخرة",
+    "environmentAr": "تضم في قاعها 3 بحيرات مالحة صغيرة متباينة الألوان وجيوب نباتية معزولة وسط صحراء قاحلة",
+    "missionAr": "معايرة بيانات الأقمار الصناعية ومطياف ناسا EMIT ودراسة الواحات البركانية المريخية",
+    "source": "NASA Earth Observatory / EMIT Imaging Spectrometer Calibration Sites (Waw an Namus Caldera, Fezzan, Libya)",
+    "targetBodies": "mars",
+    "targetFeatureAr": "المريخ - البراكين المعزولة المحاطة بالرماد الداكن والواحات القديمة",
+    "tags": [
+      "basalt_volcanic",
+      "evaporite_salt",
+      "sand_dunes",
+      "ancient_terrain"
+    ],
+    "locations": [
+      {
+        "label": "Waw an Namus Volcano",
+        "lat": 24.96,
+        "lon": 17.76,
+        "confidence": "approximate",
+        "note": "Approximate volcano location; review against GIS data"
+      }
+    ],
+    "dimensionsAr": "كالديرا بركانية معزولة ومخروط مركزي (بليستوسين-هولوسين)"
+  },
+  {
+    "id": 20,
+    "nameAr": "جبال تيبستي - كالديرا ترو أو ناترون وإيمي كوسي",
+    "nameEn": "Trou au Natron & Emi Koussi (Tibesti)",
+    "countryRegionAr": "تشاد - شمال غرب",
+    "categoryAr": "براكين درعية ضخمة وكالديرات مكسوة بالنطرون",
+    "geologyAr": "صخور بركانية بازلتية وسيليكية مع قشور بيضاء واسعة من أملاح كربونات الصوديوم في قاع الكالديرا",
+    "environmentAr": "بيئة صحراوية بركانية مرتفعة وقاحلة تجمع بين الانهيارات البركانية والترسيب الملحي",
+    "missionAr": "المقارنة المورفولوجية والبركانية المباشرة مع براكين إقليم إليزيوم (Elysium) على المريخ",
+    "source": "Permenter & Oppenheimer (2007) Bulletin of Volcanology; ESA/NASA Tibesti (Emi Koussi & Trou au Natron) Mars Elysium comparisons",
+    "targetBodies": "mars",
+    "targetFeatureAr": "المريخ - البراكين الدرعية الضخمة وكالديرات إقليم إليزيوم",
+    "tags": [
+      "basalt_volcanic",
+      "evaporite_salt"
+    ],
+    "locations": [
+      {
+        "label": "Trou au Natron",
+        "lat": 19.8,
+        "lon": 18.6,
+        "confidence": "approximate",
+        "note": "Approximate caldera location; review against GIS data"
+      },
+      {
+        "label": "Emi Koussi",
+        "lat": 19.8,
+        "lon": 18.5,
+        "confidence": "approximate",
+        "note": "Approximate volcano location; review against GIS data"
+      }
+    ],
+    "dimensionsAr": "إقليم بركاني من الميوسين المتأخر إلى البليستوسين المتأخر"
+  },
+  {
+    "id": 21,
+    "nameAr": "محمية الصحراء البيضاء (واحة الفرافرة)",
+    "nameEn": "White Desert (Farafra Oasis)",
+    "countryRegionAr": "مصر - الصحراء الغربية",
+    "categoryAr": "تضاريس تآكل ريحي وصخور فنتيفاكت (Ventifacts)",
+    "geologyAr": "صخور طباشيرية وجيرية لينة في الأسفل يعلوها غطاء صخري صلب مع رمال كوارتزية خشنة كاشطة",
+    "environmentAr": "نحت الصخور عبر القفز الحبيبي (Saltation) لتشكيل صخور عيش الغراب في بيئة جافة",
+    "missionAr": "نمذجة عتبات القفز والارتطام الحبيبي في أنفاق الرياح ومقارنتها ببيانات المسبار كيوريوسيتي",
+    "source": "Lorenz & Zimbelman (2014) Dune Worlds; White Desert (Farafra) aeolian yardang & ventifact Mars Gale Crater studies",
+    "targetBodies": "mars",
+    "targetFeatureAr": "المريخ - تشكيلات الياردانغ والصخور المتآكلة في فوهة غيل",
+    "tags": [
+      "aeolian_yardang",
+      "sand_dunes"
+    ],
+    "locations": [
+      {
+        "label": "White Desert (Farafra Oasis)",
+        "lat": 27.2,
+        "lon": 28.1,
+        "confidence": "approximate",
+        "note": "Approximate protected area center; review against GIS data"
+      }
+    ],
+    "dimensionsAr": "تلال ياردانغ وصخور منحوتة بالرياح متوسطة الارتفاع"
+  },
+  {
+    "id": 22,
+    "nameAr": "الصحراء السوداء والواحات البحرية",
+    "nameEn": "Black Desert & Bahariya Oasis",
+    "countryRegionAr": "مصر - الصحراء الغربية",
+    "categoryAr": "تلال بازلتية ومعادن طين أنبوبية وأكاسيد حديد",
+    "geologyAr": "بازلت أسود، هيماتيت، جوثيت، ومعدن الهالوسيت الطيني (Halloysite) بطوريه 7 أنجستروم و10 أنجستروم",
+    "environmentAr": "مورفولوجيا أنبوبية نانوية لمعدن الهالوسيت تشكلت بفعل التجوية والتحول المائي الحراري للبازلت",
+    "missionAr": "منطقة رئيسية مسحها مطياف ناسا EMIT لرسم خرائط الهيماتيت والجوثيت والكاولينيت بنظام Tetracorder",
+    "source": "NASA EMIT Mission (Green et al., 2023) & Bahariya Oasis / Black Desert iron oxide and tubular halloysite clay studies",
+    "targetBodies": "mars",
+    "targetFeatureAr": "المريخ - السهول البركانية المتآكلة ومناطق الهيماتيت والطين",
+    "tags": [
+      "basalt_volcanic",
+      "sand_dunes"
+    ],
+    "locations": [
+      {
+        "label": "Black Desert",
+        "lat": 28.35,
+        "lon": 28.9,
+        "confidence": "approximate",
+        "note": "Approximate desert location; review against GIS data"
+      },
+      {
+        "label": "Bahariya Oasis",
+        "lat": 28.3,
+        "lon": 28.9,
+        "confidence": "approximate",
+        "note": "Approximate oasis location; review against GIS data"
+      }
+    ],
+    "dimensionsAr": "تلال ومكاشف بازلتية داكنة ورواسب طينية وحديدية"
+  },
+  {
+    "id": 23,
+    "nameAr": "واحة سيوة وتشكيل مرمريكا",
+    "nameEn": "Siwa Oasis & Marmarica Formation",
+    "countryRegionAr": "مصر - شمال غرب الصحراء الغربية",
+    "categoryAr": "سبخات ملحية وتتابعات كربوناتية-تبخيرية",
+    "geologyAr": "سحنات دقيقة كربوناتية ومتبخرات ملحية دورية في تشكيل مرمريكا مع مياه جوفية شديدة الملوحة",
+    "environmentAr": "بيئة شديدة الجفاف والملوحة ذات تضاريس متموجة وتباين في الكثافة والمقاومة الكهربائية",
+    "missionAr": "تطبيق الانعكاس المشترك للمقاومة الكهربائية (DC Resistivity) والجاذبية والتحليل الطيفي",
+    "source": "Joint Inversion of DC Resistivity and Gravity Data (2024) - Marmarica Formation, Siwa Oasis, Western Desert, Egypt",
+    "targetBodies": "mars",
+    "targetFeatureAr": "المريخ - الأحواض التبخيرية والسبخات والطبقات الرسوبية",
+    "tags": [
+      "evaporite_salt",
+      "sand_dunes"
+    ],
+    "locations": [
+      {
+        "label": "Siwa Oasis",
+        "lat": 29.2,
+        "lon": 25.5,
+        "confidence": "approximate",
+        "note": "Approximate oasis location; review against GIS data"
+      },
+      {
+        "label": "Marmarica Formation",
+        "lat": 31.3,
+        "lon": 25,
+        "confidence": "approximate",
+        "note": "Approximate formation center; review against GIS data"
+      }
+    ],
+    "dimensionsAr": "منخفض عميق يضم سبخات وبحيرات مالحة ومكاشف ميوسين أوسط"
+  },
+  {
+    "id": 24,
+    "nameAr": "الأودية النهرية الجافة في الصحراء الشرقية والكبرى",
+    "nameEn": "Eastern Sahara AHP Dry River Valleys",
+    "countryRegionAr": "مصر وشمال أفريقيا",
+    "categoryAr": "أنظمة نهرية قديمة متجففة",
+    "geologyAr": "رواسب نهرية وطميية وحصوية قديمة تعلو صخور الأساس وتغطيها الرمال الرياحية الحديثة",
+    "environmentAr": "تشكلت خلال الحقبة الرطبة الأفريقية بتدفقات مائية شديدة ثم تحولت للجفاف التام مثل المريخ",
+    "missionAr": "دراسة الهيدرولوجيا القديمة وإعادة بناء المناخ المريخي الانتقالي من الرطب إلى الجاف",
+    "source": "Paillou et al. (2009, 2012) Planetary and Space Science (Eastern Sahara paleodrainage radar mapping as Martian valley network analog)",
+    "targetBodies": "mars",
+    "targetFeatureAr": "المريخ - شبكات الأودية النهرية القديمة والتحول الهسبيري-الأمازوني",
+    "tags": [
+      "aeolian_yardang",
+      "paleolake_fluvial",
+      "sand_dunes",
+      "ancient_terrain"
+    ],
+    "locations": [
+      {
+        "label": "Eastern Sahara paleoriver area",
+        "lat": 22,
+        "lon": 29.5,
+        "confidence": "approximate",
+        "note": "Approximate regional center; review against GIS data"
+      }
+    ],
+    "dimensionsAr": "شبكات أودية وقنوات نهرية جافة واسعة الامتداد"
+  },
+  {
+    "id": 25,
+    "nameAr": "تادرارت روج وفوهة تالمزان",
+    "nameEn": "Tadrart Rouge & Talemzane Crater",
+    "countryRegionAr": "الجزائر - جنوب شرق والصحراء الجزائرية",
+    "categoryAr": "صحراء رملية حمراء وفوهة نيزكية",
+    "geologyAr": "حجر رملي وكثبان حمراء غنية بأكاسيد الحديد في تادرارت روج، وصخور كربوناتية في فوهة تالمزان",
+    "environmentAr": "جفاف شديد وتضاريس قاحلة خالية من الغطاء النباتي تحاكي المشهد السطحي للمريخ",
+    "missionAr": "تدريب رواد الفضاء واختبار المركبات الجوالة بفضل سهولة الوصول النسبية",
+    "source": "Lamali et al. (2016) Meteoritics & Planetary Science (Talemzane / Maadna Crater & Tadrart Rouge planetary rover/field analog, Algeria)",
+    "targetBodies": "both",
+    "targetFeatureAr": "المريخ والقمر - الصحاري الرملية الحمراء والفوهات التصادمية",
+    "tags": [
+      "impact_crater",
+      "sand_dunes",
+      "meteorite_analog"
+    ],
+    "locations": [
+      {
+        "label": "Tadrart Rouge",
+        "lat": 24.8,
+        "lon": 9,
+        "confidence": "approximate",
+        "note": "Approximate region center; review against GIS data"
+      },
+      {
+        "label": "Talemzane Crater",
+        "lat": 33.7,
+        "lon": 6,
+        "confidence": "approximate",
+        "note": "Approximate crater location; review against GIS data"
+      }
+    ],
+    "dimensionsAr": "تضاريس رملية وصخرية في طاسيلي وفوهة بسيطة في تالمزان"
+  },
+  {
+    "id": 26,
+    "nameAr": "شط الجريد وشط الغرسة",
+    "nameEn": "Chott el Jerid & Chott el Gharsa",
+    "countryRegionAr": "تونس - جنوب غرب تونس",
+    "categoryAr": "أحواض بلايا وبحيرات ملحية موسمية",
+    "geologyAr": "قشور ملحية متبخرة من الهاليت والجبس ورواسب طينية ورمال رياحية متداخلة",
+    "environmentAr": "دورات تبخر شديدة وتفاعل مستمر بين المياه الجوفية الضحلة والرياح الصحراوية والتكتونيات",
+    "missionAr": "موقع معتمد في ورش العمل الكوكبية لدراسة العمليات البحيرية والريحية ومعايرة الاستشعار عن بعد",
+    "source": "Stivaletta et al. (2009) Astrobiology; Ibn Battuta Centre / Europlanet Chott el Jerid & Chott el Gharsa evaporite analog studies",
+    "targetBodies": "mars",
+    "targetFeatureAr": "المريخ - رواسب البحيرات القديمة والسبخات التبخيرية",
+    "tags": [
+      "evaporite_salt",
+      "aeolian_yardang",
+      "sand_dunes",
+      "ancient_terrain",
+      "astrobiology"
+    ],
+    "locations": [
+      {
+        "label": "Chott el Jerid",
+        "lat": 33.8,
+        "lon": 8.4,
+        "confidence": "approximate",
+        "note": "Approximate salt-pan center; review against GIS data"
+      },
+      {
+        "label": "Chott el Gharsa",
+        "lat": 33.9,
+        "lon": 8.9,
+        "confidence": "approximate",
+        "note": "Approximate salt-pan center; review against GIS data"
+      }
+    ],
+    "dimensionsAr": "أحواض سبخات وبلايا على الجبهة الجنوبية لحزام أطلس"
+  },
+  {
+    "id": 27,
+    "nameAr": "فوهة تينومر",
+    "nameEn": "Tenoumer Crater",
+    "countryRegionAr": "موريتانيا - الصحراء الموريتانية",
+    "categoryAr": "فوهة اصطدام نيزكي محفوظة جيدا في بيئة صحراوية",
+    "geologyAr": "صخور أساس بلورية يحيط بحافتها غطاء مقذوفات محيطي يتكون من سحنتين متميزتين (Two-facies ejecta)",
+    "environmentAr": "حفظ ممتاز لبطانية المقذوفات والتضاريس المرتفعة للحافة بفضل المناخ الصحراوي الجاف",
+    "missionAr": "معايرة صور الأشعة تحت الحمراء ونماذج الارتفاعات الرقمية (DEM) والرادار لدراسة المقذوفات",
+    "source": "Schultze et al. (2016) Meteoritics & Planetary Science; Fudali (1974) (Tenoumer Impact Crater, Mauritania)",
+    "targetBodies": "both",
+    "targetFeatureAr": "القمر والمريخ - الفوهات الحديثة ذات بطانيات المقذوفات المزدوجة",
+    "tags": [
+      "impact_crater",
+      "sand_dunes",
+      "meteorite_analog"
+    ],
+    "locations": [
+      {
+        "label": "Tenoumer Crater",
+        "lat": 22.916666666666668,
+        "lon": -10.4,
+        "confidence": "verified",
+        "note": "Parsed from the verified source record"
+      }
+    ],
+    "dimensionsAr": "قطر 1.9 كم | عمر ~1.57 مليون سنة (بليستوسين) | دقة تصوير 15 م/بكسل"
+  },
+  {
+    "id": 28,
+    "nameAr": "موقع أكدل التصادمي",
+    "nameEn": "Agoudal Impact Site",
+    "countryRegionAr": "المغرب - جبال الأطلس الكبير",
+    "categoryAr": "موقع اصطدام نيزكي ومخاريط تشظي",
+    "geologyAr": "صخور جيرية رسوبية تظهر عليها مخاريط تشظي محفوظة مع آثار مباشرة من النيزك الحديدي على أسطحها",
+    "environmentAr": "يوثق التفاعل الميكانيكي والكيميائي المباشر بين المقذوف النيزكي والصخور المستهدفة",
+    "missionAr": "دراسة المعايير التشخيصية المؤكدة للاصطدامات النيزكية ومقارنتها بفوهة كامل",
+    "source": "Chennaoui Aoudjehane et al. (2013) & Sadilenko et al. (2013) Meteoritics & Planetary Science; El Kerni et al. (2015) (Agoudal shatter cones)",
+    "targetBodies": "both",
+    "targetFeatureAr": "القمر والمريخ - مواقع الاصطدامات النيزكية والتحول الصدمي",
+    "tags": [
+      "impact_crater",
+      "meteorite_analog"
+    ],
+    "locations": [
+      {
+        "label": "Agoudal Impact Site",
+        "lat": 31.5,
+        "lon": -5.5,
+        "confidence": "approximate",
+        "note": "Approximate impact site; review against published coordinates"
+      }
+    ],
+    "dimensionsAr": "حقل تشتت نيازك حديدية ومخاريط تشظي سطحية"
+  },
+  {
+    "id": 30,
+    "nameAr": "فوهتا وبار وسقار",
+    "nameEn": "Wabar & Saqqar Impact Craters",
+    "countryRegionAr": "المملكة العربية السعودية - الربع الخالي وشمال غرب السعودية",
+    "categoryAr": "فوهات اصطدام نيزكي وزجاج تصادمي",
+    "geologyAr": "رمال كوارتزية منصهرة بفعل الصدمة وشظايا نيازك حديدية وصخور رسوبية متصدعة",
+    "environmentAr": "تحفظ صحراء الربع الخالي الزجاج التصادمي في وبار، بينما تحفظ الطبقات الرسوبية بنية الارتفاع المركزي والكوارتز المصدوم في سقار",
+    "missionAr": "دراسة فيزياء الصدمات في الأوساط الرملية ومعايرة المسوحات الجيوفيزيائية الفضائية",
+    "source": "Gnos et al. (2013) M&PS (Wabar Craters); Kenkmann et al. (2015) M&PS (Saqqar 34 km buried impact structure, Saudi Arabia)",
+    "targetBodies": "both",
+    "targetFeatureAr": "القمر والمريخ - الفوهات التصادمية في الأهداف الرملية والرسوبية",
+    "tags": [
+      "impact_crater",
+      "sand_dunes",
+      "meteorite_analog"
+    ],
+    "locations": [
+      {
+        "label": "Wabar Craters",
+        "lat": 21.5,
+        "lon": 50.5,
+        "confidence": "approximate",
+        "note": "Approximate crater-field center; review against published coordinates"
+      },
+      {
+        "label": "Saqqar Crater",
+        "lat": 26,
+        "lon": 44,
+        "confidence": "approximate",
+        "note": "Approximate buried structure center; review against geophysical data"
+      }
+    ],
+    "dimensionsAr": "وبار: فوهات رملية سطحية حديثة (~300 سنة) بالربع الخالي | سقار: فوهة معقدة مدفونة بقطر 34 كم وعمق ~400 م بحوض النفود"
+  },
+  {
+    "id": 31,
+    "nameAr": "صحراء لوط",
+    "nameEn": "Dasht-e Lut (Lut Desert)",
+    "countryRegionAr": "إيران - جنوب شرق إيران",
+    "categoryAr": "صحراء فائقة الحرارة وتضاريس ياردانغ وصخور بركانية",
+    "geologyAr": "تكوينات رسوبية منحوتة بالرياح ومسطحات ملحية وأغطية من الصخور البركانية السوداء الداكنة",
+    "environmentAr": "احتفاظ حراري هائل في الصخور السوداء يحاكي كوكب الزهرة، وتآكل ريحي يطابق المريخ",
+    "missionAr": "دراسة أنماط الرياح المريخية واختبار تحمل الأجهزة للدرجات الحرارية القصوى الشبيهة بالزهرة",
+    "source": "Azarderakhsh et al. (2020); Mildrexler et al. (2011) (Dasht-e Lut hyper-arid yardangs & extreme surface temperatures)",
+    "targetBodies": "mars",
+    "targetFeatureAr": "المريخ - حقول الياردانغ | الزهرة - المناطق البركانية الساخنة",
+    "tags": [
+      "basalt_volcanic",
+      "evaporite_salt",
+      "aeolian_yardang",
+      "sand_dunes"
+    ],
+    "locations": [
+      {
+        "label": "Dasht-e Lut",
+        "lat": 29.8,
+        "lon": 59,
+        "confidence": "approximate",
+        "note": "Approximate desert center; review against GIS data"
+      }
+    ],
+    "dimensionsAr": "حوض صحراوي واسع يضم تلال ياردانغ عملاقة وهضابا بازلتية"
+  },
+  {
+    "id": 32,
+    "nameAr": "معقدا أودانتشاترام وسيتامبوندي للأنورثوزيت وبحيرة سامبهار",
+    "nameEn": "Oddanchatram & Sittampundi Anorthosite Complexes & Sambhar Lake",
+    "countryRegionAr": "الهند - تامل نادو وراجستان",
+    "categoryAr": "نظير صخري قمري (أنورثوزيت) ونظير بحيري مريخي",
+    "geologyAr": "أنورثوزيت غني بالبلاجيوكليز الكلسي في أودانتشاترام، ومتبخرات ملحية وطينية في بحيرة سامبهار",
+    "environmentAr": "تطابق طيفي وكيميائي للأنورثيت مع مرتفعات القمر، وتفاعلات هيدروجيوكيميائية في سامبهار",
+    "missionAr": "تصنيع محاكي الثرى القمري (LSS-ISAC-1 من سيتامبوندي وأودانتشاترام) لبعثات تشاندرايان ودراسة تطور البحيرات المريخية في سامبهار",
+    "source": "Venugopal et al. (2020) Planetary and Space Science (ISRO LSS-ISAC-1 Sittampundi); Arivazhagan et al. (2020) LPSC (Oddanchatram); Sambhar Lake studies",
+    "targetBodies": "both",
+    "targetFeatureAr": "القمر - المرتفعات القمرية | المريخ - البحيرات التبخيرية",
+    "tags": [
+      "anorthosite",
+      "evaporite_salt",
+      "paleolake_fluvial",
+      "silica_rocks"
+    ],
+    "locations": [
+      {
+        "label": "Oddanchatram",
+        "lat": 10.5,
+        "lon": 77.5,
+        "confidence": "approximate",
+        "note": "Approximate locality; review against geological mapping"
+      },
+      {
+        "label": "Sittampundi Anorthosite Complex",
+        "lat": 11.8,
+        "lon": 77.9,
+        "confidence": "approximate",
+        "note": "Approximate complex center; review against geological mapping"
+      },
+      {
+        "label": "Sambhar Lake",
+        "lat": 26.9,
+        "lon": 75.2,
+        "confidence": "approximate",
+        "note": "Approximate lake center; review against GIS data"
+      }
+    ],
+    "dimensionsAr": "معقد صخري ناري بجنوب الهند وبحيرة ملحية بشمال غرب الهند"
+  },
+  {
+    "id": 33,
+    "nameAr": "إقليم روغالاند للأنورثوزيت",
+    "nameEn": "Rogaland Anorthosite Province",
+    "countryRegionAr": "النرويج - جنوب غرب النرويج",
+    "categoryAr": "معقد أنورثوزيت وجوتونيت غني بثاني أكسيد التيتانيوم",
+    "geologyAr": "أنورثوزيت كتلي، فيروديوريت كوارتزي/جوتونيت ثولييتي عالي Fe/Mg ومنخفض K2O وغني جدا بـ TiO2",
+    "environmentAr": "تباين في العناصر الأرضية النادرة بين الشمال (150 ضعف الكوندريت) والجنوب (شذوذ يوروبيوم موجب)",
+    "missionAr": "دراسة التمايز الصهاري واستخلاص التيتانيوم والأكسجين (ISRU) من الصخور القمرية النظيرة",
+    "source": "Charlier et al. (2006, 2010) Journal of Petrology (Rogaland Anorthosite Province Fe-Ti jotunite/ferrodiorite lunar analog)",
+    "targetBodies": "moon",
+    "targetFeatureAr": "القمر - المرتفعات القمرية ومناطق الصخور الغنية بالتيتانيوم",
+    "tags": [
+      "anorthosite"
+    ],
+    "locations": [
+      {
+        "label": "Rogaland Anorthosite Province",
+        "lat": 58.8,
+        "lon": 6,
+        "confidence": "approximate",
+        "note": "Approximate province center; review against geological mapping"
+      }
+    ],
+    "dimensionsAr": "جسم فيروديوريت كوارتزي/جوتونيت يمتد بطول 20 كم"
+  },
+  {
+    "id": 34,
+    "nameAr": "الثلاثي الأوروبي: ريس وروششوار وشتاينهايم",
+    "nameEn": "Ries & Rochechouart & Steinheim Craters",
+    "countryRegionAr": "ألمانيا وفرنسا",
+    "categoryAr": "فوهات تصادمية قياسية للتدريب الميداني",
+    "geologyAr": "بريشيا تصادمية (سويفيت)، صهارة اصطدام، مخاريط تشظي، ومعالم تحول صدمي في صخور متنوعة",
+    "environmentAr": "مكاشف صخرية ممتازة وبنية تحتية لوجستية تمنحها أعلى درجات الملاءمة الاقتصادية عالميا",
+    "missionAr": "استُخدمت لتدريب رواد أبولو (1970) وتستخدمها حاليا وكالة الفضاء الأوروبية (ESA) لتدريب الرواد",
+    "source": "Stöffler et al. (2013) M&PS; ESA PANGAEA Astronaut Geological Training (Ries, Steinheim, and Rochechouart impact craters)",
+    "targetBodies": "both",
+    "targetFeatureAr": "القمر والمريخ - الفوهات التصادمية ذات القمم المركزية والأحواض",
+    "tags": [
+      "impact_crater"
+    ],
+    "locations": [
+      {
+        "label": "Ries Crater",
+        "lat": 48.9,
+        "lon": 10.6,
+        "confidence": "approximate",
+        "note": "Approximate crater center; review against published coordinates"
+      },
+      {
+        "label": "Rochechouart Crater",
+        "lat": 45.8,
+        "lon": 0.8,
+        "confidence": "approximate",
+        "note": "Approximate crater center; review against published coordinates"
+      },
+      {
+        "label": "Steinheim Crater",
+        "lat": 48.7,
+        "lon": 10.1,
+        "confidence": "approximate",
+        "note": "Approximate crater center; review against published coordinates"
+      }
+    ],
+    "dimensionsAr": "ثلاث فوهات تصادمية متقاربة ومتكاملة في الأحجام والأنواع"
+  },
+  {
+    "id": 35,
+    "nameAr": "فوهة أراغواينها التصادمية",
+    "nameEn": "Araguainha Impact Structure",
+    "countryRegionAr": "البرازيل - وسط البرازيل",
+    "categoryAr": "أكبر فوهة تصادمية معقدة في أمريكا الجنوبية",
+    "geologyAr": "ارتفاع مركزي ضخم وحلقات متحدة المركز ومكاشف ممتازة على طول الطريق MT-100 المرصوف حديثا",
+    "environmentAr": "يرتبط عمرها بحدود الانقراض البرمي-الترياسي وتتميز بسهولة وصول عالية بعد رصف الطريق",
+    "missionAr": "التدريب الجيولوجي الميداني ودراسة ميكانيكا تشكل الحلقات والقمم المركزية في الفوهات الكوكبية",
+    "source": "Tohver et al. (2012) Geochimica et Cosmochimica Acta; Crósta et al. (2019) (Araguainha 40 km complex impact structure, Brazil)",
+    "targetBodies": "both",
+    "targetFeatureAr": "القمر والمريخ - الفوهات التصادمية المعقدة الكبرى",
+    "tags": [
+      "impact_crater"
+    ],
+    "locations": [
+      {
+        "label": "Araguainha Impact Structure",
+        "lat": -16.8,
+        "lon": -52.8,
+        "confidence": "approximate",
+        "note": "Approximate structure center; review against published coordinates"
+      }
+    ],
+    "dimensionsAr": "قطر 40 كم | عمر 252 إلى 259 مليون سنة"
+  },
+  {
+    "id": 36,
+    "nameAr": "الفوهات الكندية (كليرووتر وسادبري وهاوتون وغاو ووايت كورت)",
+    "nameEn": "Clearwater & Sudbury & Haughton & Gow & Whitecourt",
+    "countryRegionAr": "كندا - أقاليم متعددة",
+    "categoryAr": "منظومة شاملة من الفوهات التصادمية والقطبية",
+    "geologyAr": "صفائح صهارة في كليرووتر، بريشيا وتلال جليدية في هاوتون، وفوهة انتقالية في بحيرة غاو",
+    "environmentAr": "تجمع فوهة هاوتون في جزيرة ديفون بين العمليات التصادمية والعمليات الجليدية في العروض القطبية",
+    "missionAr": "تدريب رواد أبولو ووكالة الفضاء الكندية ومسوحات الرادار المخترق للأرض (GPR) لكشف الجليد",
+    "source": "Osinski & Lee (2005) M&PS (Haughton Crater); Herd et al. (2008) Geology (Whitecourt); Earth Impact Database (Sudbury, Clearwater, Gow)",
+    "targetBodies": "both",
+    "targetFeatureAr": "القمر والمريخ - الأحواض التصادمية والفوهات الجليدية والانتقالية",
+    "tags": [
+      "polar_permafrost",
+      "paleolake_fluvial",
+      "glacial_ice"
+    ],
+    "locations": [
+      {
+        "label": "Clearwater East Crater",
+        "lat": 56.1,
+        "lon": -74.3,
+        "confidence": "approximate",
+        "note": "Approximate crater center; review against published coordinates"
+      },
+      {
+        "label": "Clearwater West Crater",
+        "lat": 56.2,
+        "lon": -74.1,
+        "confidence": "approximate",
+        "note": "Approximate crater center; review against published coordinates"
+      },
+      {
+        "label": "Sudbury Basin",
+        "lat": 46.5,
+        "lon": -81,
+        "confidence": "approximate",
+        "note": "Approximate basin center; review against GIS data"
+      },
+      {
+        "label": "Haughton Crater",
+        "lat": 75.4,
+        "lon": -89.7,
+        "confidence": "approximate",
+        "note": "Approximate crater center; review against published coordinates"
+      },
+      {
+        "label": "Gow Crater",
+        "lat": 56.4,
+        "lon": -104.5,
+        "confidence": "approximate",
+        "note": "Approximate crater center; review against published coordinates"
+      },
+      {
+        "label": "Whitecourt Impact Crater",
+        "lat": 54,
+        "lon": -115.6,
+        "confidence": "approximate",
+        "note": "Approximate crater location; review against published coordinates"
+      }
+    ],
+    "dimensionsAr": "كليرووتر الغربية (36 كم) والشرقية (26 كم) | سادبري (130 كم) | هاوتون (23 كم) | غاو (4 كم) | وايت كورت (قطر 36 م، عمر ~1100 سنة)"
+  },
+  {
+    "id": 37,
+    "nameAr": "فوهة بارينجر (فوهة النيزك)",
+    "nameEn": "Meteor (Barringer) Crater",
+    "countryRegionAr": "الولايات المتحدة - أريزونا",
+    "categoryAr": "فوهة اصطدام نيزكي حديدي قياسية",
+    "geologyAr": "طبقات حجر رملي وجيري مقلوبة عند الحافة وبريشيا قاع الفوهة وشظايا نيزك حديدي وأطوار ضغط عال",
+    "environmentAr": "مناخ صحراوي جاف حافظ على هندسة الحافة المرتفعة وبطانية المقذوفات المحيطة",
+    "missionAr": "أقدم موقع لتدريب رواد الفضاء الأمريكيين منذ الستينيات لاختبار البدلات الفضائية وأدوات الحفر",
+    "source": "Kring (2007, 2017) Guidebook to the Geology of Barringer Meteorite Crater, Arizona (LPI / NASA Apollo & Artemis training)",
+    "targetBodies": "both",
+    "targetFeatureAr": "القمر والمريخ - الفوهات التصادمية البسيطة",
+    "tags": [
+      "impact_crater",
+      "sand_dunes",
+      "meteorite_analog"
+    ],
+    "locations": [
+      {
+        "label": "Meteor (Barringer) Crater",
+        "lat": 35.03,
+        "lon": -111.02,
+        "confidence": "approximate",
+        "note": "Approximate crater center; review against published coordinates"
+      }
+    ],
+    "dimensionsAr": "فوهة تصادمية بسيطة محفوظة في صحراء أريزونا"
+  },
+  {
+    "id": 38,
+    "nameAr": "فوهة فريدفورت وحزام ليمبوبو",
+    "nameEn": "Vredefort Crater & Limpopo Belt",
+    "countryRegionAr": "جنوب أفريقيا",
+    "categoryAr": "حوض تصادمي عملاق وقشرة أنورثوزيتية قديمة",
+    "geologyAr": "صخور قشرة عميقة منكشفة بفعل الارتداد التصادمي في فريدفورت وأنورثوزيت في حزام ليمبوبو",
+    "environmentAr": "يوفر نافذة لدراسة الجذور العميقة للأحواض التصادمية التي يصعب الوصول إليها كوكبيا",
+    "missionAr": "تدريب رواد الفضاء ودراسة تشوهات الصدمة الإقليمية ونمذجة الأحواض القمرية العملاقة",
+    "source": "Gibson & Reimold (2008) Memoir of the Geological Survey of South Africa (Vredefort Dome & Limpopo Belt Archean crust)",
+    "targetBodies": "both",
+    "targetFeatureAr": "القمر والمريخ والزهرة - الأحواض متعددة الحلقات وقشرة الأنورثوزيت",
+    "tags": [
+      "anorthosite",
+      "ancient_terrain"
+    ],
+    "locations": [
+      {
+        "label": "Vredefort Crater",
+        "lat": -27,
+        "lon": 27.5,
+        "confidence": "approximate",
+        "note": "Approximate crater center; review against published coordinates"
+      },
+      {
+        "label": "Limpopo Belt",
+        "lat": -24,
+        "lon": 28,
+        "confidence": "approximate",
+        "note": "Approximate belt location; review against geological mapping"
+      }
+    ],
+    "dimensionsAr": "أكبر بنية تصادمية مؤكدة على الأرض ومعقدات أركية"
+  },
+  {
+    "id": 39,
+    "nameAr": "فوهة غوت بادوك وماونت نارير وقبة بيلبارا",
+    "nameEn": "Goat Paddock & Mount Narryer & Pilbara",
+    "countryRegionAr": "أستراليا - غرب وشمال غرب أستراليا",
+    "categoryAr": "فوهة تصادمية انتقالية وقشرة أركية مبكرة",
+    "geologyAr": "صخور TTG وبازلت في بيلبارا، أنورثوزيت في ماونت نارير، وفوهة انتقالية نادرة في غوت بادوك",
+    "environmentAr": "توثق انصهار الوشاح المتصاعد وتراكم القشرة البازلتية بما يطابق بنية أرتميس كورونا على الزهرة",
+    "missionAr": "دراسة بداية تكتونية الصفائح عبر مقارنتها ببنية أرتميس كورونا (قطر 1500 كم) على كوكب الزهرة",
+    "source": "Johnson et al. (2017) Nature; Ghail et al. (2024) (Pilbara Craton, Mount Narryer, Goat Paddock Crater & Venus Artemis Corona comparison)",
+    "targetBodies": "both",
+    "targetFeatureAr": "القمر والمريخ والزهرة - القشرة المبكرة وتكتونيات أرتميس كورونا",
+    "tags": [
+      "impact_crater",
+      "anorthosite",
+      "basalt_volcanic",
+      "ancient_terrain"
+    ],
+    "locations": [
+      {
+        "label": "Goat Paddock Crater",
+        "lat": -22.8,
+        "lon": 116.8,
+        "confidence": "approximate",
+        "note": "Approximate crater location; review against published coordinates"
+      },
+      {
+        "label": "Mount Narryer",
+        "lat": -26.8,
+        "lon": 116.5,
+        "confidence": "approximate",
+        "note": "Approximate locality; review against geological mapping"
+      },
+      {
+        "label": "Pilbara",
+        "lat": -22,
+        "lon": 118,
+        "confidence": "approximate",
+        "note": "Approximate region center; review against geological mapping"
+      }
+    ],
+    "dimensionsAr": "صخور أركية بعمر 3.53 إلى 2.85 مليار سنة وفوهة انتقالية"
+  },
+  {
+    "id": 40,
+    "nameAr": "الوديان الجافة في القارة القطبية الجنوبية",
+    "nameEn": "Antarctic Dry Valleys & Ventifact Knobs",
+    "countryRegionAr": "القارة القطبية الجنوبية (أنتاركتيكا)",
+    "categoryAr": "صحراء قطبية فائقة البرودة والجفاف",
+    "geologyAr": "تربة صقيعية جافة وجليد جوفي مدفون وصخور بازلتية وجرانيتية منحوتة بالرياح (Ventifact Knobs)",
+    "environmentAr": "أفضل نظير للمريخ من حيث متوسط الحرارة السنوية والجفاف الفائق والرياح القوية والعزلة",
+    "missionAr": "أبحاث ناسا وUSACRREL لاختبار الرادار المخترق للجليد (أكبر من 4000 م) وتحليل اللباب الجليدي",
+    "source": "Marchant & Head (2007) Icarus (Antarctic Dry Valleys as Mars analog); USACRREL / NASA Ice-Penetrating Radar studies",
+    "targetBodies": "both",
+    "targetFeatureAr": "المريخ - السهول القطبية والتربة الصقيعية | القمر - الفوهات القطبية",
+    "tags": [
+      "basalt_volcanic",
+      "aeolian_yardang",
+      "polar_permafrost",
+      "sand_dunes",
+      "glacial_ice"
+    ],
+    "locations": [
+      {
+        "label": "McMurdo Dry Valleys",
+        "lat": -77.5,
+        "lon": 162,
+        "confidence": "approximate",
+        "note": "Approximate valley region; review against Antarctic GIS data"
+      },
+      {
+        "label": "Ventifact Knobs",
+        "lat": -77.5,
+        "lon": 161,
+        "confidence": "approximate",
+        "note": "Approximate feature area; review against Antarctic GIS data"
+      }
+    ],
+    "dimensionsAr": "وديان ماكموردو: صحاري قطبية خالية من الجليد السطحي | الدرع الجليدي القطبي المجاور: سمك يصل إلى >4000 م"
+  },
+  {
+    "id": 41,
+    "nameAr": "سالار دي أويوني وصخرة أربول دي بيدرا ولانو دي كالديرا",
+    "nameEn": "Salar de Uyuni & Arbol de Piedra & Llano de Caldera",
+    "countryRegionAr": "بوليفيا وتشيلي - ألتيبلانو وأتاكاما",
+    "categoryAr": "مسطح ملحي وتكوينات تآكل ريحي مرتفعة",
+    "geologyAr": "قشور ملحية من الهاليت والليثيوم والكبريتات في أويوني، وصخور بركانية وجرانيتية منحوتة بالرياح",
+    "environmentAr": "ارتفاع شاهق وجفاف شديد وتطابق في تبلور الأملاح مع قيعان البحيرات المريخية المتجففة",
+    "missionAr": "دراسات ناسا لرصد المعادن الدالة على الحياة في المتبخرات ومعايرة نماذج التآكل الريحي",
+    "source": "Borsa et al. (2008) / NASA Earth Observatory (Salar de Uyuni); Segerstrom (1962) (Llano de Caldera); Wilken (2002) (Árbol de Piedra)",
+    "targetBodies": "mars",
+    "targetFeatureAr": "المريخ - البحيرات الملحية الجافة وصخور الفنتيفاكت المتآكلة",
+    "tags": [
+      "basalt_volcanic",
+      "evaporite_salt",
+      "aeolian_yardang",
+      "hydrogen_sulfide",
+      "astrobiology"
+    ],
+    "locations": [
+      {
+        "label": "Salar de Uyuni",
+        "lat": -20.2,
+        "lon": -67.5,
+        "confidence": "approximate",
+        "note": "Approximate salt-flat center; review against GIS data"
+      },
+      {
+        "label": "Arbol de Piedra",
+        "lat": -22.2,
+        "lon": -67.8,
+        "confidence": "approximate",
+        "note": "Approximate feature location; review against GIS data"
+      },
+      {
+        "label": "Llano de Caldera",
+        "lat": -23.8,
+        "lon": -68.2,
+        "confidence": "approximate",
+        "note": "Approximate feature location; review against GIS data"
+      }
+    ],
+    "dimensionsAr": "صخرة أربول دي بيدرا بارتفاع 7 أمتار وأكبر مسطح ملحي"
+  },
+  {
+    "id": 42,
+    "nameAr": "فرش رمال دينغيوساندور",
+    "nameEn": "Dyngjusandur Sandsheet",
+    "countryRegionAr": "أيسلندا - المرتفعات الأيسلندية",
+    "categoryAr": "مسطح رملي بازلتي وصخور منحوتة بالرياح",
+    "geologyAr": "رمال وحصى بازلتية بركانية داكنة تتعرض لعمليات نقل ونحت ريحي نشطة",
+    "environmentAr": "مناخ بارد ورياح قوية تسمح بإجراء تحليلات كمية دقيقة لتطور أسطح صخور الفنتيفاكت",
+    "missionAr": "تحسين التحليل الكمي لصخور الفنتيفاكت لإعادة بناء اتجاهات الرياح القديمة على المريخ",
+    "source": "Hudziak et al. (2025) Journal of the Geological Society (Dyngjusandur sandsheet ventifact analysis, Iceland)",
+    "targetBodies": "mars",
+    "targetFeatureAr": "المريخ - الكثبان والمسطحات الرملية البازلتية الباردة",
+    "tags": [
+      "basalt_volcanic",
+      "aeolian_yardang",
+      "polar_permafrost",
+      "sand_dunes",
+      "glacial_ice",
+      "ancient_terrain"
+    ],
+    "locations": [
+      {
+        "label": "Dyngjusandur Sandsheet",
+        "lat": 64.8,
+        "lon": -16.8,
+        "confidence": "approximate",
+        "note": "Approximate sandsheet area; review against GIS data"
+      }
+    ],
+    "dimensionsAr": "مسطح رملي بازلتي واسع في بيئة بركانية-جليدية"
+  },
+  {
+    "id": 43,
+    "nameAr": "بركان أول دوينيو لينغاي",
+    "nameEn": "Ol Doinyo Lengai Volcano",
+    "countryRegionAr": "تنزانيا - الأخدود الأفريقي العظيم",
+    "categoryAr": "بركان حمم كربوناتيتية منخفضة الحرارة",
+    "geologyAr": "حمم ناتروكربوناتيت غنية بالصوديوم والبوتاسيوم والكربونات وخالية تقريبا من السيليكا",
+    "environmentAr": "تنبثق الحمم بلزوجة منخفضة جدا تشبه الماء وعند درجات حرارة أقل بكثير من البازلت",
+    "missionAr": "نمذجة كيمياء الصهارة غير المعتادة وتدفقات الحمم السائلة منخفضة اللزوجة كوكبيا",
+    "source": "Keller & Krafft (1990) Journal of Petrology; Treiman & Schedl (1983) (Ol Doinyo Lengai natrocarbonatite volcano planetary magma analog)",
+    "targetBodies": "unknown",
+    "targetFeatureAr": "الكواكب الصخرية والزهرة - التركيبات الصهارية غير التقليدية",
+    "tags": [
+      "basalt_volcanic",
+      "silica_rocks"
+    ],
+    "locations": [
+      {
+        "label": "Ol Doinyo Lengai Volcano",
+        "lat": -3,
+        "lon": 35.9,
+        "confidence": "approximate",
+        "note": "Approximate volcano location; review against published coordinates"
+      }
+    ],
+    "dimensionsAr": "بركان طبقي نشط فريد عالميا في كيمياء الحمم"
+  },
+  {
+    "id": 44,
+    "nameAr": "بحيرة بانو ديل أكوا البركانية",
+    "nameEn": "Lake Bagno dell'Acqua (Pantelleria)",
+    "countryRegionAr": "إيطاليا - جزيرة بانتيليريا",
+    "categoryAr": "بحيرة كالديرا بركانية وتفاعلات حرارية-مائية",
+    "geologyAr": "رواسب كربوناتية وسيليكا ومعادن طين ناتجة عن تفاعل المياه القلوية والينابيع مع الصخور البركانية",
+    "environmentAr": "نظام مائي مغلق مدفوع بالنشاط الحراري البركاني والترسيب الكيميائي والتبخيري",
+    "missionAr": "إجراء التحقيقات الطيفية لمعايرة أجهزة الرصد المداري والجوالة في البحيرات البركانية المريخية",
+    "source": "Cangemi et al. (2010); Avanzinelli et al. (2014) (Lake Bagno dell'Acqua, Pantelleria alkaline volcanic crater lake Mars Jezero analog)",
+    "targetBodies": "mars",
+    "targetFeatureAr": "المريخ - البحيرات البركانية القديمة داخل الفوهات كفوهة جيزيرو",
+    "tags": [
+      "basalt_volcanic",
+      "hydrothermal",
+      "paleolake_fluvial",
+      "silica_rocks",
+      "ancient_terrain"
+    ],
+    "locations": [
+      {
+        "label": "Lake Bagno dell'Acqua",
+        "lat": 36.8,
+        "lon": 12,
+        "confidence": "approximate",
+        "note": "Approximate lake location; review against GIS data"
+      }
+    ],
+    "dimensionsAr": "بحيرة قلوية داخل كالديرا بركانية في البحر المتوسط"
+  }
+]
