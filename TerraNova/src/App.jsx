@@ -1,15 +1,25 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import analogData from './data/analogs.json'
+import fieldNotesData from './data/field-notes.json'
 import presetData from './data/presets.json'
 import provenanceData from './data/provenance.json'
+import siteLogisticsData from './data/site-logistics.json'
 import { rankAnalogs } from './lib/similarity.js'
-import { analogSiteSchema, presetSchema, provenanceSchema } from './lib/dataSchemas.js'
+import {
+  analogSiteSchema,
+  fieldNoteSchema,
+  presetSchema,
+  provenanceSchema,
+  siteLogisticsSchema,
+} from './lib/dataSchemas.js'
 import WeatherCard from './WeatherCard.jsx'
 import './App.css'
 
 const analogs = analogSiteSchema.array().parse(analogData)
 const presets = presetSchema.array().parse(presetData)
 const provenance = provenanceSchema.parse(provenanceData)
+const fieldNotes = fieldNoteSchema.array().parse(fieldNotesData)
+const siteLogistics = siteLogisticsSchema.array().parse(siteLogisticsData)
 
 const TAGS = [
   ['lava_tube', 'Lava tubes', 'أنابيب الحمم'],
@@ -91,6 +101,23 @@ const COPY = {
     mobileFilters: 'Filters',
     mobileSites: 'Sites',
     togglePanel: 'Toggle filters panel',
+    fieldNotes: 'Field notes',
+    permits: 'Permits',
+    hazards: 'Manual hazards',
+    bestSeason: 'Best season',
+    access: 'Access notes',
+    notVerifiedContact: 'Not yet verified, contact local authorities.',
+    notesSource: 'Source',
+    lastVerified: 'Last verified',
+    logistics: 'Logistics',
+    nearestAirport: 'Nearest large / medium airport',
+    noAirportData:
+      'Not yet verified. Add data-raw/airports.csv from OurAirports to calculate distance.',
+    airportDistance: 'Distance',
+    km: 'km',
+    approximateDistance: 'Distance uses an approximate site location.',
+    weatherReview: 'Weather-threshold review',
+    manualHazards: 'Manual hazards',
   },
   ar: {
     explorer: 'المستكشف',
@@ -150,6 +177,22 @@ const COPY = {
     mobileFilters: 'التصفية',
     mobileSites: 'المواقع',
     togglePanel: 'إظهار عوامل التصفية',
+    fieldNotes: 'ملاحظات ميدانية',
+    permits: 'التصاريح',
+    hazards: 'المخاطر اليدوية',
+    bestSeason: 'أفضل موسم',
+    access: 'ملاحظات الوصول',
+    notVerifiedContact: 'لم يتم التحقق بعد، يرجى التواصل مع السلطات المحلية.',
+    notesSource: 'المصدر',
+    lastVerified: 'آخر تحقق',
+    logistics: 'اللوجستيات',
+    nearestAirport: 'أقرب مطار كبير أو متوسط',
+    noAirportData: 'لم يتم التحقق بعد. أضف data-raw/airports.csv من OurAirports لحساب المسافة.',
+    airportDistance: 'المسافة',
+    km: 'كم',
+    approximateDistance: 'المسافة محسوبة من موقع تقريبي.',
+    weatherReview: 'مراجعة عتبات الطقس',
+    manualHazards: 'المخاطر اليدوية',
   },
 }
 
@@ -227,6 +270,8 @@ function App() {
   const countries = [...new Set(analogs.map(getCountry))].sort()
   const tagNames = new Map(TAGS.map(([id, en, ar]) => [id, language === 'ar' ? ar : en]))
   const selectedSite = selectedMatch?.site
+  const selectedFieldNotes = fieldNotes.find(({ siteId }) => siteId === selectedSite?.id)
+  const selectedLogistics = siteLogistics.find(({ siteId }) => siteId === selectedSite?.id)
 
   function applyPreset(presetId) {
     setActivePreset(presetId)
@@ -783,7 +828,73 @@ function App() {
                     {selectedSite.dimensionsAr && (
                       <p className="dimensions-text">{selectedSite.dimensionsAr}</p>
                     )}
-                    <WeatherCard site={selectedSite} language={language} />
+                    <WeatherCard
+                      site={selectedSite}
+                      language={language}
+                      manualHazards={selectedFieldNotes?.hazards}
+                    />
+                    <section className="field-notes-panel" aria-labelledby="field-notes-title">
+                      <h3 id="field-notes-title">{t.fieldNotes}</h3>
+                      <FieldNote
+                        label={t.permits}
+                        value={selectedFieldNotes?.permitsNotes}
+                        empty={t.notVerifiedContact}
+                      />
+                      <FieldNote
+                        label={t.hazards}
+                        value={selectedFieldNotes?.hazards}
+                        empty={t.notVerifiedContact}
+                      />
+                      <FieldNote
+                        label={t.bestSeason}
+                        value={selectedFieldNotes?.bestSeason}
+                        empty={t.notVerifiedContact}
+                      />
+                      <FieldNote
+                        label={t.access}
+                        value={selectedFieldNotes?.accessNotes}
+                        empty={t.notVerifiedContact}
+                      />
+                      {selectedFieldNotes?.sourceUrl && (
+                        <p className="field-note-meta">
+                          {t.notesSource}:{' '}
+                          <a href={selectedFieldNotes.sourceUrl} target="_blank" rel="noreferrer">
+                            {selectedFieldNotes.sourceUrl}
+                          </a>
+                        </p>
+                      )}
+                      {selectedFieldNotes?.lastVerified && (
+                        <p className="field-note-meta">
+                          {t.lastVerified}: {selectedFieldNotes.lastVerified}
+                        </p>
+                      )}
+                    </section>
+                    <section className="logistics-panel" aria-labelledby="logistics-title">
+                      <h3 id="logistics-title">{t.logistics}</h3>
+                      <p>{t.nearestAirport}</p>
+                      {selectedLogistics?.nearestAirport ? (
+                        <div className="airport-result">
+                          <strong>
+                            {selectedLogistics.nearestAirport.name}
+                            {selectedLogistics.nearestAirport.municipality
+                              ? ` · ${selectedLogistics.nearestAirport.municipality}`
+                              : ''}
+                          </strong>
+                          <span>
+                            {t.airportDistance}:{' '}
+                            {selectedLogistics.nearestAirport.distanceKm.toLocaleString(
+                              language === 'ar' ? 'ar' : 'en',
+                              { maximumFractionDigits: 1 },
+                            )}{' '}
+                            {t.km}
+                          </span>
+                          {selectedLogistics.nearestAirport.locationConfidence ===
+                            'approximate' && <small>{t.approximateDistance}</small>}
+                        </div>
+                      ) : (
+                        <p className="field-note-unverified">{t.noAirportData}</p>
+                      )}
+                    </section>
                     <div className="tag-match-heading">
                       <h3>{t.match}</h3>
                       <span>{selectedMatch.score}%</span>
@@ -869,6 +980,15 @@ function FilterSelect({ id, label, value, onChange, options, allLabel }) {
         ))}
       </select>
     </>
+  )
+}
+
+function FieldNote({ label, value, empty }) {
+  return (
+    <p className={value ? 'field-note-row' : 'field-note-row unverified'}>
+      <span>{label}</span>
+      <strong>{value || empty}</strong>
+    </p>
   )
 }
 

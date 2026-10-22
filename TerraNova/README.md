@@ -22,11 +22,23 @@ npm run lint
 
 - Source records: `data-raw/planetary_analog_sites_verified.json`
 - Location review list: `data-raw/coordinates.csv`
+- Field notes review template: `data-raw/field-notes.csv`
+- Optional airport source: `data-raw/airports.csv`
 - Editable tag rules: `scripts/tag-rules.js`
 - Generator: `scripts/convert-data.js`
-- Outputs: `src/data/analogs.json`, `src/data/provenance.json`, and `data-report.md`
+- Outputs: validated analog, provenance, field-note, airport-index, and site-logistics JSON files in `src/data/`, plus `data-report.md`
 
 Source coordinates are marked verified only when parsed from the source record. Review CSV coordinates remain approximate until confirmed. Empty or unverified fields are not represented as facts.
+
+### Field notes
+
+`data-raw/field-notes.csv` has one row per verified site. Fill `permitsNotes`, `hazards`, `bestSeason`, `accessNotes`, `sourceUrl`, and `lastVerified` only from reviewed sources. Quote CSV values containing commas. `sourceUrl` must be a URL and `lastVerified` an ISO date (`YYYY-MM-DD`); invalid entries stop the pipeline with a row-specific error. Missing values remain `null` and the interface says **Not yet verified, contact local authorities**. A completed note displays its source URL and verification date.
+
+### Airport distances
+
+Nearest large/medium airport distances use coordinates from the OurAirports data file. The dataset is currently not present, so distances intentionally display **Not yet verified**. Download the current [OurAirports airports.csv](https://ourairports.com/data/airports.csv) and save it as `data-raw/airports.csv`, then run `npm run data`. The pipeline keeps only valid large and medium airport rows and builds a latitude-bucket spatial index. Distance is great-circle distance in kilometers to the nearest listed airport, not a route or travel-time estimate; when a site location is approximate, its airport distance is labeled approximate too. OurAirports is the source; consult its [data page](https://ourairports.com/data/) for dataset details and attribution.
+
+The environmental risk summary presents both the weather-threshold review and the manually supplied hazards field. Missing hazard notes and unapproved weather thresholds remain explicitly unverified; neither is a safety determination.
 
 ## Branding
 
@@ -51,3 +63,5 @@ The explorer uses a compact SVG 2D map (no WebGL initialization or canvas DPR co
 Site weather is requested from the Open-Meteo Forecast API using the first mapped site location, cached in memory for ten minutes, and includes current conditions plus a seven-day temperature range. Open-Meteo is a live external service; timeouts, retries, and offline/API errors are surfaced in the site panel. Approximate coordinates stay explicitly labeled.
 
 `src/data/readiness-thresholds.json` intentionally contains null values. No mission-approved thresholds or sources were provided, so the field-readiness indicator displays **Not yet verified** rather than guessing. A safety expert must fill all thresholds and source URLs before the indicator can request review; even then it is not a safety guarantee.
+
+Weather data comes from the [Open-Meteo Forecast API](https://open-meteo.com/). It is a live forecast product, may be unavailable offline, and is not a safety guarantee. Requests use the primary mapped location, which can be approximate.

@@ -2,13 +2,25 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { z } from 'zod'
+import { parse } from 'csv-parse/sync'
 import { TAG_RULES } from './tag-rules.js'
-import { analogSiteSchema, provenanceSchema } from '../src/lib/dataSchemas.js'
+import { findNearestAirport } from '../src/lib/airports.js'
+import {
+  analogSiteSchema,
+  airportSchema,
+  airportsIndexSchema,
+  fieldNoteSchema,
+  provenanceSchema,
+  siteLogisticsSchema,
+} from '../src/lib/dataSchemas.js'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const rawPath = path.join(root, 'data-raw', 'planetary_analog_sites_verified.json')
 const coordinatePath = path.join(root, 'data-raw', 'coordinates.csv')
+const fieldNotesPath = path.join(root, 'data-raw', 'field-notes.csv')
+const airportsPath = path.join(root, 'data-raw', 'airports.csv')
 const outputPath = path.join(root, 'src', 'data')
+const OUR_AIRPORTS_URL = 'https://ourairports.com/data/airports.csv'
 
 const rawSiteSchema = z.object({
   ID: z.number(),
@@ -37,27 +49,31 @@ const rawSchema = z.object({
   filtered_out_sites: z.array(z.record(z.string(), z.unknown())),
 })
 
-function parseCsv(text) {
-  const [header, ...lines] = text.trim().split(/\r?\n/)
-  if (header !== 'siteId,label,lat,lon,confidence,note') {
-    throw new Error('coordinates.csv has an unexpected header')
+function parseRows(text, fileName, requiredHeaders) {
+  const rows = parse(text, { columns: true, bom: true, skip_empty_lines: true, trim: true })
+  const headers = rows[0] ? Object.keys(rows[0]) : []
+  if (!requiredHeaders.every((header) => headers.includes(header))) {
+    throw new Error(`${fileName} is missing required columns: ${requiredHeaders.join(', ')}`)
   }
-  return lines.filter(Boolean).map((line, index) => {
-    const [siteId, label, lat, lon, confidence, ...note] = line.split(',')
-    const row = {
-      siteId: Number(siteId),
-      label,
-      lat: Number(lat),
-      lon: Number(lon),
-      confidence,
-      note: note.join(','),
-    }
+  return rows
+}
+
+function parseCsv(text) {
+  const rows = parseRows(text, 'coordinates.csv', [
+    'siteId',
+    'label',
+    'lat',
+    'lon',
+    'confidence',
+    'note',
+  ])
+  return rows.map((row, index) => {
     const parsed = z
       .object({
-        siteId: z.number().int().positive(),
+        siteId: z.coerce.number().int().positive(),
         label: z.string().min(1),
-        lat: z.number().min(-90).max(90),
-        lon: z.number().min(-180).max(180),
+        lat: z.coerce.number().min(-90).max(90),
+        lon: z.coerce.number().min(-180).max(180),
         confidence: z.enum(['approximate', 'verified']),
         note: z.string(),
       })
@@ -67,6 +83,115 @@ function parseCsv(text) {
     }
     return parsed.data
   })
+}
+
+function parseFieldNotes(text, siteIds) {
+  const rows = parseRows(text, 'field-notes.csv', [
+    'siteId',
+    'permitsNotes',
+    'hazards',
+    'bestSeason',
+    'accessNotes',
+    'sourceUrl',
+    'lastVerified',
+  ])
+  const notesById = new Map()
+  rows.forEach((row, index) => {
+    const siteId = Number(row.siteId)
+    if (!siteIds.has(siteId)) {
+      throw new Error(`Invalid field-notes.csv row ${index + 2}: unknown site ID ${row.siteId}`)
+    }
+    if (notesById.has(siteId)) {
+      throw new Error(`Duplicate field-notes.csv entry for site ID ${siteId}`)
+    }
+    const nullable = (value) => (value === '' ? null : value)
+    const parsed = fieldNoteSchema.safeParse({
+      siteId,
+      permitsNotes: nullable(row.permitsNotes),
+      hazards: nullable(row.hazards),
+      bestSeason: nullable(row.bestSeason),
+      accessNotes: nullable(row.accessNotes),
+      sourceUrl: nullable(row.sourceUrl),
+      lastVerified: nullable(row.lastVerified),
+    })
+    if (!parsed.success) {
+      throw new Error(`Invalid field-notes.csv row ${index + 2}: ${parsed.error.message}`)
+    }
+    notesById.set(siteId, parsed.data)
+  })
+  return [...siteIds].map(
+    (siteId) =>
+      notesById.get(siteId) ?? {
+        siteId,
+        permitsNotes: null,
+        hazards: null,
+        bestSeason: null,
+        accessNotes: null,
+        sourceUrl: null,
+        lastVerified: null,
+      },
+  )
+}
+
+async function loadAirportsIndex() {
+  try {
+    const csv = await readFile(airportsPath, 'utf8')
+    const rows = parseRows(csv, 'airports.csv', [
+      'id',
+      'type',
+      'name',
+      'latitude_deg',
+      'longitude_deg',
+      'iso_country',
+    ])
+    const airports = []
+    let skipped = 0
+    for (const row of rows) {
+      if (!['large_airport', 'medium_airport'].includes(row.type)) continue
+      const parsed = airportSchema.safeParse({
+        id: Number(row.id),
+        name: row.name,
+        type: row.type,
+        municipality: row.municipality || null,
+        isoCountry: row.iso_country,
+        lat: Number(row.latitude_deg),
+        lon: Number(row.longitude_deg),
+      })
+      if (!parsed.success) {
+        skipped += 1
+        continue
+      }
+      airports.push(parsed.data)
+    }
+    if (airports.length === 0) {
+      throw new Error('airports.csv contains no valid large or medium airport records')
+    }
+    if (skipped) console.warn(`Skipped ${skipped} invalid large/medium airport rows`)
+    const latitudeRows = {}
+    airports.forEach((airport, index) => {
+      const row = Math.max(0, Math.min(179, Math.floor(airport.lat + 90)))
+      ;(latitudeRows[row] ??= []).push(index)
+    })
+    return airportsIndexSchema.parse({
+      available: true,
+      source: 'OurAirports',
+      datasetUrl: OUR_AIRPORTS_URL,
+      airports,
+      latitudeRows,
+    })
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error
+    console.warn(
+      `Airport distances are not yet verified. Download ${OUR_AIRPORTS_URL} as data-raw/airports.csv to enable them.`,
+    )
+    return airportsIndexSchema.parse({
+      available: false,
+      source: 'OurAirports',
+      datasetUrl: OUR_AIRPORTS_URL,
+      airports: [],
+      latitudeRows: {},
+    })
+  }
 }
 
 function dmsToDecimal(degrees, minutes, seconds, direction) {
@@ -201,6 +326,30 @@ const provenance = {
 }
 provenanceSchema.parse(provenance)
 const validatedAnalogs = z.array(analogSiteSchema).parse(analogs)
+const fieldNotes = z
+  .array(fieldNoteSchema)
+  .parse(
+    parseFieldNotes(await readFile(fieldNotesPath, 'utf8'), new Set(analogs.map(({ id }) => id))),
+  )
+const airportsIndex = await loadAirportsIndex()
+const siteLogistics = z.array(siteLogisticsSchema).parse(
+  analogs.map((site) => {
+    const location = site.locations.find(
+      ({ lat, lon, confidence }) => lat !== null && lon !== null && confidence !== 'missing',
+    )
+    const nearest = location ? findNearestAirport(airportsIndex, location) : null
+    return {
+      siteId: site.id,
+      nearestAirport: nearest
+        ? {
+            ...nearest.airport,
+            distanceKm: Math.round(nearest.distanceKm * 10) / 10,
+            locationConfidence: location.confidence,
+          }
+        : null,
+    }
+  }),
+)
 
 const tagCounts = TAG_RULES.map(({ id }) => ({
   tag: id,
@@ -232,6 +381,9 @@ const report = [
   '',
   'Coordinates parsed from source records are marked verified. Entries from `data-raw/coordinates.csv` remain approximate until reviewed; unlocated records remain list-only.',
   '',
+  `- Field notes: ${fieldNotes.length} records; blank fields remain unverified.`,
+  `- Airport distances: ${airportsIndex.available ? `computed from ${airportsIndex.airports.length} large/medium OurAirports records` : 'not computed; data-raw/airports.csv is missing'}.`,
+  '',
 ]
 
 await mkdir(outputPath, { recursive: true })
@@ -244,6 +396,21 @@ await Promise.all([
   writeFile(
     path.join(outputPath, 'provenance.json'),
     `${JSON.stringify(provenance, null, 2)}\n`,
+    'utf8',
+  ),
+  writeFile(
+    path.join(outputPath, 'field-notes.json'),
+    `${JSON.stringify(fieldNotes, null, 2)}\n`,
+    'utf8',
+  ),
+  writeFile(
+    path.join(outputPath, 'airports-index.json'),
+    `${JSON.stringify(airportsIndex)}\n`,
+    'utf8',
+  ),
+  writeFile(
+    path.join(outputPath, 'site-logistics.json'),
+    `${JSON.stringify(siteLogistics, null, 2)}\n`,
     'utf8',
   ),
   writeFile(path.join(root, 'data-report.md'), report.join('\n'), 'utf8'),

@@ -44,6 +44,11 @@ const WEATHER_COPY = {
     pending: 'Not yet verified',
     approximate: 'Approximate location',
     verified: 'Verified location',
+    riskSummary: 'Environmental risk summary',
+    weatherReview: 'Weather thresholds',
+    weatherNotVerified: 'Not yet verified',
+    manualHazards: 'Manual hazards',
+    contactAuthorities: 'Not yet verified, contact local authorities.',
   },
   ar: {
     title: 'الطقس الحالي',
@@ -80,6 +85,11 @@ const WEATHER_COPY = {
     pending: 'لم يتم التحقق بعد',
     approximate: 'موقع تقريبي',
     verified: 'موقع موثق',
+    riskSummary: 'ملخص المخاطر البيئية',
+    weatherReview: 'عتبات الطقس',
+    weatherNotVerified: 'لم يتم التحقق بعد',
+    manualHazards: 'المخاطر اليدوية',
+    contactAuthorities: 'لم يتم التحقق بعد، يرجى التواصل مع السلطات المحلية.',
   },
 }
 
@@ -101,7 +111,7 @@ function milesPerHour(kmh) {
 /**
  * @param {{ site: import('./lib/dataSchemas.js').AnalogSite, language: 'en'|'ar' }} props
  */
-export default function WeatherCard({ site, language }) {
+export default function WeatherCard({ site, language, manualHazards }) {
   const text = WEATHER_COPY[language]
   const location = primaryWeatherLocation(site)
   const [request, setRequest] = useState({ key: '', status: 'loading', weather: null, error: '' })
@@ -304,6 +314,23 @@ export default function WeatherCard({ site, language }) {
           </div>
         </>
       )}
+      <section className="environment-risk" aria-label={text.riskSummary}>
+        <h4>{text.riskSummary}</h4>
+        <p>
+          <span>{text.weatherReview}</span>
+          <strong>
+            {readiness?.status === 'review_required'
+              ? text.review
+              : readiness?.status === 'no_threshold_reached'
+                ? text.noTrigger
+                : text.weatherNotVerified}
+          </strong>
+        </p>
+        <p>
+          <span>{text.manualHazards}</span>
+          <strong>{manualHazards || text.contactAuthorities}</strong>
+        </p>
+      </section>
     </section>
   )
 }

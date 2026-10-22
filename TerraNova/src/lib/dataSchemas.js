@@ -6,6 +6,9 @@ import { z } from 'zod'
 /** @typedef {{ body: 'moon'|'mars'|'both'|'unknown', weights: Record<string, number> }} TargetProfile */
 /** @typedef {{ time: string, temperatureC: number, apparentTemperatureC: number, humidityPercent: number, windSpeedKmh: number, windGustsKmh: number, precipitationMm: number, uvIndex: number, daily: Array<{ date: string, minC: number, maxC: number }> }} SiteWeather */
 /** @typedef {{ heat: { maxApparentTemperatureC: number|null, source: string|null }, cold: { minApparentTemperatureC: number|null, source: string|null }, wind: { maxWindSpeedKmh: number|null, maxWindGustsKmh: number|null, source: string|null }, precipitation: { maxPrecipitationMm: number|null, source: string|null }, uv: { maxUvIndex: number|null, source: string|null } }} ReadinessThresholds */
+/** @typedef {{ siteId: number, permitsNotes: string|null, hazards: string|null, bestSeason: string|null, accessNotes: string|null, sourceUrl: string|null, lastVerified: string|null }} FieldNote */
+/** @typedef {{ id: number, name: string, type: 'large_airport'|'medium_airport', municipality: string|null, isoCountry: string, lat: number, lon: number }} Airport */
+/** @typedef {{ available: boolean, source: 'OurAirports', datasetUrl: string, lastUpdated: string|null, airports: Airport[], latitudeRows: Record<string, number[]> }} AirportIndex */
 
 export const siteLocationSchema = z.object({
   label: z.string().min(1),
@@ -97,4 +100,49 @@ export const provenanceSchema = z.object({
   filteredOutSites: z.array(z.record(z.string(), z.unknown())),
   structuralFixesApplied: z.array(z.string()),
   scientificCorrectionsApplied: z.array(z.string()),
+})
+
+export const fieldNoteSchema = z.object({
+  siteId: z.number().int().positive(),
+  permitsNotes: z.string().nullable(),
+  hazards: z.string().nullable(),
+  bestSeason: z.string().nullable(),
+  accessNotes: z.string().nullable(),
+  sourceUrl: z.string().url().nullable(),
+  lastVerified: z.iso.date().nullable(),
+})
+
+export const airportSchema = z.object({
+  id: z.number().int().positive(),
+  name: z.string().min(1),
+  type: z.enum(['large_airport', 'medium_airport']),
+  municipality: z.string().nullable(),
+  isoCountry: z.string().length(2),
+  lat: z.number().min(-90).max(90),
+  lon: z.number().min(-180).max(180),
+})
+
+export const airportsIndexSchema = z.object({
+  available: z.boolean(),
+  source: z.literal('OurAirports'),
+  datasetUrl: z.string().url(),
+  airports: z.array(airportSchema),
+  latitudeRows: z.record(z.string(), z.array(z.number().int().nonnegative())),
+})
+
+export const siteLogisticsSchema = z.object({
+  siteId: z.number().int().positive(),
+  nearestAirport: z
+    .object({
+      id: z.number().int().positive(),
+      name: z.string().min(1),
+      type: z.enum(['large_airport', 'medium_airport']),
+      municipality: z.string().nullable(),
+      isoCountry: z.string().length(2),
+      lat: z.number().min(-90).max(90),
+      lon: z.number().min(-180).max(180),
+      distanceKm: z.number().nonnegative(),
+      locationConfidence: z.enum(['verified', 'approximate']),
+    })
+    .nullable(),
 })

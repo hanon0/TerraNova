@@ -36,3 +36,6 @@ None
 ## Coordinate handling
 
 Coordinates parsed from source records are marked verified. Entries from `data-raw/coordinates.csv` remain approximate until reviewed; unlocated records remain list-only.
+
+- Field notes: 43 records; blank fields remain unverified.
+- Airport distances: not computed; data-raw/airports.csv is missing.

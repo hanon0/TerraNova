@@ -971,6 +971,87 @@ select option {
   text-decoration: none;
 }
 
+.field-notes-panel,
+.logistics-panel {
+  margin-top: 12px;
+  padding: 11px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: rgba(8, 23, 28, 0.5);
+}
+
+.field-notes-panel h3,
+.logistics-panel h3 {
+  margin-bottom: 8px;
+}
+
+.field-note-row {
+  display: grid;
+  gap: 3px;
+  margin: 7px 0;
+}
+
+.field-note-row span,
+.logistics-panel > p:first-of-type,
+.field-note-meta {
+  color: var(--muted);
+  font-size: 8px;
+}
+
+.field-note-row strong,
+.airport-result strong {
+  color: var(--soft);
+  font-size: 9px;
+  font-weight: 500;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.field-note-row.unverified strong,
+.field-note-unverified,
+.airport-result small {
+  color: var(--orange);
+}
+
+.field-note-meta {
+  margin: 7px 0 0;
+  overflow-wrap: anywhere;
+}
+
+.field-note-meta a {
+  color: var(--mint);
+}
+
+.logistics-panel > p:first-of-type {
+  margin: 4px 0 7px;
+}
+
+.field-note-unverified {
+  margin: 7px 0 0;
+  font-size: 8px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.airport-result {
+  display: grid;
+  gap: 5px;
+}
+
+.airport-result span,
+.airport-result small {
+  font-size: 8px;
+  line-height: 1.5;
+}
+
+.airport-result span {
+  color: var(--mint);
+}
+
+.airport-result small {
+  color: var(--orange);
+}
+
 .empty-state {
   padding: 20px;
   border: 1px dashed var(--line-strong);

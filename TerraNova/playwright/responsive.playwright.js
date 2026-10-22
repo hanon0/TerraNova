@@ -110,6 +110,24 @@ test('weather displays unit conversions and unverified readiness thresholds', as
   await expect(page.locator('.readiness-indicator')).toContainText('Not yet verified')
 })
 
+test('field notes, airport logistics, and environmental risks remain explicit when unverified', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1440, height: 1000 })
+  await page.goto('/')
+  await expect(page.locator('.brand-loader')).toHaveCount(0)
+  await expect(page.locator('.field-notes-panel .unverified')).toHaveCount(4)
+  await expect(page.locator('.logistics-panel')).toContainText('data-raw/airports.csv')
+  await expect(page.locator('.environment-risk')).toContainText('Manual hazards')
+  await expect(page.locator('.environment-risk')).toContainText(
+    'Not yet verified, contact local authorities.',
+  )
+
+  await page.locator('.language-button').click()
+  await expect(page.locator('.app-shell')).toHaveAttribute('dir', 'rtl')
+  await expect(page.locator('.logistics-panel')).toContainText('لم يتم التحقق بعد')
+})
+
 test('methodology page remains responsive', async ({ page }, testInfo) => {
   await page.setViewportSize({ width: 1440, height: 1000 })
   await page.goto('/')
