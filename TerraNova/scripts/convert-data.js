@@ -2,7 +2,8 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { z } from 'zod'
-import { TAG_RULES } from './tag-rules.ts'
+import { TAG_RULES } from './tag-rules.js'
+import { analogSiteSchema, provenanceSchema } from '../src/lib/dataSchemas.js'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const rawPath = path.join(root, 'data-raw', 'planetary_analog_sites_verified.json')
@@ -36,41 +37,7 @@ const rawSchema = z.object({
   filtered_out_sites: z.array(z.record(z.string(), z.unknown())),
 })
 
-const locationSchema = z.object({
-  label: z.string().min(1),
-  lat: z.number().min(-90).max(90).nullable(),
-  lon: z.number().min(-180).max(180).nullable(),
-  confidence: z.enum(['verified', 'approximate', 'missing']),
-  note: z.string(),
-})
-
-const analogSchema = z.object({
-  id: z.number().int().positive(),
-  nameAr: z.string().min(1),
-  nameEn: z.string().min(1),
-  countryRegionAr: z.string().min(1),
-  categoryAr: z.string().min(1),
-  geologyAr: z.string(),
-  environmentAr: z.string(),
-  missionAr: z.string(),
-  source: z.string().min(1),
-  targetBodies: z.enum(['moon', 'mars', 'both', 'unknown']),
-  targetFeatureAr: z.string(),
-  tags: z.array(z.string()),
-  locations: z.array(locationSchema).min(1),
-  dimensionsAr: z.string(),
-})
-
-type CsvLocation = {
-  siteId: number
-  label: string
-  lat: number
-  lon: number
-  confidence: 'approximate' | 'verified'
-  note: string
-}
-
-function parseCsv(text: string): CsvLocation[] {
+function parseCsv(text) {
   const [header, ...lines] = text.trim().split(/\r?\n/)
   if (header !== 'siteId,label,lat,lon,confidence,note') {
     throw new Error('coordinates.csv has an unexpected header')
@@ -85,14 +52,16 @@ function parseCsv(text: string): CsvLocation[] {
       confidence,
       note: note.join(','),
     }
-    const parsed = z.object({
-      siteId: z.number().int().positive(),
-      label: z.string().min(1),
-      lat: z.number().min(-90).max(90),
-      lon: z.number().min(-180).max(180),
-      confidence: z.enum(['approximate', 'verified']),
-      note: z.string(),
-    }).safeParse(row)
+    const parsed = z
+      .object({
+        siteId: z.number().int().positive(),
+        label: z.string().min(1),
+        lat: z.number().min(-90).max(90),
+        lon: z.number().min(-180).max(180),
+        confidence: z.enum(['approximate', 'verified']),
+        note: z.string(),
+      })
+      .safeParse(row)
     if (!parsed.success) {
       throw new Error(`Invalid coordinates.csv row ${index + 2}: ${parsed.error.message}`)
     }
@@ -100,14 +69,15 @@ function parseCsv(text: string): CsvLocation[] {
   })
 }
 
-function dmsToDecimal(degrees: string, minutes: string | undefined, seconds: string | undefined, direction: string) {
+function dmsToDecimal(degrees, minutes, seconds, direction) {
   const value = Number(degrees) + Number(minutes ?? 0) / 60 + Number(seconds ?? 0) / 3600
   return /[SW]/i.test(direction) ? -value : value
 }
 
-function parseSourceCoordinates(text: string) {
-  const points: Array<{ lat: number; lon: number }> = []
-  const dms = /(\d{1,2})°\s*(\d{1,2})['′]\s*(?:(\d{1,2}(?:\.\d+)?)["″])?\s*([NS])\s+(\d{1,3})°\s*(\d{1,2})['′]\s*(?:(\d{1,2}(?:\.\d+)?)["″])?\s*([EW])/gi
+function parseSourceCoordinates(text) {
+  const points = []
+  const dms =
+    /(\d{1,2})°\s*(\d{1,2})['′]\s*(?:(\d{1,2}(?:\.\d+)?)["″])?\s*([NS])\s+(\d{1,3})°\s*(\d{1,2})['′]\s*(?:(\d{1,2}(?:\.\d+)?)["″])?\s*([EW])/gi
   for (const match of text.matchAll(dms)) {
     points.push({
       lat: dmsToDecimal(match[1], match[2], match[3], match[4]),
@@ -124,7 +94,7 @@ function parseSourceCoordinates(text: string) {
   return points
 }
 
-function targetBody(value: string): 'moon' | 'mars' | 'both' | 'unknown' {
+function targetBody(value) {
   const moon = /القمر|moon/i.test(value)
   const mars = /المريخ|mars/i.test(value)
   if (moon && mars) return 'both'
@@ -133,9 +103,12 @@ function targetBody(value: string): 'moon' | 'mars' | 'both' | 'unknown' {
   return 'unknown'
 }
 
-function dimensionsWithoutCoordinates(value: string) {
+function dimensionsWithoutCoordinates(value) {
   return value
-    .replace(/\d{1,2}°\s*\d{1,2}['′]\s*(?:\d{1,2}(?:\.\d+)?["″])?\s*[NS]\s+\d{1,3}°\s*\d{1,2}['′]\s*(?:\d{1,2}(?:\.\d+)?["″])?\s*[EW]/gi, '')
+    .replace(
+      /\d{1,2}°\s*\d{1,2}['′]\s*(?:\d{1,2}(?:\.\d+)?["″])?\s*[NS]\s+\d{1,3}°\s*\d{1,2}['′]\s*(?:\d{1,2}(?:\.\d+)?["″])?\s*[EW]/gi,
+      '',
+    )
     .replace(/\d{1,2}(?:\.\d+)?°?\s*[NS]\s+\d{1,3}(?:\.\d+)?°?\s*[EW]/gi, '')
     .replace(/^\s*\|\s*|\s*\|\s*$/g, '')
     .trim()
@@ -143,41 +116,60 @@ function dimensionsWithoutCoordinates(value: string) {
 
 const source = rawSchema.parse(JSON.parse(await readFile(rawPath, 'utf8')))
 const csvLocations = parseCsv(await readFile(coordinatePath, 'utf8'))
-const csvById = new Map<number, CsvLocation[]>()
+const csvById = new Map()
 for (const location of csvLocations) {
   const rows = csvById.get(location.siteId) ?? []
   rows.push(location)
   csvById.set(location.siteId, rows)
 }
 
-const ids = new Set<number>()
-const duplicateIds: number[] = []
-const missingTargets: number[] = []
-const missingCoordinates: number[] = []
+const ids = new Set()
+const duplicateIds = []
+const missingTargets = []
+const missingCoordinates = []
 const analogs = source.verified_sites.map((record) => {
   if (ids.has(record.ID)) duplicateIds.push(record.ID)
   ids.add(record.ID)
 
   const rawCoordinates = parseSourceCoordinates(record.Coordinates_Dimensions_Elevation)
   const directLocations = rawCoordinates.map((point, index) => ({
-    label: record.ID === 7 ? 'Kilauea volcanic field' : rawCoordinates.length > 1 ? `${record.Site_Name_EN} ${index + 1}` : record.Site_Name_EN,
+    label:
+      record.ID === 7
+        ? 'Kilauea volcanic field'
+        : rawCoordinates.length > 1
+          ? `${record.Site_Name_EN} ${index + 1}`
+          : record.Site_Name_EN,
     ...point,
-    confidence: 'verified' as const,
+    confidence: 'verified',
     note: 'Parsed from the verified source record',
   }))
   const manualLocations = (csvById.get(record.ID) ?? [])
-    .filter((location) => !directLocations.some(({ lat, lon }) => Math.abs(lat - location.lat) < 0.005 && Math.abs(lon - location.lon) < 0.005))
+    .filter(
+      (location) =>
+        !directLocations.some(
+          ({ lat, lon }) =>
+            Math.abs(lat - location.lat) < 0.005 && Math.abs(lon - location.lon) < 0.005,
+        ),
+    )
     .map(({ label, lat, lon, confidence, note }) => ({ label, lat, lon, confidence, note }))
   const locations = [...directLocations, ...manualLocations]
   if (!locations.length) {
     missingCoordinates.push(record.ID)
-    locations.push({ label: record.Site_Name_EN, lat: null, lon: null, confidence: 'missing' as const, note: 'No coordinates supplied; shown in the list only' })
+    locations.push({
+      label: record.Site_Name_EN,
+      lat: null,
+      lon: null,
+      confidence: 'missing',
+      note: 'No coordinates supplied; shown in the list only',
+    })
   }
   const targetBodies = targetBody(record.Target_Planetary_Body_and_Feature)
   if (targetBodies === 'unknown') missingTargets.push(record.ID)
   const textColumns = Object.values(record).join(' ')
-  const tags = TAG_RULES.filter((rule) => rule.patterns.some((pattern) => pattern.test(textColumns))).map(({ id }) => id)
-  return analogSchema.parse({
+  const tags = TAG_RULES.filter((rule) =>
+    rule.patterns.some((pattern) => pattern.test(textColumns)),
+  ).map(({ id }) => id)
+  return analogSiteSchema.parse({
     id: record.ID,
     nameAr: record.Site_Name_AR,
     nameEn: record.Site_Name_EN,
@@ -207,6 +199,8 @@ const provenance = {
   structuralFixesApplied: source.metadata.structural_fixes_applied,
   scientificCorrectionsApplied: source.metadata.scientific_corrections_applied,
 }
+provenanceSchema.parse(provenance)
+const validatedAnalogs = z.array(analogSiteSchema).parse(analogs)
 
 const tagCounts = TAG_RULES.map(({ id }) => ({
   tag: id,
@@ -230,7 +224,9 @@ const report = [
   '',
   '## Records with no tags',
   '',
-  ...(noTagRecords.length ? noTagRecords.map(({ id, nameEn }) => `- ID ${id}: ${nameEn}`) : ['None']),
+  ...(noTagRecords.length
+    ? noTagRecords.map(({ id, nameEn }) => `- ID ${id}: ${nameEn}`)
+    : ['None']),
   '',
   '## Coordinate handling',
   '',
@@ -240,13 +236,25 @@ const report = [
 
 await mkdir(outputPath, { recursive: true })
 await Promise.all([
-  writeFile(path.join(outputPath, 'analogs.json'), `${JSON.stringify(analogs, null, 2)}\n`, 'utf8'),
-  writeFile(path.join(outputPath, 'provenance.json'), `${JSON.stringify(provenance, null, 2)}\n`, 'utf8'),
+  writeFile(
+    path.join(outputPath, 'analogs.json'),
+    `${JSON.stringify(validatedAnalogs, null, 2)}\n`,
+    'utf8',
+  ),
+  writeFile(
+    path.join(outputPath, 'provenance.json'),
+    `${JSON.stringify(provenance, null, 2)}\n`,
+    'utf8',
+  ),
   writeFile(path.join(root, 'data-report.md'), report.join('\n'), 'utf8'),
 ])
 
 console.log(`Converted ${analogs.length} verified sites`)
 console.log(`Missing targets: ${missingTargets.length ? missingTargets.join(', ') : 'none'}`)
-console.log(`Missing coordinates: ${missingCoordinates.length ? missingCoordinates.join(', ') : 'none'}`)
+console.log(
+  `Missing coordinates: ${missingCoordinates.length ? missingCoordinates.join(', ') : 'none'}`,
+)
 console.log(`Duplicate IDs: ${duplicateIds.length ? duplicateIds.join(', ') : 'none'}`)
-console.log(`Records with no tags: ${noTagRecords.length ? noTagRecords.map(({ id }) => id).join(', ') : 'none'}`)
+console.log(
+  `Records with no tags: ${noTagRecords.length ? noTagRecords.map(({ id }) => id).join(', ') : 'none'}`,
+)

@@ -1,0 +1,75 @@
+import { z } from 'zod'
+
+/** @typedef {'verified'|'approximate'|'missing'} LocationConfidence */
+/** @typedef {{ label: string, lat: number|null, lon: number|null, confidence: LocationConfidence, note: string }} SiteLocation */
+/** @typedef {{ id: number, nameAr: string, nameEn: string, countryRegionAr: string, categoryAr: string, geologyAr: string, environmentAr: string, missionAr: string, source: string, targetBodies: 'moon'|'mars'|'both'|'unknown', targetFeatureAr: string, tags: string[], locations: SiteLocation[], dimensionsAr: string }} AnalogSite */
+/** @typedef {{ body: 'moon'|'mars'|'both'|'unknown', weights: Record<string, number> }} TargetProfile */
+/** @typedef {{ time: string, temperatureC: number, apparentTemperatureC: number, humidityPercent: number, windSpeedKmh: number, windGustsKmh: number, precipitationMm: number, uvIndex: number, daily: Array<{ date: string, minC: number, maxC: number }> }} SiteWeather */
+
+export const siteLocationSchema = z.object({
+  label: z.string().min(1),
+  lat: z.number().min(-90).max(90).nullable(),
+  lon: z.number().min(-180).max(180).nullable(),
+  confidence: z.enum(['verified', 'approximate', 'missing']),
+  note: z.string(),
+})
+
+export const analogSiteSchema = z.object({
+  id: z.number().int().positive(),
+  nameAr: z.string().min(1),
+  nameEn: z.string().min(1),
+  countryRegionAr: z.string().min(1),
+  categoryAr: z.string().min(1),
+  geologyAr: z.string(),
+  environmentAr: z.string(),
+  missionAr: z.string(),
+  source: z.string().min(1),
+  targetBodies: z.enum(['moon', 'mars', 'both', 'unknown']),
+  targetFeatureAr: z.string(),
+  tags: z.array(z.string()),
+  locations: z.array(siteLocationSchema).min(1),
+  dimensionsAr: z.string(),
+})
+
+export const targetProfileSchema = z.object({
+  body: z.enum(['moon', 'mars', 'both', 'unknown']),
+  weights: z.record(z.string(), z.number().min(0).max(3)),
+})
+
+export const weatherSchema = z.object({
+  time: z.string(),
+  temperatureC: z.number(),
+  apparentTemperatureC: z.number(),
+  humidityPercent: z.number().min(0).max(100),
+  windSpeedKmh: z.number().nonnegative(),
+  windGustsKmh: z.number().nonnegative(),
+  precipitationMm: z.number().nonnegative(),
+  uvIndex: z.number().nonnegative(),
+  daily: z.array(
+    z.object({
+      date: z.string(),
+      minC: z.number(),
+      maxC: z.number(),
+    }),
+  ),
+})
+
+export const presetSchema = z.object({
+  id: z.string().min(1),
+  nameEn: z.string().min(1),
+  nameAr: z.string().min(1),
+  body: targetProfileSchema.shape.body,
+  weights: targetProfileSchema.shape.weights,
+})
+
+export const provenanceSchema = z.object({
+  datasetTitle: z.string(),
+  counts: z.object({
+    original: z.number().int().nonnegative(),
+    verified: z.number().int().nonnegative(),
+    filteredOut: z.number().int().nonnegative(),
+  }),
+  filteredOutSites: z.array(z.record(z.string(), z.unknown())),
+  structuralFixesApplied: z.array(z.string()),
+  scientificCorrectionsApplied: z.array(z.string()),
+})

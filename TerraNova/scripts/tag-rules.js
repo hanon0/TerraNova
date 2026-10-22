@@ -1,0 +1,80 @@
+/** @type {{ id: string, patterns: RegExp[] }[]} */
+export const TAG_RULES = [
+  { id: 'lava_tube', patterns: [/lava tube/i, /أنابيب? (?:الحمم|بركانية)/, /كهوف? الحمم/] },
+  {
+    id: 'impact_crater',
+    patterns: [
+      /impact crater/i,
+      /impact structure/i,
+      /فوهة تصادمية/,
+      /فوهات تصادمية/,
+      /نيزكي(?:ة)?/,
+    ],
+  },
+  { id: 'anorthosite', patterns: [/anorthosite/i, /أنورثوزيت/] },
+  {
+    id: 'basalt_volcanic',
+    patterns: [/basalt/i, /volcanic/i, /volcano/i, /بازلت/, /بركاني/, /بركانية/],
+  },
+  {
+    id: 'evaporite_salt',
+    patterns: [
+      /evaporite/i,
+      /salt pan/i,
+      /salt lake/i,
+      /salt flat/i,
+      /ملحي/,
+      /ملحية/,
+      /سبخة/,
+      /أملاح/,
+    ],
+  },
+  { id: 'aeolian_yardang', patterns: [/yardang/i, /aeolian/i, /رياح/, /ريحي/, /ياردانغ/] },
+  {
+    id: 'polar_permafrost',
+    patterns: [
+      /polar/i,
+      /permafrost/i,
+      /arctic/i,
+      /antarctic/i,
+      /قطبي/,
+      /القطب/,
+      /جليدي/,
+      /التربة الصقيعية/,
+    ],
+  },
+  {
+    id: 'hydrothermal',
+    patterns: [/hydrothermal/i, /spring/i, /thermal/i, /حراري مائي/, /ينابيع?/],
+  },
+  {
+    id: 'paleolake_fluvial',
+    patterns: [
+      /paleolake/i,
+      /paleoriver/i,
+      /fluvial/i,
+      /lake/i,
+      /river/i,
+      /نهر/,
+      /بحيرة/,
+      /أنهار/,
+      /دلتا/,
+      /فلuvial/i,
+    ],
+  },
+  { id: 'sand_dunes', patterns: [/dune/i, /sand sea/i, /desert/i, /رمال/, /كثبان/, /صحراء/] },
+  { id: 'cave_karst', patterns: [/cave/i, /karst/i, /كهف/, /كهوف/] },
+  { id: 'glacial_ice', patterns: [/ice sheet/i, /glacier/i, /ice cap/i, /جليد/, /أنهار جليدية/] },
+  { id: 'silica_rocks', patterns: [/silica/i, /chert/i, /opal/i, /سيليكا/, /أوبال/] },
+  { id: 'hydrogen_sulfide', patterns: [/sulfate/i, /sulfur/i, /كبريتات/, /كبريت/] },
+  { id: 'high_altitude', patterns: [/high altitude/i, /ارتفاعات عالية/, /ارتفاع .*متر/] },
+  { id: 'meteorite_analog', patterns: [/meteorite/i, /meteoritic/i, /نيزك/, /نيازك/] },
+  {
+    id: 'ancient_terrain',
+    patterns: [/Precambrian/i, /Archean/i, /ancient/i, /قديم/, /أركي/, /ما قبل الكمبري/],
+  },
+  {
+    id: 'astrobiology',
+    patterns: [/astrobiology/i, /life detection/i, /biosignature/i, /أحيائي/, /الحياة/, /الأحياء/],
+  },
+]

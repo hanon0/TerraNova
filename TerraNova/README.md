@@ -1,16 +1,41 @@
-# React + Vite
+# TerraNova
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+TerraNova explores verified Earth analog sites for lunar and Mars mission planning. The interface supports English and Arabic, including right-to-left layout.
 
-Currently, two official plugins are available:
+## Development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```sh
+npm install
+npm run data
+npm run dev
+```
 
-## React Compiler
+Before committing, run:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```sh
+npm run build
+npm test
+npm run lint
+```
 
-## Expanding the ESLint configuration
+## Data pipeline
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Source records: `data-raw/planetary_analog_sites_verified.json`
+- Location review list: `data-raw/coordinates.csv`
+- Editable tag rules: `scripts/tag-rules.js`
+- Generator: `scripts/convert-data.js`
+- Outputs: `src/data/analogs.json`, `src/data/provenance.json`, and `data-report.md`
+
+Source coordinates are marked verified only when parsed from the source record. Review CSV coordinates remain approximate until confirmed. Empty or unverified fields are not represented as facts.
+
+## Branding
+
+The logo at `public/terranovalogo.jpeg` supplies the browser favicon, Apple touch icon, social preview image, navigation mark, loader, and footer mark. The dark navy, sky blue, sea green, and terracotta design tokens are sampled from the logo.
+
+## Stack
+
+- React and Vite, with modern JavaScript modules
+- Zod runtime data validation
+- Vitest unit tests
+- ESLint with React, React Hooks, and JSX accessibility rules
+- Prettier formatting

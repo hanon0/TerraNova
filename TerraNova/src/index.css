@@ -2,25 +2,30 @@
 
 :root {
   font-family: 'DM Sans', 'IBM Plex Sans Arabic', Arial, sans-serif;
-  color: #e9f0eb;
-  background: #071719;
+  color: #f0f0f0;
+  background: #102030;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-optical-sizing: auto;
   font-weight: 400;
-  --bg: #071719;
-  --panel: #0b1e20;
-  --panel-raised: #102528;
-  --line: rgba(178, 206, 192, 0.14);
-  --line-strong: rgba(178, 206, 192, 0.25);
-  --text: #e9f0eb;
-  --muted: #8da49b;
-  --soft: #b6c6bd;
-  --mint: #a8e6c1;
-  --mint-strong: #61c38e;
-  --orange: #f4b87b;
+  --bg: #102030;
+  --panel: #102a3a;
+  --panel-raised: #18384a;
+  --line: rgba(174, 207, 216, 0.14);
+  --line-strong: rgba(174, 207, 216, 0.28);
+  --text: #f0f0f0;
+  --muted: #a8bdc7;
+  --soft: #c5d5da;
+  --mint: #70b8d4;
+  --mint-strong: #50a0c0;
+  --orange: #ff986a;
+  --terra: #e07040;
+  --land: #80b070;
+  --space: #102030;
+  --space-deep: #001020;
+  --logo-sky: #60a0c0;
   --mono: 'DM Mono', Consolas, monospace;
   font-synthesis: none;
 }
@@ -31,7 +36,7 @@
 
 body {
   min-width: 320px;
-  min-height: 100vh;
+  min-height: 100svh;
   margin: 0;
 }
 
