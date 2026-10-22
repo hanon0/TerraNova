@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import analogData from './data/analogs.json'
 import presetData from './data/presets.json'
 import provenanceData from './data/provenance.json'
@@ -86,6 +86,10 @@ const COPY = {
     language: 'العربية',
     openSource: 'Open citation',
     locations: 'mapped locations',
+    mobileMap: 'Map',
+    mobileFilters: 'Filters',
+    mobileSites: 'Sites',
+    togglePanel: 'Toggle filters panel',
   },
   ar: {
     explorer: 'المستكشف',
@@ -141,6 +145,10 @@ const COPY = {
     language: 'English',
     openSource: 'عرض المرجع',
     locations: 'مواقع محددة',
+    mobileMap: 'الخريطة',
+    mobileFilters: 'التصفية',
+    mobileSites: 'المواقع',
+    togglePanel: 'إظهار عوامل التصفية',
   },
 }
 
@@ -176,12 +184,30 @@ function App() {
   const [drawStart, setDrawStart] = useState(null)
   const [drawArea, setDrawArea] = useState(null)
   const [areaSites, setAreaSites] = useState([])
+  const [mobilePanel, setMobilePanel] = useState('map')
+  const [isSidePanelOpen, setIsSidePanelOpen] = useState(true)
+  const [mapDimensions, setMapDimensions] = useState({ width: 0, height: 0 })
+  const mapCanvasRef = useRef(null)
   const t = COPY[language]
 
   useEffect(() => {
     const timeout = window.setTimeout(() => setIsInitializing(false), 500)
     return () => window.clearTimeout(timeout)
   }, [])
+
+  useEffect(() => {
+    const element = mapCanvasRef.current
+    if (!element) return undefined
+    const updateSize = () => {
+      const bounds = element.getBoundingClientRect()
+      setMapDimensions({ width: Math.round(bounds.width), height: Math.round(bounds.height) })
+    }
+    updateSize()
+    if (typeof ResizeObserver === 'undefined') return undefined
+    const observer = new ResizeObserver(updateSize)
+    observer.observe(element)
+    return () => observer.disconnect()
+  }, [page])
 
   const ranked = useMemo(() => rankAnalogs(analogs, weights, body), [weights, body])
   const filtered = useMemo(
@@ -376,393 +402,446 @@ function App() {
           </section>
         </main>
       ) : (
-        <main className="workspace">
-          <aside className="control-panel">
-            <div className="panel-heading">
-              <div>
-                <p className="eyebrow">MISSION PLANNER</p>
-                <h1>{t.target}</h1>
-              </div>
-              <button
-                className="text-button"
-                onClick={() => {
-                  setWeights({})
-                  setActivePreset('')
-                }}
-              >
-                {t.clear}
-              </button>
-            </div>
-
-            <section className="control-section">
-              <h2>{t.body}</h2>
-              <div className="segmented-control">
-                {['moon', 'mars', 'both'].map((value) => (
-                  <button
-                    key={value}
-                    className={body === value ? 'selected' : ''}
-                    onClick={() => {
-                      setBody(value)
-                      setActivePreset('')
-                    }}
-                  >
-                    {t[value]}
-                  </button>
-                ))}
-              </div>
-            </section>
-
-            <section className="control-section">
-              <label className="field-label" htmlFor="preset-select">
-                {t.preset}
-              </label>
-              <select
-                id="preset-select"
-                value={activePreset}
-                onChange={(event) => applyPreset(event.target.value)}
-              >
-                <option value="">—</option>
-                {presets.map(({ id, nameEn, nameAr }) => (
-                  <option key={id} value={id}>
-                    {language === 'ar' ? nameAr : nameEn}
-                  </option>
-                ))}
-              </select>
-            </section>
-
-            <section className="control-section">
-              <div className="section-title">
-                <h2>{t.characteristics}</h2>
-                <span className="count-pill">
-                  {Object.keys(weights).length} {t.tagsSelected}
-                </span>
-              </div>
-              {Object.keys(weights).length === 0 && <p className="helper-text">{t.noTags}</p>}
-              <div className="tag-controls">
-                {TAGS.map(([id, en, ar]) => {
-                  const weight = weights[id] ?? 0
-                  return (
-                    <div className={`tag-control ${weight ? 'enabled' : ''}`} key={id}>
-                      <label htmlFor={`tag-${id}`}>{language === 'ar' ? ar : en}</label>
-                      <div className="weight-control">
-                        <input
-                          id={`tag-${id}`}
-                          type="range"
-                          min="0"
-                          max="3"
-                          step="1"
-                          value={weight}
-                          onChange={(event) => setWeight(id, event.target.value)}
-                          aria-label={`${language === 'ar' ? ar : en} weight`}
-                        />
-                        <span>{weight || '–'}</span>
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
-            </section>
-
-            <section className="control-section filters-section">
-              <h2>{t.filters}</h2>
-              <FilterSelect
-                id="category-filter"
-                label={t.category}
-                value={categoryFilter}
-                onChange={setCategoryFilter}
-                options={categories}
-                allLabel={t.all}
-              />
-              <FilterSelect
-                id="country-filter"
-                label={t.country}
-                value={countryFilter}
-                onChange={setCountryFilter}
-                options={countries}
-                allLabel={t.all}
-              />
-              <label className="field-label" htmlFor="confidence-filter">
-                {t.confidence}
-              </label>
-              <select
-                id="confidence-filter"
-                value={confidenceFilter}
-                onChange={(event) => setConfidenceFilter(event.target.value)}
-              >
-                <option value="all">{t.all}</option>
-                <option value="verified">{t.verified}</option>
-                <option value="approximate">{t.approximate}</option>
-                <option value="missing">{t.missing}</option>
-              </select>
-            </section>
-          </aside>
-
-          <section className="explorer-main">
-            <div className="map-heading">
-              <div>
-                <p className="eyebrow">FIELD SITE ATLAS</p>
-                <h2>{t.mapTitle}</h2>
-                <p>{t.mapHint}</p>
-              </div>
-              <button
-                className={isDrawing ? 'draw-button active' : 'draw-button'}
-                onClick={() => {
-                  setIsDrawing(!isDrawing)
-                  setDrawArea(null)
-                  setAreaSites([])
-                }}
-              >
-                {isDrawing ? (
-                  t.stopDraw
-                ) : (
-                  <>
-                    <DrawIcon /> {t.area}
-                  </>
-                )}
-              </button>
-            </div>
-            <div className="map-legend">
-              <span>
-                <i className="legend-dot verified-dot" />
-                {t.verifiedBadge}
-              </span>
-              <span>
-                <i className="legend-dot approximate-dot" />
-                {t.approximateBadge}
-              </span>
-              <span className="map-count">
-                {
-                  filtered.filter(({ site }) => site.locations.some(({ lat }) => lat !== null))
-                    .length
-                }{' '}
-                {t.locations}
-              </span>
-            </div>
-            <div className={`map-canvas ${isDrawing ? 'drawing' : ''}`}>
-              <svg
-                viewBox="0 0 900 420"
-                preserveAspectRatio="none"
-                onPointerDown={beginDrawing}
-                onPointerMove={updateDrawing}
-                onPointerUp={finishDrawing}
-                onPointerCancel={finishDrawing}
-                role="img"
-                aria-label={t.mapTitle}
-              >
-                <defs>
-                  <pattern id="map-grid" width="75" height="52.5" patternUnits="userSpaceOnUse">
-                    <path
-                      d="M 75 0 L 0 0 0 52.5"
-                      fill="none"
-                      stroke="rgba(152,181,175,.12)"
-                      strokeWidth="1"
-                    />
-                  </pattern>
-                  <linearGradient id="map-bg" x1="0" x2="1" y1="0" y2="1">
-                    <stop offset="0%" stopColor="#10282b" />
-                    <stop offset="100%" stopColor="#0c2025" />
-                  </linearGradient>
-                </defs>
-                <rect width="900" height="420" fill="url(#map-bg)" />
-                <rect width="900" height="420" fill="url(#map-grid)" />
-                <g className="graticule">
-                  {[1, 2, 3, 4, 5].map((line) => (
-                    <line key={`h${line}`} x1="0" x2="900" y1={line * 70} y2={line * 70} />
-                  ))}
-                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((line) => (
-                    <line key={`v${line}`} y1="0" y2="420" x1={line * 75} x2={line * 75} />
-                  ))}
-                </g>
-                <g className="continents">
-                  <path d="M72 92 L108 65 167 55 206 73 230 105 218 132 185 143 171 177 139 190 115 163 83 157 65 126Z" />
-                  <path d="M214 199 L248 215 264 248 252 284 245 322 224 354 208 319 200 278 188 246Z" />
-                  <path d="M402 90 L433 76 462 86 473 107 451 123 430 116Z" />
-                  <path d="M449 124 L489 120 523 141 534 183 515 226 495 271 473 258 460 215 441 181 429 149Z" />
-                  <path d="M506 83 L556 63 621 69 663 93 712 97 744 123 718 145 672 144 647 166 611 155 583 180 550 155 521 150 488 126Z" />
-                  <path d="M648 190 L689 177 731 190 757 223 741 259 705 272 675 250 650 226Z" />
-                  <path d="M751 294 L786 280 822 293 838 319 810 339 778 331Z" />
-                  <path d="M802 91 L844 87 866 109 847 129 815 125Z" />
-                  <path d="M356 48 L376 42 391 55 381 72 361 69Z" />
-                </g>
-                {filtered.flatMap(({ site, score }) =>
-                  site.locations
-                    .filter(({ lat, lon }) => lat !== null && lon !== null)
-                    .map((location, index) => {
-                      const point = project(location)
-                      const confidence = location.confidence
-                      const selected = selectedSite?.id === site.id
-                      return (
-                        <g
-                          className={`site-marker ${selected ? 'selected' : ''} ${confidence}`}
-                          key={`${site.id}-${index}`}
-                          transform={`translate(${point.x} ${point.y})`}
-                          onPointerDown={(event) => event.stopPropagation()}
-                          onClick={() => setSelectedId(site.id)}
-                          tabIndex="0"
-                          role="button"
-                          aria-label={`${site.nameEn}, ${location.label}`}
-                        >
-                          <circle className="marker-halo" r={selected ? 12 : 9} />
-                          <circle className="marker-core" r={selected ? 5 : 3.5} />
-                          <title>
-                            {site.nameEn} — {location.label} ({confidence}) · {score}%
-                          </title>
-                        </g>
-                      )
-                    }),
-                )}
-                {drawArea && (
-                  <rect
-                    className="draw-area"
-                    x={drawArea.x}
-                    y={drawArea.y}
-                    width={drawArea.width}
-                    height={drawArea.height}
-                  />
-                )}
-              </svg>
-              {isDrawing && <div className="drawing-hint">{t.areaHelp}</div>}
-            </div>
-
-            {drawArea && (
-              <section className="area-summary">
+        <>
+          <nav className="mobile-panel-tabs" aria-label="Explorer panels">
+            <button
+              type="button"
+              aria-pressed={mobilePanel === 'map'}
+              onClick={() => setMobilePanel('map')}
+            >
+              {t.mobileMap}
+            </button>
+            <button
+              type="button"
+              aria-pressed={mobilePanel === 'controls'}
+              onClick={() => setMobilePanel('controls')}
+            >
+              {t.mobileFilters}
+            </button>
+            <button
+              type="button"
+              aria-pressed={mobilePanel === 'results'}
+              onClick={() => setMobilePanel('results')}
+            >
+              {t.mobileSites}
+            </button>
+            <button type="button" onClick={() => setPage('methodology')}>
+              {t.methodology}
+            </button>
+          </nav>
+          <main
+            className={`workspace mobile-panel-${mobilePanel} ${isSidePanelOpen ? '' : 'sidebar-collapsed'}`}
+          >
+            <aside className="control-panel">
+              <div className="panel-heading">
                 <div>
-                  <strong>{areaSites.length}</strong>
-                  <span>{t.inside}</span>
+                  <p className="eyebrow">MISSION PLANNER</p>
+                  <h1>{t.target}</h1>
                 </div>
-                <div>
-                  <strong>{averageAreaScore}%</strong>
-                  <span>{t.average}</span>
-                </div>
-                <div className="area-tags">
-                  <span>{t.common}</span>
-                  <div>
-                    {commonAreaTags.map(([tag]) => (
-                      <b key={tag}>{tagNames.get(tag) ?? tag}</b>
-                    ))}
-                  </div>
-                </div>
-                <div className="area-site-list">
-                  {areaSites.slice(0, 8).map(({ site, score }) => (
-                    <button key={site.id} onClick={() => setSelectedId(site.id)}>
-                      {language === 'ar' ? site.nameAr : site.nameEn}
-                      <i>{score}%</i>
+                <button
+                  className="text-button"
+                  onClick={() => {
+                    setWeights({})
+                    setActivePreset('')
+                  }}
+                >
+                  {t.clear}
+                </button>
+              </div>
+
+              <section className="control-section">
+                <h2>{t.body}</h2>
+                <div className="segmented-control">
+                  {['moon', 'mars', 'both'].map((value) => (
+                    <button
+                      key={value}
+                      className={body === value ? 'selected' : ''}
+                      onClick={() => {
+                        setBody(value)
+                        setActivePreset('')
+                      }}
+                    >
+                      {t[value]}
                     </button>
                   ))}
                 </div>
               </section>
-            )}
 
-            <div className="results-layout">
-              <section className="site-list-section">
-                <div className="list-heading">
-                  <div>
-                    <p className="eyebrow">RANKED RESULTS</p>
-                    <h2>{t.results}</h2>
-                  </div>
-                  <span>
-                    {filtered.length} / {analogs.length}
+              <section className="control-section">
+                <label className="field-label" htmlFor="preset-select">
+                  {t.preset}
+                </label>
+                <select
+                  id="preset-select"
+                  value={activePreset}
+                  onChange={(event) => applyPreset(event.target.value)}
+                >
+                  <option value="">—</option>
+                  {presets.map(({ id, nameEn, nameAr }) => (
+                    <option key={id} value={id}>
+                      {language === 'ar' ? nameAr : nameEn}
+                    </option>
+                  ))}
+                </select>
+              </section>
+
+              <section className="control-section">
+                <div className="section-title">
+                  <h2>{t.characteristics}</h2>
+                  <span className="count-pill">
+                    {Object.keys(weights).length} {t.tagsSelected}
                   </span>
                 </div>
-                <div className="site-list">
-                  {filtered.length === 0 && <p className="empty-state">{t.zeroResults}</p>}
-                  {filtered.map((result, index) => (
-                    <SiteCard
-                      key={result.site.id}
-                      result={result}
-                      rank={index + 1}
-                      active={selectedSite?.id === result.site.id}
-                      language={language}
-                      labels={t}
-                      tagNames={tagNames}
-                      onClick={() => setSelectedId(result.site.id)}
-                    />
-                  ))}
+                {Object.keys(weights).length === 0 && <p className="helper-text">{t.noTags}</p>}
+                <div className="tag-controls">
+                  {TAGS.map(([id, en, ar]) => {
+                    const weight = weights[id] ?? 0
+                    return (
+                      <div className={`tag-control ${weight ? 'enabled' : ''}`} key={id}>
+                        <label htmlFor={`tag-${id}`}>{language === 'ar' ? ar : en}</label>
+                        <div className="weight-control">
+                          <input
+                            id={`tag-${id}`}
+                            type="range"
+                            min="0"
+                            max="3"
+                            step="1"
+                            value={weight}
+                            onChange={(event) => setWeight(id, event.target.value)}
+                            aria-label={`${language === 'ar' ? ar : en} weight`}
+                          />
+                          <span>{weight || '–'}</span>
+                        </div>
+                      </div>
+                    )
+                  })}
                 </div>
               </section>
-              {selectedSite && (
-                <section className="detail-panel">
-                  <div className="detail-top">
-                    <span className="eyebrow">SITE {String(selectedSite.id).padStart(2, '0')}</span>
-                    <span className="score-badge">
-                      {selectedMatch.score}
-                      <small>%</small>
-                    </span>
+
+              <section className="control-section filters-section">
+                <h2>{t.filters}</h2>
+                <FilterSelect
+                  id="category-filter"
+                  label={t.category}
+                  value={categoryFilter}
+                  onChange={setCategoryFilter}
+                  options={categories}
+                  allLabel={t.all}
+                />
+                <FilterSelect
+                  id="country-filter"
+                  label={t.country}
+                  value={countryFilter}
+                  onChange={setCountryFilter}
+                  options={countries}
+                  allLabel={t.all}
+                />
+                <label className="field-label" htmlFor="confidence-filter">
+                  {t.confidence}
+                </label>
+                <select
+                  id="confidence-filter"
+                  value={confidenceFilter}
+                  onChange={(event) => setConfidenceFilter(event.target.value)}
+                >
+                  <option value="all">{t.all}</option>
+                  <option value="verified">{t.verified}</option>
+                  <option value="approximate">{t.approximate}</option>
+                  <option value="missing">{t.missing}</option>
+                </select>
+              </section>
+            </aside>
+
+            <section className="explorer-main">
+              <section className="map-panel">
+                <div className="map-heading">
+                  <div>
+                    <p className="eyebrow">FIELD SITE ATLAS</p>
+                    <h2>{t.mapTitle}</h2>
+                    <p>{t.mapHint}</p>
                   </div>
-                  <h2>{language === 'ar' ? selectedSite.nameAr : selectedSite.nameEn}</h2>
-                  <p className="site-location">{selectedSite.countryRegionAr}</p>
-                  {selectedSite.locations.map((location, index) => (
-                    <span
-                      key={`${location.label}-${index}`}
-                      className={`confidence-badge ${location.confidence}`}
+                  <div className="map-actions">
+                    <button
+                      type="button"
+                      className="sidebar-toggle"
+                      aria-label={t.togglePanel}
+                      aria-expanded={isSidePanelOpen}
+                      onClick={() => setIsSidePanelOpen(!isSidePanelOpen)}
                     >
-                      {location.confidence === 'verified'
-                        ? t.verifiedBadge
-                        : location.confidence === 'approximate'
-                          ? t.approximateBadge
-                          : t.noMap}
-                    </span>
-                  ))}
-                  {selectedSite.dimensionsAr && (
-                    <p className="dimensions-text">{selectedSite.dimensionsAr}</p>
-                  )}
-                  <div className="tag-match-heading">
-                    <h3>{t.match}</h3>
-                    <span>{selectedMatch.score}%</span>
-                  </div>
-                  <div className="match-bar">
-                    <span style={{ width: `${selectedMatch.score}%` }} />
-                  </div>
-                  <div className="tag-chart">
-                    <p className="chart-label">{t.matched}</p>
-                    <div className="chart-tags">
-                      {selectedMatch.matchedTags.length ? (
-                        selectedMatch.matchedTags.map((tag) => (
-                          <span className="matched-tag" key={tag}>
-                            <i>✓</i>
-                            {tagNames.get(tag) ?? tag}
-                          </span>
-                        ))
+                      {t.mobileFilters}
+                    </button>
+                    <button
+                      type="button"
+                      className={isDrawing ? 'draw-button active' : 'draw-button'}
+                      onClick={() => {
+                        setIsDrawing(!isDrawing)
+                        setDrawArea(null)
+                        setAreaSites([])
+                      }}
+                    >
+                      {isDrawing ? (
+                        t.stopDraw
                       ) : (
-                        <span className="muted-tag">—</span>
+                        <>
+                          <DrawIcon /> {t.area}
+                        </>
                       )}
-                    </div>
-                    <p className="chart-label">{t.notMatched}</p>
-                    <div className="chart-tags">
-                      {selectedMatch.missingTags.length ? (
-                        selectedMatch.missingTags.map((tag) => (
-                          <span className="missing-tag" key={tag}>
-                            <i>×</i>
-                            {tagNames.get(tag) ?? tag}
-                          </span>
-                        ))
-                      ) : (
-                        <span className="muted-tag">—</span>
-                      )}
-                    </div>
+                    </button>
                   </div>
-                  <p className="explanation">
-                    {language === 'ar' ? selectedMatch.explanationAr : selectedMatch.explanationEn}
-                  </p>
-                  <div className="detail-divider" />
-                  <h3>{t.mission}</h3>
-                  <p className="mission-text">{selectedSite.missionAr}</p>
-                  <div className="detail-divider" />
-                  <h3>{t.source}</h3>
-                  <p className="citation">{selectedSite.source}</p>
-                  <a
-                    className="source-link"
-                    href={`https://www.google.com/search?q=${encodeURIComponent(selectedSite.source)}`}
-                    target="_blank"
-                    rel="noreferrer"
+                </div>
+                <div className="map-legend">
+                  <span>
+                    <i className="legend-dot verified-dot" />
+                    {t.verifiedBadge}
+                  </span>
+                  <span>
+                    <i className="legend-dot approximate-dot" />
+                    {t.approximateBadge}
+                  </span>
+                  <span className="map-count">
+                    {
+                      filtered.filter(({ site }) => site.locations.some(({ lat }) => lat !== null))
+                        .length
+                    }{' '}
+                    {t.locations}
+                  </span>
+                </div>
+                <div
+                  ref={mapCanvasRef}
+                  className={`map-canvas ${isDrawing ? 'drawing' : ''}`}
+                  data-map-width={mapDimensions.width}
+                  data-map-height={mapDimensions.height}
+                >
+                  <svg
+                    viewBox="0 0 900 420"
+                    preserveAspectRatio="none"
+                    onPointerDown={beginDrawing}
+                    onPointerMove={updateDrawing}
+                    onPointerUp={finishDrawing}
+                    onPointerCancel={finishDrawing}
+                    role="img"
+                    aria-label={t.mapTitle}
                   >
-                    {t.openSource} ↗
-                  </a>
+                    <defs>
+                      <pattern id="map-grid" width="75" height="52.5" patternUnits="userSpaceOnUse">
+                        <path
+                          d="M 75 0 L 0 0 0 52.5"
+                          fill="none"
+                          stroke="rgba(152,181,175,.12)"
+                          strokeWidth="1"
+                        />
+                      </pattern>
+                      <linearGradient id="map-bg" x1="0" x2="1" y1="0" y2="1">
+                        <stop offset="0%" stopColor="#10282b" />
+                        <stop offset="100%" stopColor="#0c2025" />
+                      </linearGradient>
+                    </defs>
+                    <rect width="900" height="420" fill="url(#map-bg)" />
+                    <rect width="900" height="420" fill="url(#map-grid)" />
+                    <g className="graticule">
+                      {[1, 2, 3, 4, 5].map((line) => (
+                        <line key={`h${line}`} x1="0" x2="900" y1={line * 70} y2={line * 70} />
+                      ))}
+                      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((line) => (
+                        <line key={`v${line}`} y1="0" y2="420" x1={line * 75} x2={line * 75} />
+                      ))}
+                    </g>
+                    <g className="continents">
+                      <path d="M72 92 L108 65 167 55 206 73 230 105 218 132 185 143 171 177 139 190 115 163 83 157 65 126Z" />
+                      <path d="M214 199 L248 215 264 248 252 284 245 322 224 354 208 319 200 278 188 246Z" />
+                      <path d="M402 90 L433 76 462 86 473 107 451 123 430 116Z" />
+                      <path d="M449 124 L489 120 523 141 534 183 515 226 495 271 473 258 460 215 441 181 429 149Z" />
+                      <path d="M506 83 L556 63 621 69 663 93 712 97 744 123 718 145 672 144 647 166 611 155 583 180 550 155 521 150 488 126Z" />
+                      <path d="M648 190 L689 177 731 190 757 223 741 259 705 272 675 250 650 226Z" />
+                      <path d="M751 294 L786 280 822 293 838 319 810 339 778 331Z" />
+                      <path d="M802 91 L844 87 866 109 847 129 815 125Z" />
+                      <path d="M356 48 L376 42 391 55 381 72 361 69Z" />
+                    </g>
+                    {filtered.flatMap(({ site, score }) =>
+                      site.locations
+                        .filter(({ lat, lon }) => lat !== null && lon !== null)
+                        .map((location, index) => {
+                          const point = project(location)
+                          const confidence = location.confidence
+                          const selected = selectedSite?.id === site.id
+                          return (
+                            <g
+                              className={`site-marker ${selected ? 'selected' : ''} ${confidence}`}
+                              key={`${site.id}-${index}`}
+                              transform={`translate(${point.x} ${point.y})`}
+                              onPointerDown={(event) => event.stopPropagation()}
+                              onClick={() => setSelectedId(site.id)}
+                              tabIndex="0"
+                              role="button"
+                              aria-label={`${site.nameEn}, ${location.label}`}
+                            >
+                              <circle className="marker-halo" r={selected ? 12 : 9} />
+                              <circle className="marker-core" r={selected ? 5 : 3.5} />
+                              <title>
+                                {site.nameEn} — {location.label} ({confidence}) · {score}%
+                              </title>
+                            </g>
+                          )
+                        }),
+                    )}
+                    {drawArea && (
+                      <rect
+                        className="draw-area"
+                        x={drawArea.x}
+                        y={drawArea.y}
+                        width={drawArea.width}
+                        height={drawArea.height}
+                      />
+                    )}
+                  </svg>
+                  {isDrawing && <div className="drawing-hint">{t.areaHelp}</div>}
+                </div>
+
+                {drawArea && (
+                  <section className="area-summary">
+                    <div>
+                      <strong>{areaSites.length}</strong>
+                      <span>{t.inside}</span>
+                    </div>
+                    <div>
+                      <strong>{averageAreaScore}%</strong>
+                      <span>{t.average}</span>
+                    </div>
+                    <div className="area-tags">
+                      <span>{t.common}</span>
+                      <div>
+                        {commonAreaTags.map(([tag]) => (
+                          <b key={tag}>{tagNames.get(tag) ?? tag}</b>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="area-site-list">
+                      {areaSites.slice(0, 8).map(({ site, score }) => (
+                        <button key={site.id} onClick={() => setSelectedId(site.id)}>
+                          {language === 'ar' ? site.nameAr : site.nameEn}
+                          <i>{score}%</i>
+                        </button>
+                      ))}
+                    </div>
+                  </section>
+                )}
+              </section>
+
+              <div className="results-layout">
+                <section className="site-list-section">
+                  <div className="list-heading">
+                    <div>
+                      <p className="eyebrow">RANKED RESULTS</p>
+                      <h2>{t.results}</h2>
+                    </div>
+                    <span>
+                      {filtered.length} / {analogs.length}
+                    </span>
+                  </div>
+                  <div className="site-list">
+                    {filtered.length === 0 && <p className="empty-state">{t.zeroResults}</p>}
+                    {filtered.map((result, index) => (
+                      <SiteCard
+                        key={result.site.id}
+                        result={result}
+                        rank={index + 1}
+                        active={selectedSite?.id === result.site.id}
+                        language={language}
+                        labels={t}
+                        tagNames={tagNames}
+                        onClick={() => setSelectedId(result.site.id)}
+                      />
+                    ))}
+                  </div>
                 </section>
-              )}
-            </div>
-          </section>
-        </main>
+                {selectedSite && (
+                  <section className="detail-panel">
+                    <div className="detail-top">
+                      <span className="eyebrow">
+                        SITE {String(selectedSite.id).padStart(2, '0')}
+                      </span>
+                      <span className="score-badge">
+                        {selectedMatch.score}
+                        <small>%</small>
+                      </span>
+                    </div>
+                    <h2>{language === 'ar' ? selectedSite.nameAr : selectedSite.nameEn}</h2>
+                    <p className="site-location">{selectedSite.countryRegionAr}</p>
+                    {selectedSite.locations.map((location, index) => (
+                      <span
+                        key={`${location.label}-${index}`}
+                        className={`confidence-badge ${location.confidence}`}
+                      >
+                        {location.confidence === 'verified'
+                          ? t.verifiedBadge
+                          : location.confidence === 'approximate'
+                            ? t.approximateBadge
+                            : t.noMap}
+                      </span>
+                    ))}
+                    {selectedSite.dimensionsAr && (
+                      <p className="dimensions-text">{selectedSite.dimensionsAr}</p>
+                    )}
+                    <div className="tag-match-heading">
+                      <h3>{t.match}</h3>
+                      <span>{selectedMatch.score}%</span>
+                    </div>
+                    <div className="match-bar">
+                      <span style={{ width: `${selectedMatch.score}%` }} />
+                    </div>
+                    <div className="tag-chart">
+                      <p className="chart-label">{t.matched}</p>
+                      <div className="chart-tags">
+                        {selectedMatch.matchedTags.length ? (
+                          selectedMatch.matchedTags.map((tag) => (
+                            <span className="matched-tag" key={tag}>
+                              <i>✓</i>
+                              {tagNames.get(tag) ?? tag}
+                            </span>
+                          ))
+                        ) : (
+                          <span className="muted-tag">—</span>
+                        )}
+                      </div>
+                      <p className="chart-label">{t.notMatched}</p>
+                      <div className="chart-tags">
+                        {selectedMatch.missingTags.length ? (
+                          selectedMatch.missingTags.map((tag) => (
+                            <span className="missing-tag" key={tag}>
+                              <i>×</i>
+                              {tagNames.get(tag) ?? tag}
+                            </span>
+                          ))
+                        ) : (
+                          <span className="muted-tag">—</span>
+                        )}
+                      </div>
+                    </div>
+                    <p className="explanation">
+                      {language === 'ar'
+                        ? selectedMatch.explanationAr
+                        : selectedMatch.explanationEn}
+                    </p>
+                    <div className="detail-divider" />
+                    <h3>{t.mission}</h3>
+                    <p className="mission-text">{selectedSite.missionAr}</p>
+                    <div className="detail-divider" />
+                    <h3>{t.source}</h3>
+                    <p className="citation">{selectedSite.source}</p>
+                    <a
+                      className="source-link"
+                      href={`https://www.google.com/search?q=${encodeURIComponent(selectedSite.source)}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {t.openSource} ↗
+                    </a>
+                  </section>
+                )}
+              </div>
+            </section>
+          </main>
+        </>
       )}
       <footer className="app-footer">
         <img src="/terranovalogo.jpeg" alt="TerraNova logo" />

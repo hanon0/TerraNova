@@ -39,3 +39,9 @@ The logo at `public/terranovalogo.jpeg` supplies the browser favicon, Apple touc
 - Vitest unit tests
 - ESLint with React, React Hooks, and JSX accessibility rules
 - Prettier formatting
+
+## Responsive behavior
+
+The explorer uses a compact SVG 2D map (no WebGL initialization or canvas DPR cost). A `ResizeObserver` tracks the map container. Phones use map/filter/site bottom tabs, tablets can collapse the filter panel, and desktop uses a three-column workspace. Reduced-motion preferences are respected and the layout is capped at ultrawide widths.
+
+`npm test` runs Vitest and Playwright. Playwright saves viewport screenshots and checks for horizontal overflow at 320, 375, 768, 1024, 1440, 1920, 2560 pixels, and in landscape-phone dimensions; it also checks methodology, mobile panels, and tablet collapse behavior. Install Chromium for local browser tests with `npx playwright install chromium`.
