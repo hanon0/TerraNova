@@ -11,6 +11,32 @@ const viewports = [
   { name: 'phone-landscape', width: 844, height: 390 },
 ]
 
+test.beforeEach(async ({ page }) => {
+  await page.route('https://api.open-meteo.com/v1/forecast**', (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        current: {
+          time: '2026-01-01T12:00',
+          temperature_2m: 18,
+          apparent_temperature: 19,
+          relative_humidity_2m: 55,
+          wind_speed_10m: 12,
+          wind_gusts_10m: 18,
+          precipitation: 0.2,
+          uv_index: 2,
+        },
+        daily: {
+          time: Array.from({ length: 7 }, (_, index) => `2026-01-0${index + 1}`),
+          temperature_2m_min: [1, 2, 3, 4, 5, 6, 7],
+          temperature_2m_max: [11, 12, 13, 14, 15, 16, 17],
+        },
+      }),
+    }),
+  )
+})
+
 for (const viewport of viewports) {
   test(`responsive layout: ${viewport.name}`, async ({ page }, testInfo) => {
     await page.setViewportSize({ width: viewport.width, height: viewport.height })
@@ -66,6 +92,22 @@ test('tablet side panel can be collapsed and restored', async ({ page }) => {
   await expect(page.locator('.control-panel')).toBeHidden()
   await toggle.click()
   await expect(page.locator('.control-panel')).toBeVisible()
+})
+
+test('weather displays unit conversions and unverified readiness thresholds', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 })
+  await page.goto('/')
+  await expect(page.locator('.brand-loader')).toHaveCount(0)
+  await expect(page.locator('.weather-current strong')).toHaveText('18.0°C')
+
+  await page.getByRole('button', { name: '°F' }).click()
+  await expect(page.locator('.weather-current strong')).toHaveText('64.4°F')
+  await page.getByRole('button', { name: 'mph' }).click()
+  await expect(page.getByText('7.5 mph')).toBeVisible()
+  await expect(page.locator('.readiness-indicator.not_verified')).toBeVisible()
+
+  await page.locator('.readiness-indicator summary').click()
+  await expect(page.locator('.readiness-indicator')).toContainText('Not yet verified')
 })
 
 test('methodology page remains responsive', async ({ page }, testInfo) => {

@@ -4,6 +4,7 @@ import presetData from './data/presets.json'
 import provenanceData from './data/provenance.json'
 import { rankAnalogs } from './lib/similarity.js'
 import { analogSiteSchema, presetSchema, provenanceSchema } from './lib/dataSchemas.js'
+import WeatherCard from './WeatherCard.jsx'
 import './App.css'
 
 const analogs = analogSiteSchema.array().parse(analogData)
@@ -782,6 +783,7 @@ function App() {
                     {selectedSite.dimensionsAr && (
                       <p className="dimensions-text">{selectedSite.dimensionsAr}</p>
                     )}
+                    <WeatherCard site={selectedSite} language={language} />
                     <div className="tag-match-heading">
                       <h3>{t.match}</h3>
                       <span>{selectedMatch.score}%</span>

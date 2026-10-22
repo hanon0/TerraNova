@@ -5,6 +5,7 @@ import { z } from 'zod'
 /** @typedef {{ id: number, nameAr: string, nameEn: string, countryRegionAr: string, categoryAr: string, geologyAr: string, environmentAr: string, missionAr: string, source: string, targetBodies: 'moon'|'mars'|'both'|'unknown', targetFeatureAr: string, tags: string[], locations: SiteLocation[], dimensionsAr: string }} AnalogSite */
 /** @typedef {{ body: 'moon'|'mars'|'both'|'unknown', weights: Record<string, number> }} TargetProfile */
 /** @typedef {{ time: string, temperatureC: number, apparentTemperatureC: number, humidityPercent: number, windSpeedKmh: number, windGustsKmh: number, precipitationMm: number, uvIndex: number, daily: Array<{ date: string, minC: number, maxC: number }> }} SiteWeather */
+/** @typedef {{ heat: { maxApparentTemperatureC: number|null, source: string|null }, cold: { minApparentTemperatureC: number|null, source: string|null }, wind: { maxWindSpeedKmh: number|null, maxWindGustsKmh: number|null, source: string|null }, precipitation: { maxPrecipitationMm: number|null, source: string|null }, uv: { maxUvIndex: number|null, source: string|null } }} ReadinessThresholds */
 
 export const siteLocationSchema = z.object({
   label: z.string().min(1),
@@ -52,6 +53,30 @@ export const weatherSchema = z.object({
       maxC: z.number(),
     }),
   ),
+})
+
+export const readinessThresholdSchema = z.object({
+  heat: z.object({
+    maxApparentTemperatureC: z.number().nullable(),
+    source: z.string().url().nullable(),
+  }),
+  cold: z.object({
+    minApparentTemperatureC: z.number().nullable(),
+    source: z.string().url().nullable(),
+  }),
+  wind: z.object({
+    maxWindSpeedKmh: z.number().nonnegative().nullable(),
+    maxWindGustsKmh: z.number().nonnegative().nullable(),
+    source: z.string().url().nullable(),
+  }),
+  precipitation: z.object({
+    maxPrecipitationMm: z.number().nonnegative().nullable(),
+    source: z.string().url().nullable(),
+  }),
+  uv: z.object({
+    maxUvIndex: z.number().nonnegative().nullable(),
+    source: z.string().url().nullable(),
+  }),
 })
 
 export const presetSchema = z.object({

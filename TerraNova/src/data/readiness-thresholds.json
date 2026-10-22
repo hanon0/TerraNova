@@ -1,0 +1,23 @@
+{
+  "heat": {
+    "maxApparentTemperatureC": null,
+    "source": null
+  },
+  "cold": {
+    "minApparentTemperatureC": null,
+    "source": null
+  },
+  "wind": {
+    "maxWindSpeedKmh": null,
+    "maxWindGustsKmh": null,
+    "source": null
+  },
+  "precipitation": {
+    "maxPrecipitationMm": null,
+    "source": null
+  },
+  "uv": {
+    "maxUvIndex": null,
+    "source": null
+  }
+}

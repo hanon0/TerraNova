@@ -45,3 +45,9 @@ The logo at `public/terranovalogo.jpeg` supplies the browser favicon, Apple touc
 The explorer uses a compact SVG 2D map (no WebGL initialization or canvas DPR cost). A `ResizeObserver` tracks the map container. Phones use map/filter/site bottom tabs, tablets can collapse the filter panel, and desktop uses a three-column workspace. Reduced-motion preferences are respected and the layout is capped at ultrawide widths.
 
 `npm test` runs Vitest and Playwright. Playwright saves viewport screenshots and checks for horizontal overflow at 320, 375, 768, 1024, 1440, 1920, 2560 pixels, and in landscape-phone dimensions; it also checks methodology, mobile panels, and tablet collapse behavior. Install Chromium for local browser tests with `npx playwright install chromium`.
+
+## Weather and readiness
+
+Site weather is requested from the Open-Meteo Forecast API using the first mapped site location, cached in memory for ten minutes, and includes current conditions plus a seven-day temperature range. Open-Meteo is a live external service; timeouts, retries, and offline/API errors are surfaced in the site panel. Approximate coordinates stay explicitly labeled.
+
+`src/data/readiness-thresholds.json` intentionally contains null values. No mission-approved thresholds or sources were provided, so the field-readiness indicator displays **Not yet verified** rather than guessing. A safety expert must fill all thresholds and source URLs before the indicator can request review; even then it is not a safety guarantee.
