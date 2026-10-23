@@ -209,3 +209,61 @@ test('report proposal can be localized, edited, and exported as Markdown and JSO
   await expect(page.locator('.proposal-print-copy')).toBeVisible()
   await expect(page.locator('.report-toolbar')).toBeHidden()
 })
+
+test('contribution and hidden review pages stay within phone, tablet, and desktop widths', async ({
+  page,
+}, testInfo) => {
+  for (const route of ['/contribute', '/review']) {
+    await page.goto(route)
+    await expect(page.locator('.community-page')).toBeVisible()
+    for (const viewport of [
+      { name: 'phone-320', width: 320, height: 720 },
+      { name: 'phone-375', width: 375, height: 812 },
+      { name: 'tablet-768', width: 768, height: 1024 },
+      { name: 'desktop-1440', width: 1440, height: 1000 },
+    ]) {
+      await page.setViewportSize({ width: viewport.width, height: viewport.height })
+      const horizontalOverflow = await page.evaluate(
+        () => document.documentElement.scrollWidth > window.innerWidth,
+      )
+      expect(horizontalOverflow, `${route} overflow at ${viewport.width}px`).toBe(false)
+      await page.screenshot({
+        path: testInfo.outputPath(`${route.slice(1)}-${viewport.name}.png`),
+        fullPage: false,
+        animations: 'disabled',
+      })
+    }
+  }
+})
+
+test('contributions stay pending until hidden reviewer approval and then show a Community badge', async ({
+  page,
+}) => {
+  await page.goto('/contribute')
+  await page.getByLabel('Site name (Arabic)').fill('موقع تجريبي')
+  await page.getByLabel('Site name (English)').fill('Demo community site')
+  await page.locator('.contribution-map').click({ position: { x: 180, y: 90 } })
+  await page.getByLabel('Lava tubes').check()
+  await page.getByLabel('Geology description').fill('Contributor-supplied geology.')
+  await page.getByLabel('Environment description').fill('Contributor-supplied environment.')
+  await page.getByLabel('Required source (URL or DOI)').fill('10.1234/example.1')
+  await page.getByRole('button', { name: 'Save pending contribution' }).click()
+  await expect(page.locator('.community-success')).toBeVisible()
+  await expect(page.locator('.community-submissions article')).toContainText('pending')
+
+  const issueDownload = page.waitForEvent('download')
+  await page.getByRole('button', { name: 'Export GitHub issue text' }).click()
+  expect((await issueDownload).suggestedFilename()).toContain('issue')
+
+  await page.goto('/review')
+  await expect(page.locator('.review-card')).toContainText('Demo community site')
+  await page.getByRole('button', { name: 'Approve' }).click()
+  await expect(page.locator('.review-status.approved')).toHaveText('Approved')
+
+  await page.goto('/')
+  await expect(page.locator('.brand-loader')).toHaveCount(0)
+  const communityCard = page.locator('.site-card').filter({ hasText: 'Demo community site' })
+  await expect(communityCard.locator('.community-badge')).toHaveText('Community')
+  await communityCard.click()
+  await expect(page.locator('.detail-panel .community-badge')).toHaveText('Community')
+})

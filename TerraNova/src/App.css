@@ -148,6 +148,9 @@
   height: 100%;
   position: relative;
   font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
 }
 
 .nav-link.active {
@@ -566,6 +569,14 @@ select option {
   fill: #f5c184;
 }
 
+.site-marker.community .marker-core {
+  fill: #9dd5e5;
+}
+
+.site-marker.community .marker-halo {
+  stroke: rgba(157, 213, 229, 0.65);
+}
+
 .site-marker.selected .marker-halo {
   fill: rgba(196, 255, 223, 0.24);
   stroke: #d0ffe1;
@@ -982,6 +993,28 @@ select option {
   color: var(--mint);
   font-size: 9px;
   text-decoration: none;
+}
+
+.community-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-inline-start: 6px;
+  padding: 3px 6px;
+  border: 1px solid rgba(80, 160, 192, 0.4);
+  border-radius: 3px;
+  color: #9dd5e5;
+  font-size: 8px;
+  font-style: normal;
+  line-height: 1.2;
+}
+
+.community-storage-alert {
+  margin: 8px 16px;
+  padding: 8px;
+  border: 1px solid rgba(255, 155, 142, 0.35);
+  color: #ff9b8e;
+  font-size: 10px;
+  overflow-wrap: anywhere;
 }
 
 .field-notes-panel,
@@ -1665,7 +1698,7 @@ select option {
     inset-inline: 0;
     bottom: 0;
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 3px;
     padding: 5px 8px calc(5px + env(safe-area-inset-bottom));
     border-top: 1px solid var(--line-strong);
@@ -1684,6 +1717,19 @@ select option {
     font-size: clamp(9px, 2.6vw, 11px);
     white-space: nowrap;
     cursor: pointer;
+  }
+
+  .mobile-panel-tabs a {
+    min-width: 0;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 2px;
+    color: var(--muted);
+    font-size: clamp(9px, 2.6vw, 11px);
+    text-decoration: none;
+    white-space: nowrap;
   }
 
   .mobile-panel-tabs button[aria-pressed='true'] {

@@ -10,6 +10,7 @@ import { z } from 'zod'
 /** @typedef {{ id: number, name: string, type: 'large_airport'|'medium_airport', municipality: string|null, isoCountry: string, lat: number, lon: number }} Airport */
 /** @typedef {{ available: boolean, source: 'OurAirports', datasetUrl: string, airports: Airport[], latitudeRows: Record<string, number[]> }} AirportIndex */
 /** @typedef {{ siteId: number, nearestAirport: (Airport & { distanceKm: number, locationConfidence: 'verified'|'approximate' })|null }} SiteLogistics */
+/** @typedef {{ id: number, status: 'pending'|'approved'|'rejected', nameAr: string, nameEn: string, lat: number, lon: number, targetBodies: 'moon'|'mars'|'both', tags: string[], geology: string, environment: string, source: string }} CommunitySubmission */
 
 export const siteLocationSchema = z.object({
   label: z.string().min(1),

@@ -4,7 +4,9 @@ import fieldNotesData from './data/field-notes.json'
 import presetData from './data/presets.json'
 import provenanceData from './data/provenance.json'
 import siteLogisticsData from './data/site-logistics.json'
+import { TAGS } from './data/tag-definitions.js'
 import { rankAnalogs } from './lib/similarity.js'
+import { loadCommunitySubmissions, toCommunityAnalogSite } from './lib/community.js'
 import {
   analogSiteSchema,
   fieldNoteSchema,
@@ -13,6 +15,8 @@ import {
   siteLogisticsSchema,
 } from './lib/dataSchemas.js'
 import ReportPage from './ReportPage.jsx'
+import ContributePage from './ContributePage.jsx'
+import ReviewPage from './ReviewPage.jsx'
 import WeatherCard from './WeatherCard.jsx'
 import './App.css'
 
@@ -22,31 +26,13 @@ const provenance = provenanceSchema.parse(provenanceData)
 const fieldNotes = fieldNoteSchema.array().parse(fieldNotesData)
 const siteLogistics = siteLogisticsSchema.array().parse(siteLogisticsData)
 
-const TAGS = [
-  ['lava_tube', 'Lava tubes', 'أنابيب الحمم'],
-  ['impact_crater', 'Impact craters', 'فوهات تصادمية'],
-  ['anorthosite', 'Anorthosite', 'أنورثوزيت'],
-  ['basalt_volcanic', 'Basalt & volcanism', 'بازلت وبراكين'],
-  ['evaporite_salt', 'Evaporites & salt', 'متبخرات وأملاح'],
-  ['aeolian_yardang', 'Aeolian / yardang', 'تعرية ريحية وياردانغ'],
-  ['polar_permafrost', 'Polar & permafrost', 'قطبي وتربة صقيعية'],
-  ['hydrothermal', 'Hydrothermal', 'حراري مائي'],
-  ['paleolake_fluvial', 'Paleolake & fluvial', 'بحيرات وأنظمة نهرية قديمة'],
-  ['sand_dunes', 'Sand dunes', 'كثبان رملية'],
-  ['cave_karst', 'Caves & karst', 'كهوف وكارست'],
-  ['glacial_ice', 'Glacial ice', 'جليد وأنهار جليدية'],
-  ['silica_rocks', 'Silica rocks', 'صخور السيليكا'],
-  ['hydrogen_sulfide', 'Sulfur & sulfates', 'كبريت وكبريتات'],
-  ['high_altitude', 'High altitude', 'ارتفاعات عالية'],
-  ['meteorite_analog', 'Meteorites', 'نيازك'],
-  ['ancient_terrain', 'Ancient terrain', 'تضاريس قديمة'],
-  ['astrobiology', 'Astrobiology', 'أحياء فلكية'],
-]
-
 const COPY = {
   en: {
     explorer: 'Explorer',
     methodology: 'Methodology',
+    contribute: 'Contribute',
+    community: 'Community',
+    communityStorageError: 'Community submissions unavailable',
     body: 'Target body',
     moon: 'Moon',
     mars: 'Mars',
@@ -102,6 +88,7 @@ const COPY = {
     mobileFilters: 'Filters',
     mobileSites: 'Sites',
     togglePanel: 'Toggle filters panel',
+    communityBadge: 'Community',
     fieldNotes: 'Field notes',
     permits: 'Permits',
     hazards: 'Manual hazards',
@@ -124,6 +111,9 @@ const COPY = {
   ar: {
     explorer: 'المستكشف',
     methodology: 'المنهجية',
+    contribute: 'ساهم',
+    community: 'مجتمعي',
+    communityStorageError: 'المساهمات المجتمعية غير متاحة',
     body: 'الجرم المستهدف',
     moon: 'القمر',
     mars: 'المريخ',
@@ -179,6 +169,7 @@ const COPY = {
     mobileFilters: 'التصفية',
     mobileSites: 'المواقع',
     togglePanel: 'إظهار عوامل التصفية',
+    communityBadge: 'مجتمعي',
     fieldNotes: 'ملاحظات ميدانية',
     permits: 'التصاريح',
     hazards: 'المخاطر اليدوية',
@@ -217,13 +208,27 @@ function project(location) {
 }
 
 function App() {
+  if (/^\/contribute\/?$/.test(window.location.pathname)) return <ContributePage />
+  if (/^\/review\/?$/.test(window.location.pathname)) return <ReviewPage />
   const reportRoute = window.location.pathname.match(/^\/report\/([^/]+)\/?$/)
   if (reportRoute) return <ReportPage siteId={reportRoute[1]} />
   return <ExplorerApp />
 }
 
+function initialCommunityState() {
+  try {
+    return { submissions: loadCommunitySubmissions(), error: '' }
+  } catch (error) {
+    return {
+      submissions: [],
+      error: error instanceof Error ? error.message : String(error),
+    }
+  }
+}
+
 function ExplorerApp() {
   const [isInitializing, setIsInitializing] = useState(true)
+  const [communityState] = useState(initialCommunityState)
   const [language, setLanguage] = useState('en')
   const [page, setPage] = useState('explorer')
   const [body, setBody] = useState('moon')
@@ -262,7 +267,18 @@ function ExplorerApp() {
     return () => observer.disconnect()
   }, [page])
 
-  const ranked = useMemo(() => rankAnalogs(analogs, weights, body), [weights, body])
+  const communitySites = useMemo(
+    () =>
+      communityState.submissions
+        .filter(({ status }) => status === 'approved')
+        .map(toCommunityAnalogSite),
+    [communityState.submissions],
+  )
+  const siteRecords = useMemo(() => [...analogs, ...communitySites], [communitySites])
+  const ranked = useMemo(
+    () => rankAnalogs(siteRecords, weights, body),
+    [siteRecords, weights, body],
+  )
   const filtered = useMemo(
     () =>
       ranked.filter(
@@ -275,8 +291,8 @@ function ExplorerApp() {
     [ranked, categoryFilter, countryFilter, confidenceFilter],
   )
   const selectedMatch = filtered.find(({ site }) => site.id === selectedId) ?? filtered[0]
-  const categories = [...new Set(analogs.map(({ categoryAr }) => categoryAr))].sort()
-  const countries = [...new Set(analogs.map(getCountry))].sort()
+  const categories = [...new Set(siteRecords.map(({ categoryAr }) => categoryAr))].sort()
+  const countries = [...new Set(siteRecords.map(getCountry))].sort()
   const tagNames = new Map(TAGS.map(([id, en, ar]) => [id, language === 'ar' ? ar : en]))
   const selectedSite = selectedMatch?.site
   const selectedFieldNotes = fieldNotes.find(({ siteId }) => siteId === selectedSite?.id)
@@ -390,6 +406,9 @@ function ExplorerApp() {
           >
             {t.methodology}
           </button>
+          <a className="nav-link" href="/contribute">
+            {t.contribute}
+          </a>
         </nav>
         <div className="top-actions">
           <span className="dataset-status">
@@ -404,6 +423,11 @@ function ExplorerApp() {
           </button>
         </div>
       </header>
+      {communityState.error && (
+        <p className="community-storage-alert" role="alert">
+          {t.communityStorageError}: {communityState.error}
+        </p>
+      )}
 
       {page === 'methodology' ? (
         <main className="methodology-page">
@@ -483,6 +507,7 @@ function ExplorerApp() {
             <button type="button" onClick={() => setPage('methodology')}>
               {t.methodology}
             </button>
+            <a href="/contribute">{t.contribute}</a>
           </nav>
           <main
             className={`workspace mobile-panel-${mobilePanel} ${isSidePanelOpen ? '' : 'sidebar-collapsed'}`}
@@ -721,7 +746,7 @@ function ExplorerApp() {
                           const selected = selectedSite?.id === site.id
                           return (
                             <g
-                              className={`site-marker ${selected ? 'selected' : ''} ${confidence}`}
+                              className={`site-marker ${selected ? 'selected' : ''} ${confidence} ${site.isCommunity ? 'community' : ''}`}
                               key={`${site.id}-${index}`}
                               transform={`translate(${point.x} ${point.y})`}
                               onPointerDown={(event) => event.stopPropagation()}
@@ -790,7 +815,7 @@ function ExplorerApp() {
                       <h2>{t.results}</h2>
                     </div>
                     <span>
-                      {filtered.length} / {analogs.length}
+                      {filtered.length} / {siteRecords.length}
                     </span>
                   </div>
                   <div className="site-list">
@@ -801,6 +826,7 @@ function ExplorerApp() {
                         result={result}
                         rank={index + 1}
                         active={selectedSite?.id === result.site.id}
+                        isCommunity={Boolean(result.site.isCommunity)}
                         language={language}
                         labels={t}
                         tagNames={tagNames}
@@ -813,8 +839,13 @@ function ExplorerApp() {
                   <section className="detail-panel">
                     <div className="detail-top">
                       <span className="eyebrow">
-                        SITE {String(selectedSite.id).padStart(2, '0')}
+                        {selectedSite.isCommunity
+                          ? t.communityBadge.toUpperCase()
+                          : `SITE ${String(selectedSite.id).padStart(2, '0')}`}
                       </span>
+                      {selectedSite.isCommunity && (
+                        <span className="community-badge">{t.communityBadge}</span>
+                      )}
                       <span className="score-badge">
                         {selectedMatch.score}
                         <small>%</small>
@@ -958,14 +989,16 @@ function ExplorerApp() {
                     >
                       {t.openSource} ↗
                     </a>
-                    <a
-                      className="report-link"
-                      href={`/report/${selectedSite.id}?body=${encodeURIComponent(body)}&weights=${encodeURIComponent(JSON.stringify(weights))}`}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {t.printReport} ↗
-                    </a>
+                    {!selectedSite.isCommunity && (
+                      <a
+                        className="report-link"
+                        href={`/report/${selectedSite.id}?body=${encodeURIComponent(body)}&weights=${encodeURIComponent(JSON.stringify(weights))}`}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {t.printReport} ↗
+                      </a>
+                    )}
                   </section>
                 )}
               </div>
@@ -1009,7 +1042,7 @@ function FieldNote({ label, value, empty }) {
   )
 }
 
-function SiteCard({ result, rank, active, language, labels, tagNames, onClick }) {
+function SiteCard({ result, rank, active, isCommunity, language, labels, tagNames, onClick }) {
   const { site, score } = result
   const confidence = locationConfidence(site)
   return (
@@ -1017,6 +1050,7 @@ function SiteCard({ result, rank, active, language, labels, tagNames, onClick })
       <span className="rank-number">{String(rank).padStart(2, '0')}</span>
       <span className="card-content">
         <strong>{language === 'ar' ? site.nameAr : site.nameEn}</strong>
+        {isCommunity && <em className="community-badge">{labels.communityBadge}</em>}
         <span>{site.countryRegionAr}</span>
         <span className={`mini-confidence ${confidence}`}>
           {confidence === 'verified'
