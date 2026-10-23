@@ -11,6 +11,9 @@ import { z } from 'zod'
 /** @typedef {{ available: boolean, source: 'OurAirports', datasetUrl: string, airports: Airport[], latitudeRows: Record<string, number[]> }} AirportIndex */
 /** @typedef {{ siteId: number, nearestAirport: (Airport & { distanceKm: number, locationConfidence: 'verified'|'approximate' })|null }} SiteLogistics */
 /** @typedef {{ id: number, status: 'pending'|'approved'|'rejected', nameAr: string, nameEn: string, lat: number, lon: number, targetBodies: 'moon'|'mars'|'both', tags: string[], geology: string, environment: string, source: string }} CommunitySubmission */
+/** @typedef {{ id: string, labelEn: string, labelAr: string, suggestionEn: string, suggestionAr: string }} MissionObjective */
+/** @typedef {{ labelEn: string, labelAr: string, equipmentEn: string[], equipmentAr: string[], rolesEn: string[], rolesAr: string[], durationDays: { min: number, max: number } }} MissionTagRule */
+/** @typedef {{ site: AnalogSite, teamSize: number, durationDays: number, objectives: MissionObjective[], tagRules: Array<MissionTagRule & { tag: string, withinRange: boolean }>, unmatchedTags: string[] }} MissionPlan */
 
 export const siteLocationSchema = z.object({
   label: z.string().min(1),
@@ -147,4 +150,37 @@ export const siteLogisticsSchema = z.object({
       locationConfidence: z.enum(['verified', 'approximate']),
     })
     .nullable(),
+})
+
+export const missionTemplatesSchema = z.object({
+  disclaimerEn: z.string().min(1),
+  disclaimerAr: z.string().min(1),
+  defaultDurationDays: z.object({
+    min: z.number().int().positive(),
+    max: z.number().int().positive(),
+  }),
+  objectives: z.array(
+    z.object({
+      id: z.string().min(1),
+      labelEn: z.string().min(1),
+      labelAr: z.string().min(1),
+      suggestionEn: z.string().min(1),
+      suggestionAr: z.string().min(1),
+    }),
+  ),
+  tagRules: z.record(
+    z.string(),
+    z.object({
+      labelEn: z.string().min(1),
+      labelAr: z.string().min(1),
+      equipmentEn: z.array(z.string().min(1)),
+      equipmentAr: z.array(z.string().min(1)),
+      rolesEn: z.array(z.string().min(1)),
+      rolesAr: z.array(z.string().min(1)),
+      durationDays: z.object({
+        min: z.number().int().positive(),
+        max: z.number().int().positive(),
+      }),
+    }),
+  ),
 })

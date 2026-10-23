@@ -17,6 +17,7 @@ import {
 import ReportPage from './ReportPage.jsx'
 import ContributePage from './ContributePage.jsx'
 import ReviewPage from './ReviewPage.jsx'
+import MissionPlanner from './MissionPlanner.jsx'
 import WeatherCard from './WeatherCard.jsx'
 import './App.css'
 
@@ -31,6 +32,7 @@ const COPY = {
     explorer: 'Explorer',
     methodology: 'Methodology',
     contribute: 'Contribute',
+    missionPlanner: 'Mission planner',
     community: 'Community',
     communityStorageError: 'Community submissions unavailable',
     body: 'Target body',
@@ -112,6 +114,7 @@ const COPY = {
     explorer: 'المستكشف',
     methodology: 'المنهجية',
     contribute: 'ساهم',
+    missionPlanner: 'مخطط المهمة',
     community: 'مجتمعي',
     communityStorageError: 'المساهمات المجتمعية غير متاحة',
     body: 'الجرم المستهدف',
@@ -210,6 +213,7 @@ function project(location) {
 function App() {
   if (/^\/contribute\/?$/.test(window.location.pathname)) return <ContributePage />
   if (/^\/review\/?$/.test(window.location.pathname)) return <ReviewPage />
+  if (/^\/mission\/?$/.test(window.location.pathname)) return <MissionPlanner />
   const reportRoute = window.location.pathname.match(/^\/report\/([^/]+)\/?$/)
   if (reportRoute) return <ReportPage siteId={reportRoute[1]} />
   return <ExplorerApp />
@@ -408,6 +412,9 @@ function ExplorerApp() {
           </button>
           <a className="nav-link" href="/contribute">
             {t.contribute}
+          </a>
+          <a className="nav-link" href="/mission">
+            {t.missionPlanner}
           </a>
         </nav>
         <div className="top-actions">

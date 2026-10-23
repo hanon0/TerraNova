@@ -1,0 +1,358 @@
+.mission-page {
+  min-height: 100svh;
+  color: var(--text);
+  background:
+    radial-gradient(ellipse at 72% -15%, rgba(80, 160, 192, 0.18), transparent 42%), var(--bg);
+}
+
+.mission-header {
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px clamp(14px, 4vw, 52px);
+  border-bottom: 1px solid var(--line);
+}
+
+.mission-brand,
+.mission-header-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mission-brand {
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.mission-brand img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.mission-header-link,
+.mission-plan-actions button,
+.mission-primary {
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  color: var(--soft);
+  background: rgba(16, 42, 58, 0.72);
+  font: inherit;
+  font-size: 11px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.mission-content {
+  width: min(100% - 28px, 1120px);
+  margin: 0 auto;
+  padding: 28px 0 max(48px, env(safe-area-inset-bottom));
+}
+
+.mission-content > h1 {
+  margin: 6px 0 10px;
+  font-size: clamp(25px, 4vw, 40px);
+}
+
+.mission-intro {
+  max-width: 72ch;
+  color: var(--soft);
+  line-height: 1.6;
+}
+
+.mission-disclaimer,
+.mission-error,
+.mission-unmatched {
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.mission-disclaimer {
+  color: var(--orange);
+  background: rgba(224, 112, 64, 0.06);
+}
+
+.mission-error {
+  color: #ff9b8e;
+}
+
+.mission-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 20px 0 30px;
+  padding: clamp(14px, 3vw, 22px);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: rgba(16, 42, 58, 0.35);
+}
+
+.mission-form > label {
+  display: grid;
+  align-content: start;
+  gap: 7px;
+  color: var(--soft);
+  font-size: 12px;
+}
+
+.mission-form select,
+.mission-form input[type='number'] {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 8px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  color: var(--text);
+  background: #0a1b20;
+  font: inherit;
+}
+
+.mission-objectives {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 7px 14px;
+  margin: 0;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+}
+
+.mission-objectives legend {
+  padding: 0 5px;
+  color: var(--soft);
+  font-size: 12px;
+}
+
+.mission-objectives label,
+.mission-rule li label {
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--soft);
+  line-height: 1.5;
+}
+
+.mission-objectives input,
+.mission-rule input {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  accent-color: var(--mint);
+}
+
+.mission-primary {
+  justify-self: start;
+  color: #071412;
+  background: var(--mint);
+}
+
+.mission-plan {
+  padding: clamp(14px, 3vw, 24px);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: rgba(16, 42, 58, 0.3);
+}
+
+.mission-plan-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.mission-plan-heading h2 {
+  margin: 5px 0;
+  font-size: clamp(20px, 3vw, 30px);
+  overflow-wrap: anywhere;
+}
+
+.mission-plan-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.mission-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 18px 0;
+}
+
+.mission-summary > div {
+  min-width: 150px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+
+.mission-summary dt,
+.mission-range {
+  color: var(--soft);
+  font-size: 11px;
+}
+
+.mission-summary dd {
+  margin: 5px 0 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.mission-objective-summary,
+.mission-rule-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 12px;
+}
+
+.mission-objective-summary > h3 {
+  grid-column: 1 / -1;
+}
+
+.mission-objective-summary article,
+.mission-rule {
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+}
+
+.mission-objective-summary h3,
+.mission-objective-summary h4,
+.mission-rule h3,
+.mission-rule h4 {
+  margin: 5px 0 9px;
+}
+
+.mission-objective-summary p,
+.mission-range-status {
+  color: var(--soft);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.mission-checklist-note {
+  margin-top: 24px;
+  color: var(--mint);
+  font-size: 12px;
+}
+
+.mission-rule-list {
+  margin-top: 12px;
+}
+
+.mission-rule h3 {
+  font-size: 17px;
+}
+
+.mission-rule h4 {
+  color: var(--soft);
+  font-size: 12px;
+}
+
+.mission-rule .mission-range {
+  margin: 7px 0;
+}
+
+.mission-range-status {
+  margin: 0 0 12px;
+}
+
+.mission-rule ul {
+  margin: 0;
+  padding-inline-start: 20px;
+  color: var(--soft);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.mission-rule li {
+  padding-inline-start: 2px;
+}
+
+.mission-rule li label {
+  align-items: flex-start;
+}
+
+.mission-rule li label input {
+  margin-top: 10px;
+}
+
+.mission-unmatched {
+  grid-column: 1 / -1;
+  color: var(--orange);
+}
+
+@media (max-width: 560px) {
+  .mission-form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .mission-objectives {
+    grid-column: auto;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .mission-plan-heading {
+    align-items: flex-start;
+  }
+
+  .mission-header-actions {
+    gap: 4px;
+  }
+}
+
+@media print {
+  .mission-header,
+  .mission-form,
+  .mission-plan-actions,
+  .mission-checklist-note {
+    display: none !important;
+  }
+
+  .mission-page {
+    min-height: auto;
+    color: #111;
+    background: #fff;
+  }
+
+  .mission-content,
+  .mission-plan {
+    width: 100%;
+    max-width: none;
+    padding: 0;
+    border: 0;
+    background: #fff;
+  }
+
+  .mission-plan {
+    break-inside: auto;
+  }
+
+  .mission-rule,
+  .mission-objective-summary article {
+    break-inside: avoid;
+    border-color: #aaa;
+  }
+
+  .mission-rule li label,
+  .mission-objective-summary p,
+  .mission-range,
+  .mission-range-status {
+    color: #222;
+  }
+}

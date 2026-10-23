@@ -267,3 +267,56 @@ test('contributions stay pending until hidden reviewer approval and then show a 
   await communityCard.click()
   await expect(page.locator('.detail-panel .community-badge')).toHaveText('Community')
 })
+
+test('mission planner builds and exports a responsive starting-point checklist', async ({
+  page,
+}, testInfo) => {
+  await page.goto('/mission')
+  await expect(page.locator('.mission-page')).toBeVisible()
+  await expect(page.locator('.mission-disclaimer')).toContainText(
+    'must be reviewed by mission safety experts',
+  )
+
+  for (const viewport of [
+    { name: 'phone-320', width: 320, height: 720 },
+    { name: 'phone-375', width: 375, height: 812 },
+    { name: 'tablet-768', width: 768, height: 1024 },
+    { name: 'tablet-1024', width: 1024, height: 900 },
+    { name: 'desktop-1440', width: 1440, height: 1000 },
+    { name: 'desktop-1920', width: 1920, height: 1080 },
+    { name: 'wide-2560', width: 2560, height: 1440 },
+    { name: 'phone-landscape', width: 844, height: 390 },
+  ]) {
+    await page.setViewportSize({ width: viewport.width, height: viewport.height })
+    const horizontalOverflow = await page.evaluate(
+      () => document.documentElement.scrollWidth > window.innerWidth,
+    )
+    expect(horizontalOverflow, `mission planner overflow at ${viewport.width}px`).toBe(false)
+    await page.screenshot({
+      path: testInfo.outputPath(`mission-${viewport.name}.png`),
+      fullPage: false,
+      animations: 'disabled',
+    })
+  }
+
+  await page.getByLabel('Team size').fill('6')
+  await page.getByLabel('Planned duration (days)').fill('6')
+  await page.getByLabel('Geologic mapping').check()
+  await page.getByRole('button', { name: 'Build starting-point plan' }).click()
+  await expect(page.locator('.mission-plan')).toBeVisible()
+  await expect(page.locator('.mission-rule').first()).toContainText(
+    'Outside this tag’s suggested range',
+  )
+  await expect(page.locator('.mission-rule input[type="checkbox"]').first()).toBeVisible()
+
+  const download = page.waitForEvent('download')
+  await page.getByRole('button', { name: 'Export Markdown' }).click()
+  expect((await download).suggestedFilename()).toBe('terranova-mission-plan-1.md')
+
+  await page.getByRole('button', { name: 'Toggle language' }).click()
+  await expect(page.locator('.mission-page')).toHaveAttribute('dir', 'rtl')
+  await expect(page.locator('.mission-disclaimer')).toContainText('خبراء سلامة المهمات')
+  await page.emulateMedia({ media: 'print' })
+  await expect(page.locator('.mission-header')).toBeHidden()
+  await expect(page.locator('.mission-plan')).toBeVisible()
+})

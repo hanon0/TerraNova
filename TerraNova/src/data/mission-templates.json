@@ -1,0 +1,209 @@
+{
+  "disclaimerEn": "Starting-point suggestions only; must be reviewed by mission safety experts. They are not field procedures, safety guidance, or verified duration estimates.",
+  "disclaimerAr": "اقتراحات أولية فقط؛ يجب أن يراجعها خبراء سلامة المهمات. وهي ليست إجراءات ميدانية أو إرشادات سلامة أو تقديرات مدة موثقة.",
+  "defaultDurationDays": {
+    "min": 1,
+    "max": 3
+  },
+  "objectives": [
+    {
+      "id": "site_characterization",
+      "labelEn": "Site characterization",
+      "labelAr": "توصيف الموقع",
+      "suggestionEn": "Record observations and uncertainties using a team-reviewed documentation plan.",
+      "suggestionAr": "سجّل الملاحظات ومواطن عدم اليقين وفق خطة توثيق يراجعها الفريق."
+    },
+    {
+      "id": "geologic_mapping",
+      "labelEn": "Geologic mapping",
+      "labelAr": "رسم الخرائط الجيولوجية",
+      "suggestionEn": "Define mapping scope and conventions before field activities.",
+      "suggestionAr": "حدّد نطاق الرسم واصطلاحاته قبل الأنشطة الميدانية."
+    },
+    {
+      "id": "environmental_observation",
+      "labelEn": "Environmental observation",
+      "labelAr": "الرصد البيئي",
+      "suggestionEn": "List environmental observations and their recording methods for team review.",
+      "suggestionAr": "حدّد الملاحظات البيئية وطرق تسجيلها لمراجعتها من الفريق."
+    },
+    {
+      "id": "sampling_rehearsal",
+      "labelEn": "Sampling-protocol rehearsal",
+      "labelAr": "التدرب على بروتوكول أخذ العينات",
+      "suggestionEn": "Review permissions, sample handling, and documentation requirements before any collection.",
+      "suggestionAr": "راجع التصاريح ومتطلبات التعامل مع العينات وتوثيقها قبل أي جمع."
+    },
+    {
+      "id": "instrument_rehearsal",
+      "labelEn": "Instrument workflow rehearsal",
+      "labelAr": "التدرب على سير عمل الأدوات",
+      "suggestionEn": "Use a team-approved instrument list and rehearsal plan.",
+      "suggestionAr": "استخدم قائمة أدوات وخطة تدريب معتمدتين من الفريق."
+    }
+  ],
+  "tagRules": {
+    "lava_tube": {
+      "labelEn": "Lava tubes",
+      "labelAr": "أنابيب الحمم",
+      "equipmentEn": ["Surface mapping and documentation materials", "Team-reviewed remote observation equipment"],
+      "equipmentAr": ["مواد رسم الخرائط والتوثيق السطحي", "أدوات رصد عن بُعد يراجعها الفريق"],
+      "rolesEn": ["Geology lead", "Mapping and documentation lead", "Qualified access reviewer"],
+      "rolesAr": ["مسؤول الجيولوجيا", "مسؤول رسم الخرائط والتوثيق", "مراجع مؤهل للوصول"],
+      "durationDays": { "min": 2, "max": 4 }
+    },
+    "impact_crater": {
+      "labelEn": "Impact craters",
+      "labelAr": "فوهات تصادمية",
+      "equipmentEn": ["Mapping and imaging materials", "Sample documentation supplies"],
+      "equipmentAr": ["مواد رسم الخرائط والتصوير", "لوازم توثيق العينات"],
+      "rolesEn": ["Geology lead", "Mapping lead", "Documentation lead"],
+      "rolesAr": ["مسؤول الجيولوجيا", "مسؤول رسم الخرائط", "مسؤول التوثيق"],
+      "durationDays": { "min": 1, "max": 3 }
+    },
+    "anorthosite": {
+      "labelEn": "Anorthosite",
+      "labelAr": "أنورثوزيت",
+      "equipmentEn": ["Rock description and imaging materials", "Team-approved sample labeling supplies"],
+      "equipmentAr": ["مواد وصف الصخور وتصويرها", "لوازم وسم العينات المعتمدة من الفريق"],
+      "rolesEn": ["Petrology lead", "Documentation lead"],
+      "rolesAr": ["مسؤول علم الصخور", "مسؤول التوثيق"],
+      "durationDays": { "min": 1, "max": 3 }
+    },
+    "basalt_volcanic": {
+      "labelEn": "Basalt and volcanism",
+      "labelAr": "بازلت وبراكين",
+      "equipmentEn": ["Geologic mapping materials", "Imaging and field-note supplies"],
+      "equipmentAr": ["مواد رسم الخرائط الجيولوجية", "لوازم التصوير والملاحظات الميدانية"],
+      "rolesEn": ["Volcanology lead", "Mapping lead", "Documentation lead"],
+      "rolesAr": ["مسؤول البراكين", "مسؤول رسم الخرائط", "مسؤول التوثيق"],
+      "durationDays": { "min": 1, "max": 3 }
+    },
+    "evaporite_salt": {
+      "labelEn": "Evaporites and salt",
+      "labelAr": "متبخرات وأملاح",
+      "equipmentEn": ["Geologic description materials", "Team-approved sample documentation supplies"],
+      "equipmentAr": ["مواد الوصف الجيولوجي", "لوازم توثيق العينات المعتمدة من الفريق"],
+      "rolesEn": ["Geochemistry lead", "Documentation lead"],
+      "rolesAr": ["مسؤول الكيمياء الجيولوجية", "مسؤول التوثيق"],
+      "durationDays": { "min": 1, "max": 3 }
+    },
+    "aeolian_yardang": {
+      "labelEn": "Aeolian features and yardangs",
+      "labelAr": "تضاريس ريحية وياردانغ",
+      "equipmentEn": ["Terrain imaging materials", "Mapping and observation logs"],
+      "equipmentAr": ["مواد تصوير التضاريس", "سجلات الخرائط والرصد"],
+      "rolesEn": ["Geomorphology lead", "Mapping lead"],
+      "rolesAr": ["مسؤول الجيومورفولوجيا", "مسؤول رسم الخرائط"],
+      "durationDays": { "min": 1, "max": 3 }
+    },
+    "polar_permafrost": {
+      "labelEn": "Polar and permafrost",
+      "labelAr": "قطبي وتربة صقيعية",
+      "equipmentEn": ["Team-reviewed environmental observation instruments", "Environmental data log"],
+      "equipmentAr": ["أدوات رصد بيئي يراجعها الفريق", "سجل بيانات بيئية"],
+      "rolesEn": ["Environmental observation lead", "Logistics coordinator", "Documentation lead"],
+      "rolesAr": ["مسؤول الرصد البيئي", "منسق اللوجستيات", "مسؤول التوثيق"],
+      "durationDays": { "min": 2, "max": 4 }
+    },
+    "hydrothermal": {
+      "labelEn": "Hydrothermal features",
+      "labelAr": "سمات حرارية مائية",
+      "equipmentEn": ["Geologic observation materials", "Team-approved environmental sensors"],
+      "equipmentAr": ["مواد الرصد الجيولوجي", "مستشعرات بيئية معتمدة من الفريق"],
+      "rolesEn": ["Geology lead", "Environmental observation lead"],
+      "rolesAr": ["مسؤول الجيولوجيا", "مسؤول الرصد البيئي"],
+      "durationDays": { "min": 1, "max": 3 }
+    },
+    "paleolake_fluvial": {
+      "labelEn": "Paleolake and fluvial features",
+      "labelAr": "سمات بحيرية ونهرية قديمة",
+      "equipmentEn": ["Stratigraphic logging materials", "Mapping and imaging materials"],
+      "equipmentAr": ["مواد تسجيل الطبقات", "مواد رسم الخرائط والتصوير"],
+      "rolesEn": ["Sedimentology lead", "Mapping lead", "Documentation lead"],
+      "rolesAr": ["مسؤول علم الرواسب", "مسؤول رسم الخرائط", "مسؤول التوثيق"],
+      "durationDays": { "min": 1, "max": 3 }
+    },
+    "sand_dunes": {
+      "labelEn": "Sand dunes",
+      "labelAr": "كثبان رملية",
+      "equipmentEn": ["Terrain imaging materials", "Mapping and observation logs"],
+      "equipmentAr": ["مواد تصوير التضاريس", "سجلات الخرائط والرصد"],
+      "rolesEn": ["Geomorphology lead", "Mapping lead"],
+      "rolesAr": ["مسؤول الجيومورفولوجيا", "مسؤول رسم الخرائط"],
+      "durationDays": { "min": 1, "max": 2 }
+    },
+    "cave_karst": {
+      "labelEn": "Caves and karst",
+      "labelAr": "كهوف وكارست",
+      "equipmentEn": ["Surface mapping materials", "Team-reviewed remote observation equipment"],
+      "equipmentAr": ["مواد رسم الخرائط السطحي", "أدوات رصد عن بُعد يراجعها الفريق"],
+      "rolesEn": ["Geology lead", "Mapping and documentation lead", "Qualified access reviewer"],
+      "rolesAr": ["مسؤول الجيولوجيا", "مسؤول رسم الخرائط والتوثيق", "مراجع مؤهل للوصول"],
+      "durationDays": { "min": 2, "max": 4 }
+    },
+    "glacial_ice": {
+      "labelEn": "Glacial ice",
+      "labelAr": "جليد وأنهار جليدية",
+      "equipmentEn": ["Team-reviewed environmental observation instruments", "Imaging and documentation materials"],
+      "equipmentAr": ["أدوات رصد بيئي يراجعها الفريق", "مواد التصوير والتوثيق"],
+      "rolesEn": ["Glaciology lead", "Environmental observation lead"],
+      "rolesAr": ["مسؤول علم الجليديات", "مسؤول الرصد البيئي"],
+      "durationDays": { "min": 2, "max": 4 }
+    },
+    "silica_rocks": {
+      "labelEn": "Silica rocks",
+      "labelAr": "صخور السيليكا",
+      "equipmentEn": ["Rock description and imaging materials", "Team-approved sample documentation supplies"],
+      "equipmentAr": ["مواد وصف الصخور وتصويرها", "لوازم توثيق العينات المعتمدة من الفريق"],
+      "rolesEn": ["Petrology lead", "Documentation lead"],
+      "rolesAr": ["مسؤول علم الصخور", "مسؤول التوثيق"],
+      "durationDays": { "min": 1, "max": 3 }
+    },
+    "hydrogen_sulfide": {
+      "labelEn": "Sulfur and sulfates",
+      "labelAr": "كبريت وكبريتات",
+      "equipmentEn": ["Geologic description materials", "Team-reviewed environmental observation equipment"],
+      "equipmentAr": ["مواد الوصف الجيولوجي", "أدوات رصد بيئي يراجعها الفريق"],
+      "rolesEn": ["Geochemistry lead", "Environmental observation lead"],
+      "rolesAr": ["مسؤول الكيمياء الجيولوجية", "مسؤول الرصد البيئي"],
+      "durationDays": { "min": 1, "max": 3 }
+    },
+    "high_altitude": {
+      "labelEn": "High altitude",
+      "labelAr": "ارتفاعات عالية",
+      "equipmentEn": ["Team-reviewed environmental observation instruments", "Logistics and observation records"],
+      "equipmentAr": ["أدوات رصد بيئي يراجعها الفريق", "سجلات اللوجستيات والرصد"],
+      "rolesEn": ["Environmental observation lead", "Logistics coordinator"],
+      "rolesAr": ["مسؤول الرصد البيئي", "منسق اللوجستيات"],
+      "durationDays": { "min": 1, "max": 3 }
+    },
+    "meteorite_analog": {
+      "labelEn": "Meteorites",
+      "labelAr": "نيازك",
+      "equipmentEn": ["Geologic imaging materials", "Team-approved sample documentation supplies"],
+      "equipmentAr": ["مواد تصوير جيولوجي", "لوازم توثيق العينات المعتمدة من الفريق"],
+      "rolesEn": ["Petrology lead", "Documentation lead"],
+      "rolesAr": ["مسؤول علم الصخور", "مسؤول التوثيق"],
+      "durationDays": { "min": 1, "max": 2 }
+    },
+    "ancient_terrain": {
+      "labelEn": "Ancient terrain",
+      "labelAr": "تضاريس قديمة",
+      "equipmentEn": ["Geologic mapping materials", "Imaging and field-note supplies"],
+      "equipmentAr": ["مواد رسم الخرائط الجيولوجية", "لوازم التصوير والملاحظات الميدانية"],
+      "rolesEn": ["Geology lead", "Mapping lead", "Documentation lead"],
+      "rolesAr": ["مسؤول الجيولوجيا", "مسؤول رسم الخرائط", "مسؤول التوثيق"],
+      "durationDays": { "min": 1, "max": 3 }
+    },
+    "astrobiology": {
+      "labelEn": "Astrobiology",
+      "labelAr": "أحياء فلكية",
+      "equipmentEn": ["Team-reviewed environmental observation instruments", "Observation and sample documentation supplies"],
+      "equipmentAr": ["أدوات رصد بيئي يراجعها الفريق", "لوازم توثيق الرصد والعينات"],
+      "rolesEn": ["Astrobiology lead", "Environmental observation lead", "Documentation lead"],
+      "rolesAr": ["مسؤول الأحياء الفلكية", "مسؤول الرصد البيئي", "مسؤول التوثيق"],
+      "durationDays": { "min": 1, "max": 3 }
+    }
+  }
+}

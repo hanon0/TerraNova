@@ -71,3 +71,7 @@ Weather data comes from the [Open-Meteo Forecast API](https://open-meteo.com/). 
 Open **Open report / proposal** from a selected site to view `/report/:siteId`. The report includes the target-profile score, matched and missing tags, site descriptions, weather snapshot, logistics and risk notes, a static SVG location map, and `Verified_Source` citation. Use the print button and the browser's print dialog to save an A4 PDF; no PDF-generation library is used, preserving browser Arabic shaping and RTL layout.
 
 Project Proposal mode starts from deterministic templates populated from validated site, match, field-note, and logistics data. Edit the Markdown draft before printing or exporting it as Markdown or JSON. Unknown details remain labeled as unverified; template activity focus is derived only from matched tags and still needs mission-team review.
+
+## Mission planner
+
+Open **Mission planner** at `/mission` to choose a site, team size, duration, and objectives. Tag-keyed suggestions in `src/data/mission-templates.json` provide equipment/materials to consider, suggested team roles, and rough planning-duration ranges. The generated checklist can be printed or exported as Markdown. These are starting-point suggestions only—not field procedures, verified duration estimates, or safety guidance—and must be reviewed by mission safety experts. Update the JSON template only through an appropriate expert review.
