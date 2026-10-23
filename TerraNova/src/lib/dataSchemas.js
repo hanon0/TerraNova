@@ -8,7 +8,8 @@ import { z } from 'zod'
 /** @typedef {{ heat: { maxApparentTemperatureC: number|null, source: string|null }, cold: { minApparentTemperatureC: number|null, source: string|null }, wind: { maxWindSpeedKmh: number|null, maxWindGustsKmh: number|null, source: string|null }, precipitation: { maxPrecipitationMm: number|null, source: string|null }, uv: { maxUvIndex: number|null, source: string|null } }} ReadinessThresholds */
 /** @typedef {{ siteId: number, permitsNotes: string|null, hazards: string|null, bestSeason: string|null, accessNotes: string|null, sourceUrl: string|null, lastVerified: string|null }} FieldNote */
 /** @typedef {{ id: number, name: string, type: 'large_airport'|'medium_airport', municipality: string|null, isoCountry: string, lat: number, lon: number }} Airport */
-/** @typedef {{ available: boolean, source: 'OurAirports', datasetUrl: string, lastUpdated: string|null, airports: Airport[], latitudeRows: Record<string, number[]> }} AirportIndex */
+/** @typedef {{ available: boolean, source: 'OurAirports', datasetUrl: string, airports: Airport[], latitudeRows: Record<string, number[]> }} AirportIndex */
+/** @typedef {{ siteId: number, nearestAirport: (Airport & { distanceKm: number, locationConfidence: 'verified'|'approximate' })|null }} SiteLogistics */
 
 export const siteLocationSchema = z.object({
   label: z.string().min(1),

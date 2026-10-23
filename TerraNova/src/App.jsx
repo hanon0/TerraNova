@@ -12,6 +12,7 @@ import {
   provenanceSchema,
   siteLogisticsSchema,
 } from './lib/dataSchemas.js'
+import ReportPage from './ReportPage.jsx'
 import WeatherCard from './WeatherCard.jsx'
 import './App.css'
 
@@ -118,6 +119,7 @@ const COPY = {
     approximateDistance: 'Distance uses an approximate site location.',
     weatherReview: 'Weather-threshold review',
     manualHazards: 'Manual hazards',
+    printReport: 'Open report / proposal',
   },
   ar: {
     explorer: 'المستكشف',
@@ -193,6 +195,7 @@ const COPY = {
     approximateDistance: 'المسافة محسوبة من موقع تقريبي.',
     weatherReview: 'مراجعة عتبات الطقس',
     manualHazards: 'المخاطر اليدوية',
+    printReport: 'فتح التقرير / المقترح',
   },
 }
 
@@ -214,6 +217,12 @@ function project(location) {
 }
 
 function App() {
+  const reportRoute = window.location.pathname.match(/^\/report\/([^/]+)\/?$/)
+  if (reportRoute) return <ReportPage siteId={reportRoute[1]} />
+  return <ExplorerApp />
+}
+
+function ExplorerApp() {
   const [isInitializing, setIsInitializing] = useState(true)
   const [language, setLanguage] = useState('en')
   const [page, setPage] = useState('explorer')
@@ -948,6 +957,14 @@ function App() {
                       rel="noreferrer"
                     >
                       {t.openSource} ↗
+                    </a>
+                    <a
+                      className="report-link"
+                      href={`/report/${selectedSite.id}?body=${encodeURIComponent(body)}&weights=${encodeURIComponent(JSON.stringify(weights))}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {t.printReport} ↗
                     </a>
                   </section>
                 )}

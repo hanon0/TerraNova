@@ -65,3 +65,9 @@ Site weather is requested from the Open-Meteo Forecast API using the first mappe
 `src/data/readiness-thresholds.json` intentionally contains null values. No mission-approved thresholds or sources were provided, so the field-readiness indicator displays **Not yet verified** rather than guessing. A safety expert must fill all thresholds and source URLs before the indicator can request review; even then it is not a safety guarantee.
 
 Weather data comes from the [Open-Meteo Forecast API](https://open-meteo.com/). It is a live forecast product, may be unavailable offline, and is not a safety guarantee. Requests use the primary mapped location, which can be approximate.
+
+## Reports and proposals
+
+Open **Open report / proposal** from a selected site to view `/report/:siteId`. The report includes the target-profile score, matched and missing tags, site descriptions, weather snapshot, logistics and risk notes, a static SVG location map, and `Verified_Source` citation. Use the print button and the browser's print dialog to save an A4 PDF; no PDF-generation library is used, preserving browser Arabic shaping and RTL layout.
+
+Project Proposal mode starts from deterministic templates populated from validated site, match, field-note, and logistics data. Edit the Markdown draft before printing or exporting it as Markdown or JSON. Unknown details remain labeled as unverified; template activity focus is derived only from matched tags and still needs mission-team review.

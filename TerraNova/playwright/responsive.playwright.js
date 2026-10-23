@@ -153,3 +153,59 @@ test('methodology page remains responsive', async ({ page }, testInfo) => {
     })
   }
 })
+
+test('report route remains responsive at every required viewport', async ({ page }, testInfo) => {
+  const query = new URLSearchParams({
+    body: 'moon',
+    weights: JSON.stringify({ lava_tube: 2, polar_permafrost: 1 }),
+  })
+  await page.goto(`/report/5?${query}`)
+  await expect(page.locator('.report-map-figure')).toBeVisible()
+  await expect(page.locator('.report-header img')).toHaveAttribute(
+    'alt',
+    'TerraNova planetary analog explorer logo',
+  )
+
+  for (const viewport of viewports) {
+    await page.setViewportSize({ width: viewport.width, height: viewport.height })
+    const horizontalOverflow = await page.evaluate(
+      () => document.documentElement.scrollWidth > window.innerWidth,
+    )
+    expect(horizontalOverflow, `report overflow at ${viewport.width}px`).toBe(false)
+    await page.screenshot({
+      path: testInfo.outputPath(`report-${viewport.name}.png`),
+      fullPage: false,
+      animations: 'disabled',
+    })
+  }
+})
+
+test('report proposal can be localized, edited, and exported as Markdown and JSON', async ({
+  page,
+}) => {
+  const query = new URLSearchParams({
+    body: 'moon',
+    weights: JSON.stringify({ lava_tube: 2 }),
+  })
+  await page.goto(`/report/5?${query}`)
+  await page.getByRole('button', { name: 'Project Proposal' }).click()
+  const proposal = page.getByRole('textbox', { name: 'Project Proposal' })
+  await expect(proposal).toHaveValue(/## Risks/)
+  await proposal.fill('# Editable draft')
+
+  const markdownDownload = page.waitForEvent('download')
+  await page.getByRole('button', { name: 'Export Markdown' }).click()
+  expect((await markdownDownload).suggestedFilename()).toBe('terranova-proposal-5.md')
+
+  const jsonDownload = page.waitForEvent('download')
+  await page.getByRole('button', { name: 'Export JSON' }).click()
+  expect((await jsonDownload).suggestedFilename()).toBe('terranova-proposal-5.json')
+
+  await page.locator('.report-action').first().click()
+  await expect(page.locator('.report-page')).toHaveAttribute('dir', 'rtl')
+  await expect(page.getByRole('textbox', { name: 'مقترح مشروع' })).toHaveValue(/## المخاطر/)
+  await page.emulateMedia({ media: 'print' })
+  await expect(page.locator('.report-header img')).toBeVisible()
+  await expect(page.locator('.proposal-print-copy')).toBeVisible()
+  await expect(page.locator('.report-toolbar')).toBeHidden()
+})
