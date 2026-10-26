@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react'
 import analogData from './data/analogs.json'
 import fieldNotesData from './data/field-notes.json'
 import presetData from './data/presets.json'
@@ -6,6 +6,7 @@ import provenanceData from './data/provenance.json'
 import siteLogisticsData from './data/site-logistics.json'
 import { TAGS } from './data/tag-definitions.js'
 import { rankAnalogs } from './lib/similarity.js'
+import { locationConfidence } from './lib/locationConfidence.js'
 import { loadCommunitySubmissions, toCommunityAnalogSite } from './lib/community.js'
 import {
   analogSiteSchema,
@@ -20,6 +21,10 @@ import ReviewPage from './ReviewPage.jsx'
 import MissionPlanner from './MissionPlanner.jsx'
 import WeatherCard from './WeatherCard.jsx'
 import './App.css'
+
+const TerrainMap = lazy(() => import('./TerrainMap.jsx'))
+const Compare3DPage = lazy(() => import('./Compare3DPage.jsx'))
+const HeroScene = lazy(() => import('./HeroScene.jsx'))
 
 const analogs = analogSiteSchema.array().parse(analogData)
 const presets = presetSchema.array().parse(presetData)
@@ -55,6 +60,22 @@ const COPY = {
     stopDraw: 'Cancel drawing',
     mapTitle: 'Global analog field sites',
     mapHint: 'Select a marker to inspect a site. Drag on the map to draw an area.',
+    map2d: '2D map',
+    map3d: '3D terrain',
+    map3dLoading: 'Loading 3D terrain map…',
+    mapUnavailable: '3D terrain is unavailable on this device; the 2D map is shown instead.',
+    mapSlow: '3D terrain took too long to initialize; the 2D map is shown instead.',
+    mapInitializationError: '3D terrain could not initialize; the 2D map is shown instead.',
+    mapTilesError: 'A map or terrain tile could not be loaded. Check the network and try again.',
+    terrainCompanion: 'NASA Trek planetary imagery',
+    moonMapPlaceholder:
+      'Cached global WAC and south-polar LOLA images are shown in the separate planetary comparison view, not projected onto Earth.',
+    marsMapPlaceholder:
+      'Cached global MOLA and supported south-polar images are shown in the separate planetary comparison view.',
+    officialLayers: 'NASA Trek layers',
+    openComparison: 'Open this site’s 3D comparison',
+    mapAttribution:
+      'Earth terrain uses AWS Terrain Tiles (Terrarium) and OpenStreetMap. Planetary layers use NASA Trek and keep their own projection.',
     approximateBadge: 'Approximate location',
     verifiedBadge: 'Verified location',
     noMap: 'No mapped location',
@@ -137,6 +158,23 @@ const COPY = {
     stopDraw: 'إلغاء الرسم',
     mapTitle: 'مواقع المحاكاة الكوكبية حول العالم',
     mapHint: 'اختر علامة لعرض الموقع. اسحب على الخريطة لرسم منطقة.',
+    map2d: 'خريطة ثنائية الأبعاد',
+    map3d: 'تضاريس ثلاثية الأبعاد',
+    map3dLoading: 'جارٍ تحميل خريطة التضاريس ثلاثية الأبعاد…',
+    mapUnavailable:
+      'التضاريس ثلاثية الأبعاد غير متاحة على هذا الجهاز؛ تُعرض الخريطة الثنائية الأبعاد.',
+    mapSlow: 'استغرق تشغيل التضاريس ثلاثية الأبعاد وقتاً طويلاً؛ تُعرض الخريطة الثنائية الأبعاد.',
+    mapInitializationError: 'تعذر تشغيل التضاريس ثلاثية الأبعاد؛ تُعرض الخريطة الثنائية الأبعاد.',
+    mapTilesError: 'تعذر تحميل إحدى بلاطات الخريطة أو التضاريس. تحقق من الشبكة وحاول مجدداً.',
+    terrainCompanion: 'صور NASA Trek للكواكب',
+    moonMapPlaceholder:
+      'تُعرض صور WAC العامة وLOLA للقطب الجنوبي المخزنة في واجهة المقارنة الكوكبية المنفصلة، ولا تُسقط على الأرض.',
+    marsMapPlaceholder:
+      'تُعرض صور MOLA العامة والصور المدعومة للقطب الجنوبي في واجهة المقارنة الكوكبية المنفصلة.',
+    officialLayers: 'طبقات NASA Trek',
+    openComparison: 'فتح مقارنة هذا الموقع ثلاثية الأبعاد',
+    mapAttribution:
+      'تستخدم تضاريس الأرض AWS Terrain Tiles بترميز Terrarium وOpenStreetMap. وتحتفظ طبقات الكواكب بإسقاط NASA Trek الخاص بها.',
     approximateBadge: 'موقع تقريبي',
     verifiedBadge: 'موقع موثق',
     noMap: 'لا يوجد موقع على الخريطة',
@@ -193,12 +231,6 @@ const COPY = {
   },
 }
 
-function locationConfidence(site) {
-  if (site.locations.some(({ confidence }) => confidence === 'approximate')) return 'approximate'
-  if (site.locations.some(({ confidence }) => confidence === 'verified')) return 'verified'
-  return 'missing'
-}
-
 function getCountry(site) {
   return site.countryRegionAr.split(/[—–-]/)[0].trim()
 }
@@ -214,6 +246,17 @@ function App() {
   if (/^\/contribute\/?$/.test(window.location.pathname)) return <ContributePage />
   if (/^\/review\/?$/.test(window.location.pathname)) return <ReviewPage />
   if (/^\/mission\/?$/.test(window.location.pathname)) return <MissionPlanner />
+  const compareRoute = window.location.pathname.match(/^\/compare3d\/(\d+)\/?$/)
+  if (compareRoute) {
+    return (
+      <Suspense fallback={<main className="compare-page-loading">Loading 3D comparison…</main>}>
+        <Compare3DPage
+          siteId={Number(compareRoute[1])}
+          language={new URLSearchParams(window.location.search).get('lang') === 'ar' ? 'ar' : 'en'}
+        />
+      </Suspense>
+    )
+  }
   const reportRoute = window.location.pathname.match(/^\/report\/([^/]+)\/?$/)
   if (reportRoute) return <ReportPage siteId={reportRoute[1]} />
   return <ExplorerApp />
@@ -249,6 +292,8 @@ function ExplorerApp() {
   const [mobilePanel, setMobilePanel] = useState('map')
   const [isSidePanelOpen, setIsSidePanelOpen] = useState(true)
   const [mapDimensions, setMapDimensions] = useState({ width: 0, height: 0 })
+  const [mapMode, setMapMode] = useState('2d')
+  const [mapNotice, setMapNotice] = useState('')
   const mapCanvasRef = useRef(null)
   const t = COPY[language]
 
@@ -301,6 +346,23 @@ function ExplorerApp() {
   const selectedSite = selectedMatch?.site
   const selectedFieldNotes = fieldNotes.find(({ siteId }) => siteId === selectedSite?.id)
   const selectedLogistics = siteLogistics.find(({ siteId }) => siteId === selectedSite?.id)
+  const terrainMarkers = useMemo(
+    () =>
+      filtered.flatMap(({ site, score }) =>
+        site.locations
+          .filter(({ lat, lon }) => lat !== null && lon !== null)
+          .map((location) => ({
+            siteId: site.id,
+            name: site.nameEn,
+            label: location.label,
+            lat: location.lat,
+            lon: location.lon,
+            confidence: location.confidence,
+            score,
+          })),
+      ),
+    [filtered],
+  )
 
   function applyPreset(presetId) {
     setActivePreset(presetId)
@@ -364,6 +426,38 @@ function ExplorerApp() {
 
   function finishDrawing() {
     setDrawStart(null)
+  }
+
+  function selectMapMode(mode) {
+    setMapMode(mode)
+    setMapNotice('')
+    setIsDrawing(false)
+    setDrawArea(null)
+    setAreaSites([])
+  }
+
+  function handleTerrainFallback(reason) {
+    setMapMode('2d')
+    setIsDrawing(false)
+    setMapNotice(reason)
+  }
+
+  function handleTerrainArea(bounds) {
+    const west = ((((bounds.west + 180) % 360) + 360) % 360) - 180
+    const east = ((((bounds.east + 180) % 360) + 360) % 360) - 180
+    const inside = ranked.filter(({ site }) =>
+      site.locations.some((location) => {
+        if (location.lat === null || location.lon === null) return false
+        const longitude = ((((location.lon + 180) % 360) + 360) % 360) - 180
+        const longitudeInside =
+          west <= east
+            ? longitude >= west && longitude <= east
+            : longitude >= west || longitude <= east
+        return longitudeInside && location.lat >= bounds.south && location.lat <= bounds.north
+      }),
+    )
+    setAreaSites(inside)
+    setDrawArea({ x: 0, y: 0, width: 1, height: 1 })
   }
 
   const commonAreaTags = Object.entries(
@@ -434,6 +528,12 @@ function ExplorerApp() {
         <p className="community-storage-alert" role="alert">
           {t.communityStorageError}: {communityState.error}
         </p>
+      )}
+
+      {page === 'explorer' && (
+        <Suspense fallback={<section className="hero-scene hero-scene-loading" aria-hidden="true" />}>
+          <HeroScene />
+        </Suspense>
       )}
 
       {page === 'methodology' ? (
@@ -657,6 +757,24 @@ function ExplorerApp() {
                     >
                       {t.mobileFilters}
                     </button>
+                    <div className="map-mode-switch" role="group" aria-label="Map view">
+                      <button
+                        type="button"
+                        aria-pressed={mapMode === '2d'}
+                        className={mapMode === '2d' ? 'active' : ''}
+                        onClick={() => selectMapMode('2d')}
+                      >
+                        {t.map2d}
+                      </button>
+                      <button
+                        type="button"
+                        aria-pressed={mapMode === '3d'}
+                        className={mapMode === '3d' ? 'active' : ''}
+                        onClick={() => selectMapMode('3d')}
+                      >
+                        {t.map3d}
+                      </button>
+                    </div>
                     <button
                       type="button"
                       className={isDrawing ? 'draw-button active' : 'draw-button'}
@@ -699,90 +817,155 @@ function ExplorerApp() {
                   data-map-width={mapDimensions.width}
                   data-map-height={mapDimensions.height}
                 >
-                  <svg
-                    viewBox="0 0 900 420"
-                    preserveAspectRatio="none"
-                    onPointerDown={beginDrawing}
-                    onPointerMove={updateDrawing}
-                    onPointerUp={finishDrawing}
-                    onPointerCancel={finishDrawing}
-                    role="img"
-                    aria-label={t.mapTitle}
-                  >
-                    <defs>
-                      <pattern id="map-grid" width="75" height="52.5" patternUnits="userSpaceOnUse">
-                        <path
-                          d="M 75 0 L 0 0 0 52.5"
-                          fill="none"
-                          stroke="rgba(152,181,175,.12)"
-                          strokeWidth="1"
+                  {mapMode === '2d' ? (
+                    <svg
+                      viewBox="0 0 900 420"
+                      preserveAspectRatio="none"
+                      onPointerDown={beginDrawing}
+                      onPointerMove={updateDrawing}
+                      onPointerUp={finishDrawing}
+                      onPointerCancel={finishDrawing}
+                      role="img"
+                      aria-label={t.mapTitle}
+                    >
+                      <defs>
+                        <pattern
+                          id="map-grid"
+                          width="75"
+                          height="52.5"
+                          patternUnits="userSpaceOnUse"
+                        >
+                          <path
+                            d="M 75 0 L 0 0 0 52.5"
+                            fill="none"
+                            stroke="rgba(152,181,175,.12)"
+                            strokeWidth="1"
+                          />
+                        </pattern>
+                        <linearGradient id="map-bg" x1="0" x2="1" y1="0" y2="1">
+                          <stop offset="0%" stopColor="#10282b" />
+                          <stop offset="100%" stopColor="#0c2025" />
+                        </linearGradient>
+                      </defs>
+                      <rect width="900" height="420" fill="url(#map-bg)" />
+                      <rect width="900" height="420" fill="url(#map-grid)" />
+                      <g className="graticule">
+                        {[1, 2, 3, 4, 5].map((line) => (
+                          <line key={`h${line}`} x1="0" x2="900" y1={line * 70} y2={line * 70} />
+                        ))}
+                        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((line) => (
+                          <line key={`v${line}`} y1="0" y2="420" x1={line * 75} x2={line * 75} />
+                        ))}
+                      </g>
+                      <g className="continents">
+                        <path d="M72 92 L108 65 167 55 206 73 230 105 218 132 185 143 171 177 139 190 115 163 83 157 65 126Z" />
+                        <path d="M214 199 L248 215 264 248 252 284 245 322 224 354 208 319 200 278 188 246Z" />
+                        <path d="M402 90 L433 76 462 86 473 107 451 123 430 116Z" />
+                        <path d="M449 124 L489 120 523 141 534 183 515 226 495 271 473 258 460 215 441 181 429 149Z" />
+                        <path d="M506 83 L556 63 621 69 663 93 712 97 744 123 718 145 672 144 647 166 611 155 583 180 550 155 521 150 488 126Z" />
+                        <path d="M648 190 L689 177 731 190 757 223 741 259 705 272 675 250 650 226Z" />
+                        <path d="M751 294 L786 280 822 293 838 319 810 339 778 331Z" />
+                        <path d="M802 91 L844 87 866 109 847 129 815 125Z" />
+                        <path d="M356 48 L376 42 391 55 381 72 361 69Z" />
+                      </g>
+                      {filtered.flatMap(({ site, score }) =>
+                        site.locations
+                          .filter(({ lat, lon }) => lat !== null && lon !== null)
+                          .map((location, index) => {
+                            const point = project(location)
+                            const confidence = location.confidence
+                            const selected = selectedSite?.id === site.id
+                            return (
+                              <g
+                                className={`site-marker ${selected ? 'selected' : ''} ${confidence} ${site.isCommunity ? 'community' : ''}`}
+                                key={`${site.id}-${index}`}
+                                transform={`translate(${point.x} ${point.y})`}
+                                onPointerDown={(event) => event.stopPropagation()}
+                                onClick={() => setSelectedId(site.id)}
+                                tabIndex="0"
+                                role="button"
+                                aria-label={`${site.nameEn}, ${location.label}`}
+                              >
+                                <circle className="marker-halo" r={selected ? 12 : 9} />
+                                <circle className="marker-core" r={selected ? 5 : 3.5} />
+                                <title>
+                                  {site.nameEn} — {location.label} ({confidence}) · {score}%
+                                </title>
+                              </g>
+                            )
+                          }),
+                      )}
+                      {drawArea && (
+                        <rect
+                          className="draw-area"
+                          x={drawArea.x}
+                          y={drawArea.y}
+                          width={drawArea.width}
+                          height={drawArea.height}
                         />
-                      </pattern>
-                      <linearGradient id="map-bg" x1="0" x2="1" y1="0" y2="1">
-                        <stop offset="0%" stopColor="#10282b" />
-                        <stop offset="100%" stopColor="#0c2025" />
-                      </linearGradient>
-                    </defs>
-                    <rect width="900" height="420" fill="url(#map-bg)" />
-                    <rect width="900" height="420" fill="url(#map-grid)" />
-                    <g className="graticule">
-                      {[1, 2, 3, 4, 5].map((line) => (
-                        <line key={`h${line}`} x1="0" x2="900" y1={line * 70} y2={line * 70} />
-                      ))}
-                      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((line) => (
-                        <line key={`v${line}`} y1="0" y2="420" x1={line * 75} x2={line * 75} />
-                      ))}
-                    </g>
-                    <g className="continents">
-                      <path d="M72 92 L108 65 167 55 206 73 230 105 218 132 185 143 171 177 139 190 115 163 83 157 65 126Z" />
-                      <path d="M214 199 L248 215 264 248 252 284 245 322 224 354 208 319 200 278 188 246Z" />
-                      <path d="M402 90 L433 76 462 86 473 107 451 123 430 116Z" />
-                      <path d="M449 124 L489 120 523 141 534 183 515 226 495 271 473 258 460 215 441 181 429 149Z" />
-                      <path d="M506 83 L556 63 621 69 663 93 712 97 744 123 718 145 672 144 647 166 611 155 583 180 550 155 521 150 488 126Z" />
-                      <path d="M648 190 L689 177 731 190 757 223 741 259 705 272 675 250 650 226Z" />
-                      <path d="M751 294 L786 280 822 293 838 319 810 339 778 331Z" />
-                      <path d="M802 91 L844 87 866 109 847 129 815 125Z" />
-                      <path d="M356 48 L376 42 391 55 381 72 361 69Z" />
-                    </g>
-                    {filtered.flatMap(({ site, score }) =>
-                      site.locations
-                        .filter(({ lat, lon }) => lat !== null && lon !== null)
-                        .map((location, index) => {
-                          const point = project(location)
-                          const confidence = location.confidence
-                          const selected = selectedSite?.id === site.id
-                          return (
-                            <g
-                              className={`site-marker ${selected ? 'selected' : ''} ${confidence} ${site.isCommunity ? 'community' : ''}`}
-                              key={`${site.id}-${index}`}
-                              transform={`translate(${point.x} ${point.y})`}
-                              onPointerDown={(event) => event.stopPropagation()}
-                              onClick={() => setSelectedId(site.id)}
-                              tabIndex="0"
-                              role="button"
-                              aria-label={`${site.nameEn}, ${location.label}`}
-                            >
-                              <circle className="marker-halo" r={selected ? 12 : 9} />
-                              <circle className="marker-core" r={selected ? 5 : 3.5} />
-                              <title>
-                                {site.nameEn} — {location.label} ({confidence}) · {score}%
-                              </title>
-                            </g>
-                          )
-                        }),
-                    )}
-                    {drawArea && (
-                      <rect
-                        className="draw-area"
-                        x={drawArea.x}
-                        y={drawArea.y}
-                        width={drawArea.width}
-                        height={drawArea.height}
+                      )}
+                    </svg>
+                  ) : (
+                    <Suspense
+                      fallback={<div className="terrain-map-loading">{t.map3dLoading}</div>}
+                    >
+                      <TerrainMap
+                        markers={terrainMarkers}
+                        selectedSiteId={selectedSite?.id}
+                        isDrawing={isDrawing}
+                        language={language}
+                        onSelectSite={setSelectedId}
+                        onDrawArea={handleTerrainArea}
+                        onFallback={handleTerrainFallback}
+                        onMapError={() => setMapNotice('tiles')}
                       />
-                    )}
-                  </svg>
+                    </Suspense>
+                  )}
                   {isDrawing && <div className="drawing-hint">{t.areaHelp}</div>}
                 </div>
+
+                {mapNotice && (
+                  <p className="terrain-map-notice" role="status">
+                    {mapNotice === 'unsupported'
+                      ? t.mapUnavailable
+                      : mapNotice === 'slow'
+                        ? t.mapSlow
+                        : mapNotice === 'tiles'
+                          ? t.mapTilesError
+                          : t.mapInitializationError}
+                  </p>
+                )}
+
+                {(mapMode === '3d' || mapNotice) && (
+                  <section className="terrain-companion">
+                    <div>
+                      <h3>{t.terrainCompanion}</h3>
+                      <p>{t.mapAttribution}</p>
+                    </div>
+                    <article>
+                      <h4>{t.moon}</h4>
+                      <p>{t.moonMapPlaceholder}</p>
+                      <a href="https://trek.nasa.gov/moon/" target="_blank" rel="noreferrer">
+                        {t.officialLayers}: LRO WAC / LOLA
+                      </a>
+                    </article>
+                    <article>
+                      <h4>{t.mars}</h4>
+                      <p>{t.marsMapPlaceholder}</p>
+                      <a href="https://trek.nasa.gov/mars/" target="_blank" rel="noreferrer">
+                        {t.officialLayers}: MOLA
+                      </a>
+                    </article>
+                    {selectedSite && (
+                      <a
+                        className="terrain-comparison-link"
+                        href={`/compare3d/${selectedSite.id}?lang=${language}`}
+                      >
+                        {t.openComparison} ↗
+                      </a>
+                    )}
+                  </section>
+                )}
 
                 {drawArea && (
                   <section className="area-summary">
@@ -997,14 +1180,27 @@ function ExplorerApp() {
                       {t.openSource} ↗
                     </a>
                     {!selectedSite.isCommunity && (
-                      <a
-                        className="report-link"
-                        href={`/report/${selectedSite.id}?body=${encodeURIComponent(body)}&weights=${encodeURIComponent(JSON.stringify(weights))}`}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        {t.printReport} ↗
-                      </a>
+                      <>
+                        <a
+                          className="report-link"
+                          href={`/report/${selectedSite.id}?body=${encodeURIComponent(body)}&weights=${encodeURIComponent(JSON.stringify(weights))}`}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {t.printReport} ↗
+                        </a>
+                        <a
+                          className="report-link"
+                          href={`/compare3d/${selectedSite.id}?lang=${language}`}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {language === 'ar'
+                            ? 'مقارنة التضاريس ثلاثية الأبعاد'
+                            : '3D terrain comparison'}{' '}
+                          ↗
+                        </a>
+                      </>
                     )}
                   </section>
                 )}

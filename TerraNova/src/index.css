@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap');
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   font-family: 'DM Sans', 'IBM Plex Sans Arabic', Arial, sans-serif;
   color: #f0f0f0;
@@ -27,6 +31,9 @@
   --space-deep: #001020;
   --logo-sky: #60a0c0;
   --mono: 'DM Mono', Consolas, monospace;
+  --radius-card: 18px;
+  --glow-blue: 0 0 28px rgba(80, 160, 192, 0.16);
+  --glass: linear-gradient(145deg, rgba(24, 56, 74, 0.76), rgba(10, 29, 43, 0.86));
   font-synthesis: none;
 }
 
@@ -56,6 +63,21 @@ input:focus-visible,
 a:focus-visible {
   outline: 2px solid var(--mint);
   outline-offset: 3px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--space-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  border: 2px solid var(--space-deep);
+  border-radius: 999px;
+  background: rgba(112, 184, 212, 0.44);
 }
 
 ::selection {
