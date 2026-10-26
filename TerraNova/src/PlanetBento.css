@@ -1,0 +1,381 @@
+.planet-bento {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  height: clamp(390px, 39vw, 590px);
+  overflow: hidden;
+  border-radius: 18px;
+  background:
+    radial-gradient(ellipse at 38% 48%, rgba(59, 122, 148, 0.15), transparent 45%),
+    linear-gradient(155deg, #071a2a, #03101c 68%, #071a24);
+}
+
+.planet-bento-slots {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(185px, 1fr);
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  padding: 12px;
+}
+
+.planet-slot {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid rgba(173, 211, 224, 0.19);
+  border-radius: 15px;
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(30, 78, 100, 0.08), transparent 65%),
+    linear-gradient(155deg, rgba(12, 31, 47, 0.15), rgba(4, 16, 27, 0.18));
+  box-shadow:
+    inset 0 1px 0 rgba(226, 243, 248, 0.07),
+    0 14px 34px rgba(0, 0, 0, 0.15);
+  transform-origin: center;
+}
+
+.planet-slot-main {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  z-index: 3;
+  pointer-events: none;
+  border-color: rgba(112, 184, 212, 0.38);
+  box-shadow:
+    inset 0 1px 0 rgba(226, 243, 248, 0.1),
+    0 0 34px rgba(59, 143, 177, 0.09);
+}
+
+.planet-slot-small {
+  z-index: 3;
+  cursor: pointer;
+  pointer-events: auto;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.planet-slot-small:hover,
+.planet-slot-small:focus-visible {
+  border-color: rgba(112, 184, 212, 0.7);
+  box-shadow:
+    inset 0 1px 0 rgba(226, 243, 248, 0.1),
+    0 0 28px rgba(59, 143, 177, 0.15);
+}
+
+.planet-slot-small:focus-visible {
+  outline: 2px solid var(--mint);
+  outline-offset: 2px;
+}
+
+.planet-slot[data-body='moon'] {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.planet-slot[data-body='mars'] {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.planet-slot[data-body='earth'].planet-slot-small,
+.planet-slot[data-body='moon'].planet-slot-main,
+.planet-slot[data-body='mars'].planet-slot-main {
+  grid-column: auto;
+  grid-row: auto;
+}
+
+.planet-slot-caption {
+  position: absolute;
+  z-index: 4;
+  inset: 12px 14px auto;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  pointer-events: none;
+  color: #ecf6fa;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.8);
+}
+
+.planet-slot-caption strong {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.planet-slot-main .planet-slot-caption strong {
+  font-size: 15px;
+}
+
+.planet-slot-caption span,
+.planet-slot-caption small {
+  color: #b2c8d1;
+  font-size: 10px;
+}
+
+.planet-slot-caption small {
+  margin-inline-start: auto;
+  opacity: 0;
+  transition: opacity 140ms ease;
+}
+
+.planet-slot-small:hover .planet-slot-caption small,
+.planet-slot-small:focus-visible .planet-slot-caption small {
+  opacity: 1;
+}
+
+.planet-bento-canvas {
+  position: absolute !important;
+  z-index: 2;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: auto;
+  cursor: grab;
+}
+
+.planet-bento canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: none;
+}
+
+.planet-bento-canvas > div {
+  pointer-events: none;
+}
+
+.planet-slot-view.planet-slot-main {
+  touch-action: none;
+}
+
+.planet-slot-view.planet-slot-small {
+  touch-action: manipulation;
+}
+
+.planet-bento[data-main-body='earth'] .planet-slot-main,
+.planet-bento[data-main-body='moon'] .planet-slot-main,
+.planet-bento[data-main-body='mars'] .planet-slot-main {
+  touch-action: none;
+}
+
+.planet-static-preview {
+  position: absolute;
+  inset: 0;
+  width: min(72%, 240px);
+  height: auto;
+  aspect-ratio: 1;
+  margin: auto;
+  border-radius: 50%;
+  object-fit: cover;
+  opacity: 0.88;
+  filter: drop-shadow(0 0 25px rgba(72, 149, 182, 0.16));
+  animation: planet-preview-rotate 44s linear infinite;
+  pointer-events: none;
+}
+
+.planet-slot-caption {
+  background: linear-gradient(180deg, rgba(3, 14, 24, 0.55), transparent);
+}
+
+.planet-marker-tooltip {
+  display: block;
+  max-width: 160px;
+  padding: 5px 8px;
+  border: 1px solid rgba(154, 211, 230, 0.3);
+  border-radius: 7px;
+  color: #f1f8fa;
+  background: rgba(5, 21, 31, 0.94);
+  font: 11px/1.4 'DM Sans', sans-serif;
+  white-space: normal;
+  pointer-events: none;
+}
+
+.planet-main-controls {
+  position: absolute;
+  z-index: 5;
+  right: 22px;
+  bottom: 22px;
+  display: flex;
+  gap: 6px;
+}
+
+.planet-main-controls button {
+  min-height: 31px;
+  padding: 6px 9px;
+  border: 1px solid rgba(165, 211, 226, 0.24);
+  border-radius: 8px;
+  color: #e2f0f4;
+  background: rgba(5, 20, 30, 0.8);
+  font-size: 10px;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+}
+
+.planet-main-controls button:hover {
+  border-color: var(--mint);
+  background: rgba(17, 48, 62, 0.94);
+}
+
+.planet-bento-fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  color: var(--muted);
+  text-align: center;
+}
+
+.planet-selector {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(6, 22, 32, 0.75);
+}
+
+.planet-selector button {
+  min-height: 29px;
+  padding: 5px 10px;
+  border: 0;
+  border-radius: 999px;
+  color: var(--muted);
+  background: transparent;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.planet-selector button[aria-pressed='true'] {
+  color: #edf8fb;
+  background: rgba(68, 139, 166, 0.36);
+  box-shadow: inset 0 0 0 1px rgba(112, 184, 212, 0.28);
+}
+
+.planet-view-modes {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.planet-view-modes button {
+  min-height: 31px;
+  padding: 6px 9px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--muted);
+  background: rgba(9, 28, 39, 0.6);
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.planet-view-modes button[aria-pressed='true'] {
+  border-color: rgba(112, 184, 212, 0.46);
+  color: var(--mint);
+  background: rgba(48, 109, 132, 0.18);
+}
+
+@keyframes planet-preview-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 700px) {
+  .planet-bento {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    background: transparent;
+    border-radius: 0;
+  }
+
+  .planet-bento-slots {
+    position: relative;
+    inset: auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto auto;
+    gap: 8px;
+    padding: 0;
+  }
+
+  .planet-slot-main {
+    grid-column: 1 / -1 !important;
+    grid-row: 1 !important;
+    min-height: 330px;
+  }
+
+  .planet-slot-small,
+  .planet-slot[data-body='moon'].planet-slot-small,
+  .planet-slot[data-body='mars'].planet-slot-small,
+  .planet-slot[data-body='earth'].planet-slot-small {
+    grid-column: auto !important;
+    grid-row: 2 !important;
+    min-height: 154px;
+  }
+
+  .planet-bento-canvas {
+    border-radius: 14px;
+  }
+
+  .planet-main-controls {
+    right: 10px;
+    bottom: calc(154px + 20px);
+  }
+
+  .planet-main-controls button {
+    min-height: 34px;
+    padding-inline: 8px;
+  }
+
+  .planet-selector {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .planet-view-modes {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 390px) {
+  .planet-slot-main {
+    min-height: 290px;
+  }
+
+  .planet-slot-small,
+  .planet-slot[data-body='moon'].planet-slot-small,
+  .planet-slot[data-body='mars'].planet-slot-small,
+  .planet-slot[data-body='earth'].planet-slot-small {
+    min-height: 138px;
+  }
+
+  .planet-slot-caption {
+    inset: 10px 9px auto;
+    gap: 5px;
+  }
+
+  .planet-slot-caption strong {
+    font-size: 11px;
+  }
+
+  .planet-slot-caption span {
+    font-size: 9px;
+  }
+
+  .planet-main-controls {
+    bottom: calc(138px + 17px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .planet-static-preview {
+    animation: none;
+  }
+}

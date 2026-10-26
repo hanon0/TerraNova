@@ -4,7 +4,8 @@ export default defineConfig({
   testDir: './playwright',
   testMatch: '**/*.playwright.js',
   fullyParallel: true,
-  workers: 2,
+  // WebGL tests share a browser GPU/context budget; run them serially for stable CI.
+  workers: 1,
   timeout: 60_000,
   reporter: 'list',
   use: {

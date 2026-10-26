@@ -9,6 +9,16 @@ const KILOMETERS_PER_LATITUDE_DEGREE = 111.195
  * @returns {number}
  */
 export function haversineKm(lat, lon, airportLat, airportLon) {
+  if (
+    ![lat, lon, airportLat, airportLon].every((value) => Number.isFinite(value)) ||
+    Math.abs(lat) > 90 ||
+    Math.abs(lon) > 180 ||
+    Math.abs(airportLat) > 90 ||
+    Math.abs(airportLon) > 180
+  ) {
+    return Number.POSITIVE_INFINITY
+  }
+
   const radians = Math.PI / 180
   const lat1 = lat * radians
   const lat2 = airportLat * radians
@@ -30,9 +40,15 @@ export function haversineKm(lat, lon, airportLat, airportLon) {
  */
 export function findNearestAirport(index, location) {
   if (
+    !index ||
     !index.available ||
+    !location ||
     location.lat === null ||
     location.lon === null ||
+    !Number.isFinite(location.lat) ||
+    !Number.isFinite(location.lon) ||
+    Math.abs(location.lat) > 90 ||
+    Math.abs(location.lon) > 180 ||
     index.airports.length === 0
   )
     return null
@@ -46,6 +62,7 @@ export function findNearestAirport(index, location) {
       if (row < 0 || row > 179) continue
       for (const airportIndex of index.latitudeRows[String(row)] ?? []) {
         const airport = index.airports[airportIndex]
+        if (!airport || !Number.isFinite(airport.lat) || !Number.isFinite(airport.lon)) continue
         const distanceKm = haversineKm(location.lat, location.lon, airport.lat, airport.lon)
         if (!best || distanceKm < best.distanceKm) best = { airport, distanceKm }
       }

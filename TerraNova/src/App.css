@@ -170,7 +170,7 @@
 .top-actions {
   display: flex;
   align-items: center;
-  gap: 25px;
+  gap: 12px;
   margin-inline-start: auto;
 }
 
@@ -517,6 +517,7 @@ select option {
   border-radius: 6px;
   background: #0e2528;
   box-shadow: 0 14px 34px rgba(0, 0, 0, 0.16);
+  border-radius: 18px;
 }
 
 .map-canvas > svg {
@@ -1314,6 +1315,22 @@ select option {
   color: var(--muted);
 }
 
+@media (max-width: 900px) {
+  .topbar {
+    gap: 16px;
+    padding-inline: 20px;
+  }
+
+  .main-nav {
+    gap: 12px;
+  }
+
+  .main-nav > a:last-child,
+  .dataset-status {
+    display: none;
+  }
+}
+
 [dir='rtl'] {
   font-family: 'IBM Plex Sans Arabic', 'DM Sans', Arial, sans-serif;
 }
@@ -1505,30 +1522,28 @@ select option {
 .map-mode-switch {
   display: inline-flex;
   flex: 0 0 auto;
-  border: 1px solid var(--line-strong);
-  border-radius: 4px;
-  overflow: hidden;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
 }
 
 .map-mode-switch button {
   min-width: 54px;
-  min-height: 44px;
-  padding: 7px 10px;
-  border: 0;
-  color: var(--soft);
-  background: rgba(16, 37, 40, 0.6);
+  min-height: 34px;
+  padding: 7px 9px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--muted);
+  background: rgba(16, 37, 40, 0.48);
   font: inherit;
   font-size: 10px;
   cursor: pointer;
 }
 
-.map-mode-switch button + button {
-  border-inline-start: 1px solid var(--line-strong);
-}
-
 .map-mode-switch button.active {
-  color: #071412;
-  background: var(--mint);
+  border-color: rgba(112, 184, 212, 0.46);
+  color: var(--mint);
+  background: rgba(48, 109, 132, 0.18);
 }
 
 .terrain-map-shell,
@@ -1756,6 +1771,22 @@ select option {
 }
 
 @media (max-width: 720px) {
+  .top-actions {
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .planet-selector {
+    gap: 1px;
+  }
+
+  .planet-selector button {
+    min-height: 28px;
+    padding-inline: 7px;
+    font-size: 9px;
+  }
+
   html,
   body,
   #root {
@@ -1854,6 +1885,8 @@ select option {
   }
 
   .map-actions {
+    align-items: flex-end;
+    flex-direction: column;
     gap: 5px;
   }
 
