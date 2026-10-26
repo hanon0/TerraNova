@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Ries & Rochechouart & Steinheim Craters",
+  "coordinates": {
+    "lat": 48.9,
+    "lon": 10.6,
+    "confidence": "approximate"
+  },
+  "radiusKm": 12.863439425724925,
+  "patchSizeKm": 25.72687885144985,
+  "resolutionMeters": 100.49562051347598,
+  "bbox": {
+    "west": 10.546875,
+    "south": 48.6909603909255,
+    "east": 10.8984375,
+    "north": 48.92249926375824
+  },
+  "tile": {
+    "z": 10,
+    "x": 542,
+    "y": 352
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": 391.5625,
+    "max": 583.5078125,
+    "relief": 191.9453125,
+    "units": "m",
+    "meanSlopeDegrees": 2.9963230396719935,
+    "histogram": [
+      11802,
+      12038,
+      5203,
+      7920,
+      12345,
+      10067,
+      5110,
+      1051
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:36.049Z"
+}

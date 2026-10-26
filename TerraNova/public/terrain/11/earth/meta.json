@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Craters of the Moon National Monument",
+  "coordinates": {
+    "lat": 43.42,
+    "lon": -113.52,
+    "confidence": "approximate"
+  },
+  "radiusKm": 14.212831418640429,
+  "patchSizeKm": 28.425662837280857,
+  "resolutionMeters": 111.03774545812834,
+  "bbox": {
+    "west": -113.5546875,
+    "south": 43.32517767999295,
+    "east": -113.203125,
+    "north": 43.58039085560785
+  },
+  "tile": {
+    "z": 10,
+    "x": 189,
+    "y": 374
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": 1564,
+    "max": 2138,
+    "relief": 574,
+    "units": "m",
+    "meanSlopeDegrees": 1.2955906600337634,
+    "histogram": [
+      22415,
+      33531,
+      8596,
+      677,
+      137,
+      82,
+      49,
+      49
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:25.088Z"
+}

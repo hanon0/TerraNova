@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Dasht-e Lut (Lut Desert)",
+  "coordinates": {
+    "lat": 29.8,
+    "lon": 59,
+    "confidence": "approximate"
+  },
+  "radiusKm": 16.98032960103925,
+  "patchSizeKm": 33.9606592020785,
+  "resolutionMeters": 132.65882500811915,
+  "bbox": {
+    "west": 58.7109375,
+    "south": 29.535229562948455,
+    "east": 59.0625,
+    "north": 29.84064389983442
+  },
+  "tile": {
+    "z": 10,
+    "x": 679,
+    "y": 423
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": 226,
+    "max": 459,
+    "relief": 233,
+    "units": "m",
+    "meanSlopeDegrees": 1.1529444455449784,
+    "histogram": [
+      1302,
+      7116,
+      19636,
+      13657,
+      8953,
+      6563,
+      5820,
+      2489
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:34.835Z"
+}

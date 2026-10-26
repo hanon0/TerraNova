@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Agoudal Impact Site",
+  "coordinates": {
+    "lat": 31.5,
+    "lon": -5.5,
+    "confidence": "approximate"
+  },
+  "radiusKm": 16.684359772111637,
+  "patchSizeKm": 33.368719544223275,
+  "resolutionMeters": 130.34656071962218,
+  "bbox": {
+    "west": -5.625,
+    "south": 31.353636941500994,
+    "east": -5.2734375,
+    "north": 31.653381399663985
+  },
+  "tile": {
+    "z": 10,
+    "x": 496,
+    "y": 417
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": 1097,
+    "max": 2405,
+    "relief": 1308,
+    "units": "m",
+    "meanSlopeDegrees": 6.448306330422034,
+    "histogram": [
+      29794,
+      18749,
+      6759,
+      3499,
+      2079,
+      1966,
+      1956,
+      734
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:34.736Z"
+}

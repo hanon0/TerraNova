@@ -1,0 +1,38 @@
+{
+  "status": "ready",
+  "body": "mars",
+  "label": "Elysium Planitia candidate",
+  "coordinates": {
+    "lat": 4.5,
+    "lon": 135.9
+  },
+  "confidence": "proposed",
+  "rationale": "Candidate region selected from the site's recorded target feature and tags, including basalt_volcanic. Location and relevance are proposals for scientist review, not verified analog matches.",
+  "radiusKm": 40,
+  "patchSizeKm": 83.35504339214937,
+  "resolutionMeters": 325.60563825058347,
+  "bbox": {
+    "matrixSet": "default028mm",
+    "matrix": "7",
+    "row": 60,
+    "column": 224,
+    "resolutionMeters": 325.60563825058347,
+    "tileSizeKm": 83.35504339214937,
+    "projection": "equirectangular"
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": null
+  },
+  "elevation": {
+    "available": false,
+    "reason": "A numeric elevation layer is not available for this body and projection."
+  },
+  "layers": {
+    "texture": "Mars_MGS_MOLA_ClrShade_merge_global_463m",
+    "elevation": null
+  },
+  "liveRefreshUrl": "https://trek.nasa.gov/tiles/Mars/EQ/Mars_MGS_MOLA_ClrShade_merge_global_463m/1.0.0//default/default028mm/7/60/224.jpg",
+  "attribution": "NASA / NASA Trek; layer identifiers and capabilities are recorded in metadata.",
+  "fetchedAt": "2026-10-26T07:34:24.203Z"
+}

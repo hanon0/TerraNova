@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Waw an Namus Volcano",
+  "coordinates": {
+    "lat": 24.96,
+    "lon": 17.76,
+    "confidence": "approximate"
+  },
+  "radiusKm": 17.74029037947474,
+  "patchSizeKm": 35.48058075894948,
+  "resolutionMeters": 138.5960185896464,
+  "bbox": {
+    "west": 17.578125,
+    "south": 24.84656534821974,
+    "east": 17.9296875,
+    "north": 25.165173368663936
+  },
+  "tile": {
+    "z": 10,
+    "x": 562,
+    "y": 438
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": 360,
+    "max": 507,
+    "relief": 147,
+    "units": "m",
+    "meanSlopeDegrees": 0.6470033000514528,
+    "histogram": [
+      270,
+      2307,
+      32914,
+      13910,
+      9644,
+      5593,
+      862,
+      36
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:30.407Z"
+}

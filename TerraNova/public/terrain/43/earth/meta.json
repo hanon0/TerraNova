@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Ol Doinyo Lengai Volcano",
+  "coordinates": {
+    "lat": -3,
+    "lon": 35.9,
+    "confidence": "approximate"
+  },
+  "radiusKm": 19.541062142578628,
+  "patchSizeKm": 39.082124285157256,
+  "resolutionMeters": 152.66454798889552,
+  "bbox": {
+    "west": 35.859375,
+    "south": -3.162455530237851,
+    "east": 36.2109375,
+    "north": -2.8113711933311296
+  },
+  "tile": {
+    "z": 10,
+    "x": 614,
+    "y": 520
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": 699,
+    "max": 3207,
+    "relief": 2508,
+    "units": "m",
+    "meanSlopeDegrees": 6.5269628318927495,
+    "histogram": [
+      34202,
+      9260,
+      5491,
+      6450,
+      5545,
+      3654,
+      713,
+      221
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:39.096Z"
+}

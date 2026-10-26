@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Undara Lava Tube System",
+  "coordinates": {
+    "lat": -18.2,
+    "lon": 144.6,
+    "confidence": "approximate"
+  },
+  "radiusKm": 18.588938386564294,
+  "patchSizeKm": 37.17787677312859,
+  "resolutionMeters": 145.22608114503356,
+  "bbox": {
+    "west": 144.4921875,
+    "south": -18.312810846425442,
+    "east": 144.84375,
+    "north": -17.97873309555617
+  },
+  "tile": {
+    "z": 10,
+    "x": 923,
+    "y": 564
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": 507,
+    "max": 1009,
+    "relief": 502,
+    "units": "m",
+    "meanSlopeDegrees": 1.40264100193132,
+    "histogram": [
+      1539,
+      8478,
+      13097,
+      17436,
+      9420,
+      8882,
+      5848,
+      836
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:18.831Z"
+}

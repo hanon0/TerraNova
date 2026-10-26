@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Black Desert & Bahariya Oasis",
+  "coordinates": {
+    "lat": 28.35,
+    "lon": 28.9,
+    "confidence": "approximate"
+  },
+  "radiusKm": 17.220972345401538,
+  "patchSizeKm": 34.441944690803076,
+  "resolutionMeters": 134.5388464484495,
+  "bbox": {
+    "west": 28.828125,
+    "south": 28.304380682962773,
+    "east": 29.1796875,
+    "north": 28.61345942400442
+  },
+  "tile": {
+    "z": 10,
+    "x": 594,
+    "y": 427
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": 82,
+    "max": 313,
+    "relief": 231,
+    "units": "m",
+    "meanSlopeDegrees": 1.4170205812324663,
+    "histogram": [
+      6587,
+      10729,
+      5598,
+      7302,
+      23244,
+      10475,
+      1544,
+      57
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:32.865Z"
+}

@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Wabar & Saqqar Impact Craters",
+  "coordinates": {
+    "lat": 21.5,
+    "lon": 50.5,
+    "confidence": "approximate"
+  },
+  "radiusKm": 18.20629861398193,
+  "patchSizeKm": 36.41259722796386,
+  "resolutionMeters": 142.23670792173382,
+  "bbox": {
+    "west": 50.2734375,
+    "south": 21.28937435586042,
+    "east": 50.625,
+    "north": 21.616579336740607
+  },
+  "tile": {
+    "z": 10,
+    "x": 655,
+    "y": 449
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": 162,
+    "max": 220,
+    "relief": 58,
+    "units": "m",
+    "meanSlopeDegrees": 0.7282379794193838,
+    "histogram": [
+      83,
+      1476,
+      8518,
+      15783,
+      21962,
+      13881,
+      3612,
+      221
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:34.779Z"
+}

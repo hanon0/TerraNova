@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Vredefort Crater & Limpopo Belt",
+  "coordinates": {
+    "lat": -27,
+    "lon": 27.5,
+    "confidence": "approximate"
+  },
+  "radiusKm": 17.43510806826569,
+  "patchSizeKm": 34.87021613653138,
+  "resolutionMeters": 136.2117817833257,
+  "bbox": {
+    "west": 27.421875,
+    "south": -27.059125784374057,
+    "east": 27.7734375,
+    "north": -26.745610382199015
+  },
+  "tile": {
+    "z": 10,
+    "x": 590,
+    "y": 591
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": 1367,
+    "max": 1678,
+    "relief": 311,
+    "units": "m",
+    "meanSlopeDegrees": 1.6023221487748904,
+    "histogram": [
+      2475,
+      15254,
+      29466,
+      15232,
+      2395,
+      544,
+      144,
+      26
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:37.850Z"
+}

@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Dyngjusandur Sandsheet",
+  "coordinates": {
+    "lat": 64.8,
+    "lon": -16.8,
+    "confidence": "approximate"
+  },
+  "radiusKm": 8.331597760666057,
+  "patchSizeKm": 16.663195521332113,
+  "resolutionMeters": 65.09060750520356,
+  "bbox": {
+    "west": -16.875,
+    "south": 64.77412531292873,
+    "east": -16.5234375,
+    "north": 64.92354174306496
+  },
+  "tile": {
+    "z": 10,
+    "x": 464,
+    "y": 267
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": 648.55078125,
+    "max": 1061.16796875,
+    "relief": 412.6171875,
+    "units": "m",
+    "meanSlopeDegrees": 1.6981437059653623,
+    "histogram": [
+      16362,
+      31932,
+      4797,
+      3674,
+      3960,
+      2644,
+      1749,
+      418
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:39.117Z"
+}

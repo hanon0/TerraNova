@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Salar de Uyuni & Arbol de Piedra & Llano de Caldera",
+  "coordinates": {
+    "lat": -20.2,
+    "lon": -67.5,
+    "confidence": "approximate"
+  },
+  "radiusKm": 18.36431813788486,
+  "patchSizeKm": 36.72863627576972,
+  "resolutionMeters": 143.47123545222547,
+  "bbox": {
+    "west": -67.5,
+    "south": -20.3034175184893,
+    "east": -67.1484375,
+    "north": -19.973348786110602
+  },
+  "tile": {
+    "z": 10,
+    "x": 320,
+    "y": 570
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": 3560,
+    "max": 3767,
+    "relief": 207,
+    "units": "m",
+    "meanSlopeDegrees": 0.2933039874281088,
+    "histogram": [
+      4,
+      10,
+      33,
+      64992,
+      411,
+      40,
+      24,
+      22
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:38.770Z"
+}

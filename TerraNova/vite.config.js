@@ -4,4 +4,13 @@ import { defineConfig } from 'vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  server: {
+    proxy: {
+      '/trek-proxy': {
+        target: 'https://trek.nasa.gov',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/trek-proxy/, ''),
+      },
+    },
+  },
 })

@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "data": "node scripts/convert-data.js",
+    "terrain": "node scripts/fetch-terrain-patches.js",
     "test": "npm run test:unit && npm run test:e2e",
     "test:unit": "vitest run",
     "test:e2e": "playwright test",
@@ -16,9 +17,16 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
+    "@react-three/drei": "^10.7.9",
+    "@react-three/fiber": "^9.8.2",
     "csv-parse": "^7.0.3",
+    "framer-motion": "^14.6.0",
+    "geotiff": "^3.0.5",
+    "lucide-react": "^1.61.0",
+    "maplibre-gl": "^6.15.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
+    "three": "^0.180.0",
     "zod": "^4.6.7"
   },
   "devDependencies": {
@@ -27,13 +35,16 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.2",
+    "autoprefixer": "^10.6.1",
     "eslint": "^9.39.5",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.7",
     "globals": "^17.13.0",
+    "postcss": "^8.5.31",
     "prettier": "^3.9.10",
+    "tailwindcss": "^3.4.19",
     "vite": "^8.3.4",
     "vitest": "^5.0.5"
   }

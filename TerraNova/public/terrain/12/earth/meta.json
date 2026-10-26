@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Xianren Cave",
+  "coordinates": {
+    "lat": 19.7,
+    "lon": 110.4,
+    "confidence": "approximate"
+  },
+  "radiusKm": 18.422581929845258,
+  "patchSizeKm": 36.845163859690516,
+  "resolutionMeters": 143.92642132691608,
+  "bbox": {
+    "west": 110.390625,
+    "south": 19.642587534013032,
+    "east": 110.7421875,
+    "north": 19.973348786110602
+  },
+  "tile": {
+    "z": 10,
+    "x": 826,
+    "y": 454
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": -14,
+    "max": 176,
+    "relief": 190,
+    "units": "m",
+    "meanSlopeDegrees": 1.4251852535557303,
+    "histogram": [
+      8212,
+      29766,
+      16955,
+      6744,
+      3003,
+      823,
+      28,
+      5
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:25.158Z"
+}

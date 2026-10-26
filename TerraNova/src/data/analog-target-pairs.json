@@ -1,0 +1,1216 @@
+{
+  "1": [
+    {
+      "body": "moon",
+      "label": "Lunar south-polar highlands candidate",
+      "labelAr": "مرتفعات القطب الجنوبي القمري المقترحة",
+      "lat": -88.5,
+      "lon": 0,
+      "radiusKm": 25,
+      "projection": "south_pole",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "impact_crater",
+        "anorthosite",
+        "polar_permafrost",
+        "hydrothermal",
+        "paleolake_fluvial"
+      ],
+      "sourceTargetFeature": "القمر - المرتفعات القمرية والقطب الجنوبي (أرتميس)",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including polar_permafrost. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها polar_permafrost. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "2": [
+    {
+      "body": "moon",
+      "label": "Apollo 16 lunar highlands candidate",
+      "labelAr": "مرتفعات أبولو 16 القمرية المقترحة",
+      "lat": -8.97,
+      "lon": 15.5,
+      "radiusKm": 30,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "anorthosite",
+        "ancient_terrain"
+      ],
+      "sourceTargetFeature": "القمر - قشرة محيط الصهارة القمري الأولي والمرتفعات",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including anorthosite. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها anorthosite. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "3": [
+    {
+      "body": "moon",
+      "label": "Tycho crater candidate",
+      "labelAr": "فوهة تايكو المقترحة",
+      "lat": -43.3,
+      "lon": -11.2,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "impact_crater",
+        "sand_dunes",
+        "meteorite_analog"
+      ],
+      "sourceTargetFeature": "القمر وعطارد - الفوهات البسيطة الحديثة ذات الأشعة",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including impact_crater. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها impact_crater. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "4": [
+    {
+      "body": "moon",
+      "label": "Marius Hills candidate",
+      "labelAr": "تلال ماريوس المقترحة",
+      "lat": 14,
+      "lon": -56,
+      "radiusKm": 30,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "lava_tube",
+        "basalt_volcanic",
+        "paleolake_fluvial"
+      ],
+      "sourceTargetFeature": "القمر - تلال ماريوس (Marius Hills) ومنطقة غرويثويزن",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including lava_tube. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها lava_tube. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "5": [
+    {
+      "body": "moon",
+      "label": "Marius Hills candidate",
+      "labelAr": "تلال ماريوس المقترحة",
+      "lat": 14,
+      "lon": -56,
+      "radiusKm": 30,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "lava_tube",
+        "basalt_volcanic"
+      ],
+      "sourceTargetFeature": "القمر والمريخ - تدفقات الحمم الطويلة وفوهات الحفر المنهارة",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including lava_tube. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها lava_tube. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    },
+    {
+      "body": "mars",
+      "label": "Elysium Planitia candidate",
+      "labelAr": "سهل إليسيوم المقترح",
+      "lat": 4.5,
+      "lon": 135.9,
+      "radiusKm": 40,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "lava_tube",
+        "basalt_volcanic"
+      ],
+      "sourceTargetFeature": "القمر والمريخ - تدفقات الحمم الطويلة وفوهات الحفر المنهارة",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including basalt_volcanic. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها basalt_volcanic. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "6": [
+    {
+      "body": "moon",
+      "label": "Marius Hills candidate",
+      "labelAr": "تلال ماريوس المقترحة",
+      "lat": 14,
+      "lon": -56,
+      "radiusKm": 30,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "lava_tube",
+        "basalt_volcanic",
+        "cave_karst",
+        "hydrogen_sulfide"
+      ],
+      "sourceTargetFeature": "القمر والمريخ والزهرة - نوافذ الأسقف المنهارة (Skylights)",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including lava_tube. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها lava_tube. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    },
+    {
+      "body": "mars",
+      "label": "Meridiani Planum candidate",
+      "labelAr": "سهل ميريدياني المقترح",
+      "lat": -2.3,
+      "lon": 0,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "lava_tube",
+        "basalt_volcanic",
+        "cave_karst",
+        "hydrogen_sulfide"
+      ],
+      "sourceTargetFeature": "القمر والمريخ والزهرة - نوافذ الأسقف المنهارة (Skylights)",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including hydrogen_sulfide. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها hydrogen_sulfide. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "7": [
+    {
+      "body": "moon",
+      "label": "Marius Hills volcanic province candidate",
+      "labelAr": "مقاطعة تلال ماريوس البركانية المقترحة",
+      "lat": 14,
+      "lon": -56,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "basalt_volcanic",
+        "cave_karst"
+      ],
+      "sourceTargetFeature": "القمر والمريخ - الأنابيب البركانية والبيئة تحت السطحية",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including basalt_volcanic. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها basalt_volcanic. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    },
+    {
+      "body": "mars",
+      "label": "Elysium Planitia candidate",
+      "labelAr": "سهل إليسيوم المقترح",
+      "lat": 4.5,
+      "lon": 135.9,
+      "radiusKm": 40,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "basalt_volcanic",
+        "cave_karst"
+      ],
+      "sourceTargetFeature": "القمر والمريخ - الأنابيب البركانية والبيئة تحت السطحية",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including basalt_volcanic. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها basalt_volcanic. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "8": [
+    {
+      "body": "moon",
+      "label": "Marius Hills candidate",
+      "labelAr": "تلال ماريوس المقترحة",
+      "lat": 14,
+      "lon": -56,
+      "radiusKm": 30,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "lava_tube",
+        "basalt_volcanic",
+        "cave_karst"
+      ],
+      "sourceTargetFeature": "القمر والمريخ - الكهوف البركانية والملاذات الميكروبية",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including lava_tube. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها lava_tube. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    },
+    {
+      "body": "mars",
+      "label": "Elysium Planitia candidate",
+      "labelAr": "سهل إليسيوم المقترح",
+      "lat": 4.5,
+      "lon": 135.9,
+      "radiusKm": 40,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "lava_tube",
+        "basalt_volcanic",
+        "cave_karst"
+      ],
+      "sourceTargetFeature": "القمر والمريخ - الكهوف البركانية والملاذات الميكروبية",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including basalt_volcanic. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها basalt_volcanic. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "9": [
+    {
+      "body": "mars",
+      "label": "Elysium Planitia candidate",
+      "labelAr": "سهل إليسيوم المقترح",
+      "lat": 4.5,
+      "lon": 135.9,
+      "radiusKm": 40,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "lava_tube",
+        "basalt_volcanic",
+        "cave_karst",
+        "silica_rocks"
+      ],
+      "sourceTargetFeature": "المريخ - البيئات الجوفية البركانية الحاضنة للبصمات المتسلكنة",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including basalt_volcanic. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها basalt_volcanic. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "10": [
+    {
+      "body": "mars",
+      "label": "Meridiani Planum candidate",
+      "labelAr": "سهل ميريدياني المقترح",
+      "lat": -2.3,
+      "lon": 0,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "lava_tube",
+        "basalt_volcanic",
+        "cave_karst",
+        "hydrogen_sulfide"
+      ],
+      "sourceTargetFeature": "المريخ - الكهوف البركانية ورواسب الكربونات والكبريتات",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including hydrogen_sulfide. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها hydrogen_sulfide. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "11": [
+    {
+      "body": "moon",
+      "label": "Marius Hills candidate",
+      "labelAr": "تلال ماريوس المقترحة",
+      "lat": 14,
+      "lon": -56,
+      "radiusKm": 30,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "lava_tube",
+        "basalt_volcanic",
+        "cave_karst"
+      ],
+      "sourceTargetFeature": "المريخ والقمر - السهول البازلتية والأنابيب البركانية",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including lava_tube. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها lava_tube. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    },
+    {
+      "body": "mars",
+      "label": "Elysium Planitia candidate",
+      "labelAr": "سهل إليسيوم المقترح",
+      "lat": 4.5,
+      "lon": 135.9,
+      "radiusKm": 40,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "lava_tube",
+        "basalt_volcanic",
+        "cave_karst"
+      ],
+      "sourceTargetFeature": "المريخ والقمر - السهول البازلتية والأنابيب البركانية",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including basalt_volcanic. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها basalt_volcanic. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "12": [
+    {
+      "body": "moon",
+      "label": "Marius Hills candidate",
+      "labelAr": "تلال ماريوس المقترحة",
+      "lat": 14,
+      "lon": -56,
+      "radiusKm": 30,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "lava_tube",
+        "basalt_volcanic",
+        "cave_karst"
+      ],
+      "sourceTargetFeature": "القمر والمريخ - الأنابيب البركانية تحت السطحية",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including lava_tube. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها lava_tube. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    },
+    {
+      "body": "mars",
+      "label": "Elysium Planitia candidate",
+      "labelAr": "سهل إليسيوم المقترح",
+      "lat": 4.5,
+      "lon": 135.9,
+      "radiusKm": 40,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "lava_tube",
+        "basalt_volcanic",
+        "cave_karst"
+      ],
+      "sourceTargetFeature": "القمر والمريخ - الأنابيب البركانية تحت السطحية",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including basalt_volcanic. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها basalt_volcanic. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "13": [
+    {
+      "body": "mars",
+      "label": "Jezero crater candidate",
+      "labelAr": "فوهة جيزيرو المقترحة",
+      "lat": 18.4,
+      "lon": 77.7,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "evaporite_salt",
+        "aeolian_yardang",
+        "hydrothermal",
+        "paleolake_fluvial",
+        "sand_dunes",
+        "glacial_ice",
+        "high_altitude"
+      ],
+      "sourceTargetFeature": "المريخ - مواقع الهبوط والبحيرات المتبخرة وأقمار الجليد",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including paleolake_fluvial. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها paleolake_fluvial. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "14": [
+    {
+      "body": "mars",
+      "label": "Jezero crater candidate",
+      "labelAr": "فوهة جيزيرو المقترحة",
+      "lat": 18.4,
+      "lon": 77.7,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "basalt_volcanic",
+        "evaporite_salt",
+        "paleolake_fluvial",
+        "sand_dunes",
+        "silica_rocks",
+        "ancient_terrain"
+      ],
+      "sourceTargetFeature": "المريخ - البحيرات القديمة والسبخات التبخيرية والأنظمة النهرية",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including paleolake_fluvial. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها paleolake_fluvial. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "15": [
+    {
+      "body": "mars",
+      "label": "Jezero crater candidate",
+      "labelAr": "فوهة جيزيرو المقترحة",
+      "lat": 18.4,
+      "lon": 77.7,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "paleolake_fluvial",
+        "astrobiology"
+      ],
+      "sourceTargetFeature": "المريخ - ميريدياني بلانوم وحافة فيرا روبن وفوهة جيزيرو",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including paleolake_fluvial. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها paleolake_fluvial. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "16": [
+    {
+      "body": "mars",
+      "label": "Gale crater candidate",
+      "labelAr": "فوهة غيل المقترحة",
+      "lat": -5.4,
+      "lon": 137.8,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "evaporite_salt",
+        "polar_permafrost",
+        "hydrothermal",
+        "hydrogen_sulfide",
+        "astrobiology"
+      ],
+      "sourceTargetFeature": "المريخ - أعمدة الميثان والمحاليل الملحية الجوفية المتجمدة",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including hydrothermal. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها hydrothermal. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "17": [
+    {
+      "body": "mars",
+      "label": "Gale crater candidate",
+      "labelAr": "فوهة غيل المقترحة",
+      "lat": -5.4,
+      "lon": 137.8,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "basalt_volcanic",
+        "polar_permafrost",
+        "hydrothermal",
+        "glacial_ice",
+        "meteorite_analog",
+        "astrobiology"
+      ],
+      "sourceTargetFeature": "المريخ - التضاريس البازلتية القطبية والنيزك ALH84001",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including hydrothermal. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها hydrothermal. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "18": [
+    {
+      "body": "mars",
+      "label": "Elysium Planitia candidate",
+      "labelAr": "سهل إليسيوم المقترح",
+      "lat": 4.5,
+      "lon": 135.9,
+      "radiusKm": 40,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "basalt_volcanic",
+        "sand_dunes",
+        "silica_rocks"
+      ],
+      "sourceTargetFeature": "المريخ - فوهتا جيزيرو وغيل ومنطقة أرابيا تيرا",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including basalt_volcanic. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها basalt_volcanic. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "19": [
+    {
+      "body": "mars",
+      "label": "Meridiani Planum candidate",
+      "labelAr": "سهل ميريدياني المقترح",
+      "lat": -2.3,
+      "lon": 0,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "basalt_volcanic",
+        "evaporite_salt",
+        "sand_dunes",
+        "ancient_terrain"
+      ],
+      "sourceTargetFeature": "المريخ - البراكين المعزولة المحاطة بالرماد الداكن والواحات القديمة",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including evaporite_salt. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها evaporite_salt. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "20": [
+    {
+      "body": "mars",
+      "label": "Meridiani Planum candidate",
+      "labelAr": "سهل ميريدياني المقترح",
+      "lat": -2.3,
+      "lon": 0,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "basalt_volcanic",
+        "evaporite_salt"
+      ],
+      "sourceTargetFeature": "المريخ - البراكين الدرعية الضخمة وكالديرات إقليم إليزيوم",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including evaporite_salt. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها evaporite_salt. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "21": [
+    {
+      "body": "mars",
+      "label": "Noachis Terra candidate",
+      "labelAr": "أرض نوكيس المقترحة",
+      "lat": -45,
+      "lon": 20,
+      "radiusKm": 40,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "aeolian_yardang",
+        "sand_dunes"
+      ],
+      "sourceTargetFeature": "المريخ - تشكيلات الياردانغ والصخور المتآكلة في فوهة غيل",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including aeolian_yardang. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها aeolian_yardang. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "22": [
+    {
+      "body": "mars",
+      "label": "Elysium Planitia candidate",
+      "labelAr": "سهل إليسيوم المقترح",
+      "lat": 4.5,
+      "lon": 135.9,
+      "radiusKm": 40,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "basalt_volcanic",
+        "sand_dunes"
+      ],
+      "sourceTargetFeature": "المريخ - السهول البركانية المتآكلة ومناطق الهيماتيت والطين",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including basalt_volcanic. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها basalt_volcanic. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "23": [
+    {
+      "body": "mars",
+      "label": "Meridiani Planum candidate",
+      "labelAr": "سهل ميريدياني المقترح",
+      "lat": -2.3,
+      "lon": 0,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "evaporite_salt",
+        "sand_dunes"
+      ],
+      "sourceTargetFeature": "المريخ - الأحواض التبخيرية والسبخات والطبقات الرسوبية",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including evaporite_salt. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها evaporite_salt. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "24": [
+    {
+      "body": "mars",
+      "label": "Jezero crater candidate",
+      "labelAr": "فوهة جيزيرو المقترحة",
+      "lat": 18.4,
+      "lon": 77.7,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "aeolian_yardang",
+        "paleolake_fluvial",
+        "sand_dunes",
+        "ancient_terrain"
+      ],
+      "sourceTargetFeature": "المريخ - شبكات الأودية النهرية القديمة والتحول الهسبيري-الأمازوني",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including paleolake_fluvial. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها paleolake_fluvial. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "25": [
+    {
+      "body": "moon",
+      "label": "Tycho crater candidate",
+      "labelAr": "فوهة تايكو المقترحة",
+      "lat": -43.3,
+      "lon": -11.2,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "impact_crater",
+        "sand_dunes",
+        "meteorite_analog"
+      ],
+      "sourceTargetFeature": "المريخ والقمر - الصحاري الرملية الحمراء والفوهات التصادمية",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including impact_crater. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها impact_crater. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    },
+    {
+      "body": "mars",
+      "label": "Gale crater candidate",
+      "labelAr": "فوهة غيل المقترحة",
+      "lat": -5.4,
+      "lon": 137.8,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "impact_crater",
+        "sand_dunes",
+        "meteorite_analog"
+      ],
+      "sourceTargetFeature": "المريخ والقمر - الصحاري الرملية الحمراء والفوهات التصادمية",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including impact_crater. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها impact_crater. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "26": [
+    {
+      "body": "mars",
+      "label": "Meridiani Planum candidate",
+      "labelAr": "سهل ميريدياني المقترح",
+      "lat": -2.3,
+      "lon": 0,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "evaporite_salt",
+        "aeolian_yardang",
+        "sand_dunes",
+        "ancient_terrain",
+        "astrobiology"
+      ],
+      "sourceTargetFeature": "المريخ - رواسب البحيرات القديمة والسبخات التبخيرية",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including evaporite_salt. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها evaporite_salt. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "27": [
+    {
+      "body": "moon",
+      "label": "Tycho crater candidate",
+      "labelAr": "فوهة تايكو المقترحة",
+      "lat": -43.3,
+      "lon": -11.2,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "impact_crater",
+        "sand_dunes",
+        "meteorite_analog"
+      ],
+      "sourceTargetFeature": "القمر والمريخ - الفوهات الحديثة ذات بطانيات المقذوفات المزدوجة",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including impact_crater. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها impact_crater. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    },
+    {
+      "body": "mars",
+      "label": "Gale crater candidate",
+      "labelAr": "فوهة غيل المقترحة",
+      "lat": -5.4,
+      "lon": 137.8,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "impact_crater",
+        "sand_dunes",
+        "meteorite_analog"
+      ],
+      "sourceTargetFeature": "القمر والمريخ - الفوهات الحديثة ذات بطانيات المقذوفات المزدوجة",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including impact_crater. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها impact_crater. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "28": [
+    {
+      "body": "moon",
+      "label": "Tycho crater candidate",
+      "labelAr": "فوهة تايكو المقترحة",
+      "lat": -43.3,
+      "lon": -11.2,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "impact_crater",
+        "meteorite_analog"
+      ],
+      "sourceTargetFeature": "القمر والمريخ - مواقع الاصطدامات النيزكية والتحول الصدمي",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including impact_crater. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها impact_crater. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    },
+    {
+      "body": "mars",
+      "label": "Gale crater candidate",
+      "labelAr": "فوهة غيل المقترحة",
+      "lat": -5.4,
+      "lon": 137.8,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "impact_crater",
+        "meteorite_analog"
+      ],
+      "sourceTargetFeature": "القمر والمريخ - مواقع الاصطدامات النيزكية والتحول الصدمي",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including impact_crater. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها impact_crater. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "30": [
+    {
+      "body": "moon",
+      "label": "Tycho crater candidate",
+      "labelAr": "فوهة تايكو المقترحة",
+      "lat": -43.3,
+      "lon": -11.2,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "impact_crater",
+        "sand_dunes",
+        "meteorite_analog"
+      ],
+      "sourceTargetFeature": "القمر والمريخ - الفوهات التصادمية في الأهداف الرملية والرسوبية",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including impact_crater. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها impact_crater. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    },
+    {
+      "body": "mars",
+      "label": "Gale crater candidate",
+      "labelAr": "فوهة غيل المقترحة",
+      "lat": -5.4,
+      "lon": 137.8,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "impact_crater",
+        "sand_dunes",
+        "meteorite_analog"
+      ],
+      "sourceTargetFeature": "القمر والمريخ - الفوهات التصادمية في الأهداف الرملية والرسوبية",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including impact_crater. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها impact_crater. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "31": [
+    {
+      "body": "mars",
+      "label": "Meridiani Planum candidate",
+      "labelAr": "سهل ميريدياني المقترح",
+      "lat": -2.3,
+      "lon": 0,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "basalt_volcanic",
+        "evaporite_salt",
+        "aeolian_yardang",
+        "sand_dunes"
+      ],
+      "sourceTargetFeature": "المريخ - حقول الياردانغ | الزهرة - المناطق البركانية الساخنة",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including evaporite_salt. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها evaporite_salt. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "32": [
+    {
+      "body": "moon",
+      "label": "Apollo 16 lunar highlands candidate",
+      "labelAr": "مرتفعات أبولو 16 القمرية المقترحة",
+      "lat": -8.97,
+      "lon": 15.5,
+      "radiusKm": 30,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "anorthosite",
+        "evaporite_salt",
+        "paleolake_fluvial",
+        "silica_rocks"
+      ],
+      "sourceTargetFeature": "القمر - المرتفعات القمرية | المريخ - البحيرات التبخيرية",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including anorthosite. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها anorthosite. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    },
+    {
+      "body": "mars",
+      "label": "Jezero crater candidate",
+      "labelAr": "فوهة جيزيرو المقترحة",
+      "lat": 18.4,
+      "lon": 77.7,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "anorthosite",
+        "evaporite_salt",
+        "paleolake_fluvial",
+        "silica_rocks"
+      ],
+      "sourceTargetFeature": "القمر - المرتفعات القمرية | المريخ - البحيرات التبخيرية",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including paleolake_fluvial. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها paleolake_fluvial. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "33": [
+    {
+      "body": "moon",
+      "label": "Apollo 16 lunar highlands candidate",
+      "labelAr": "مرتفعات أبولو 16 القمرية المقترحة",
+      "lat": -8.97,
+      "lon": 15.5,
+      "radiusKm": 30,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "anorthosite"
+      ],
+      "sourceTargetFeature": "القمر - المرتفعات القمرية ومناطق الصخور الغنية بالتيتانيوم",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including anorthosite. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها anorthosite. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "34": [
+    {
+      "body": "moon",
+      "label": "Tycho crater candidate",
+      "labelAr": "فوهة تايكو المقترحة",
+      "lat": -43.3,
+      "lon": -11.2,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "impact_crater"
+      ],
+      "sourceTargetFeature": "القمر والمريخ - الفوهات التصادمية ذات القمم المركزية والأحواض",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including impact_crater. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها impact_crater. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    },
+    {
+      "body": "mars",
+      "label": "Gale crater candidate",
+      "labelAr": "فوهة غيل المقترحة",
+      "lat": -5.4,
+      "lon": 137.8,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "impact_crater"
+      ],
+      "sourceTargetFeature": "القمر والمريخ - الفوهات التصادمية ذات القمم المركزية والأحواض",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including impact_crater. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها impact_crater. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "35": [
+    {
+      "body": "moon",
+      "label": "Tycho crater candidate",
+      "labelAr": "فوهة تايكو المقترحة",
+      "lat": -43.3,
+      "lon": -11.2,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "impact_crater"
+      ],
+      "sourceTargetFeature": "القمر والمريخ - الفوهات التصادمية المعقدة الكبرى",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including impact_crater. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها impact_crater. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    },
+    {
+      "body": "mars",
+      "label": "Gale crater candidate",
+      "labelAr": "فوهة غيل المقترحة",
+      "lat": -5.4,
+      "lon": 137.8,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "impact_crater"
+      ],
+      "sourceTargetFeature": "القمر والمريخ - الفوهات التصادمية المعقدة الكبرى",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including impact_crater. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها impact_crater. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "36": [
+    {
+      "body": "moon",
+      "label": "Lunar south-polar highlands candidate",
+      "labelAr": "مرتفعات القطب الجنوبي القمري المقترحة",
+      "lat": -88.5,
+      "lon": 0,
+      "radiusKm": 25,
+      "projection": "south_pole",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "polar_permafrost",
+        "paleolake_fluvial",
+        "glacial_ice"
+      ],
+      "sourceTargetFeature": "القمر والمريخ - الأحواض التصادمية والفوهات الجليدية والانتقالية",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including polar_permafrost. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها polar_permafrost. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    },
+    {
+      "body": "mars",
+      "label": "Jezero crater candidate",
+      "labelAr": "فوهة جيزيرو المقترحة",
+      "lat": 18.4,
+      "lon": 77.7,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "polar_permafrost",
+        "paleolake_fluvial",
+        "glacial_ice"
+      ],
+      "sourceTargetFeature": "القمر والمريخ - الأحواض التصادمية والفوهات الجليدية والانتقالية",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including paleolake_fluvial. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها paleolake_fluvial. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "37": [
+    {
+      "body": "moon",
+      "label": "Tycho crater candidate",
+      "labelAr": "فوهة تايكو المقترحة",
+      "lat": -43.3,
+      "lon": -11.2,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "impact_crater",
+        "sand_dunes",
+        "meteorite_analog"
+      ],
+      "sourceTargetFeature": "القمر والمريخ - الفوهات التصادمية البسيطة",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including impact_crater. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها impact_crater. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    },
+    {
+      "body": "mars",
+      "label": "Gale crater candidate",
+      "labelAr": "فوهة غيل المقترحة",
+      "lat": -5.4,
+      "lon": 137.8,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "impact_crater",
+        "sand_dunes",
+        "meteorite_analog"
+      ],
+      "sourceTargetFeature": "القمر والمريخ - الفوهات التصادمية البسيطة",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including impact_crater. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها impact_crater. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "38": [
+    {
+      "body": "moon",
+      "label": "Apollo 16 lunar highlands candidate",
+      "labelAr": "مرتفعات أبولو 16 القمرية المقترحة",
+      "lat": -8.97,
+      "lon": 15.5,
+      "radiusKm": 30,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "anorthosite",
+        "ancient_terrain"
+      ],
+      "sourceTargetFeature": "القمر والمريخ والزهرة - الأحواض متعددة الحلقات وقشرة الأنورثوزيت",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including anorthosite. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها anorthosite. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    },
+    {
+      "body": "mars",
+      "label": "Noachis Terra candidate",
+      "labelAr": "أرض نوكيس المقترحة",
+      "lat": -45,
+      "lon": 20,
+      "radiusKm": 50,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "anorthosite",
+        "ancient_terrain"
+      ],
+      "sourceTargetFeature": "القمر والمريخ والزهرة - الأحواض متعددة الحلقات وقشرة الأنورثوزيت",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including ancient_terrain. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها ancient_terrain. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "39": [
+    {
+      "body": "moon",
+      "label": "Apollo 16 lunar highlands candidate",
+      "labelAr": "مرتفعات أبولو 16 القمرية المقترحة",
+      "lat": -8.97,
+      "lon": 15.5,
+      "radiusKm": 30,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "impact_crater",
+        "anorthosite",
+        "basalt_volcanic",
+        "ancient_terrain"
+      ],
+      "sourceTargetFeature": "القمر والمريخ والزهرة - القشرة المبكرة وتكتونيات أرتميس كورونا",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including anorthosite. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها anorthosite. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    },
+    {
+      "body": "mars",
+      "label": "Noachis Terra candidate",
+      "labelAr": "أرض نوكيس المقترحة",
+      "lat": -45,
+      "lon": 20,
+      "radiusKm": 50,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "impact_crater",
+        "anorthosite",
+        "basalt_volcanic",
+        "ancient_terrain"
+      ],
+      "sourceTargetFeature": "القمر والمريخ والزهرة - القشرة المبكرة وتكتونيات أرتميس كورونا",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including ancient_terrain. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها ancient_terrain. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "40": [
+    {
+      "body": "moon",
+      "label": "Lunar south-polar highlands candidate",
+      "labelAr": "مرتفعات القطب الجنوبي القمري المقترحة",
+      "lat": -88.5,
+      "lon": 0,
+      "radiusKm": 25,
+      "projection": "south_pole",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "basalt_volcanic",
+        "aeolian_yardang",
+        "polar_permafrost",
+        "sand_dunes",
+        "glacial_ice"
+      ],
+      "sourceTargetFeature": "المريخ - السهول القطبية والتربة الصقيعية | القمر - الفوهات القطبية",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including polar_permafrost. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها polar_permafrost. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    },
+    {
+      "body": "mars",
+      "label": "Arcadia Planitia candidate",
+      "labelAr": "سهل أركاديا المقترح",
+      "lat": 46.7,
+      "lon": -175.7,
+      "radiusKm": 40,
+      "projection": "north_pole",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "basalt_volcanic",
+        "aeolian_yardang",
+        "polar_permafrost",
+        "sand_dunes",
+        "glacial_ice"
+      ],
+      "sourceTargetFeature": "المريخ - السهول القطبية والتربة الصقيعية | القمر - الفوهات القطبية",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including polar_permafrost. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها polar_permafrost. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "41": [
+    {
+      "body": "mars",
+      "label": "Meridiani Planum candidate",
+      "labelAr": "سهل ميريدياني المقترح",
+      "lat": -2.3,
+      "lon": 0,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "basalt_volcanic",
+        "evaporite_salt",
+        "aeolian_yardang",
+        "hydrogen_sulfide",
+        "astrobiology"
+      ],
+      "sourceTargetFeature": "المريخ - البحيرات الملحية الجافة وصخور الفنتيفاكت المتآكلة",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including evaporite_salt. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها evaporite_salt. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "42": [
+    {
+      "body": "mars",
+      "label": "Arcadia Planitia candidate",
+      "labelAr": "سهل أركاديا المقترح",
+      "lat": 46.7,
+      "lon": -175.7,
+      "radiusKm": 40,
+      "projection": "north_pole",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "basalt_volcanic",
+        "aeolian_yardang",
+        "polar_permafrost",
+        "sand_dunes",
+        "glacial_ice",
+        "ancient_terrain"
+      ],
+      "sourceTargetFeature": "المريخ - الكثبان والمسطحات الرملية البازلتية الباردة",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including polar_permafrost. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها polar_permafrost. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "43": [
+    {
+      "body": "moon",
+      "label": "Marius Hills volcanic province candidate",
+      "labelAr": "مقاطعة تلال ماريوس البركانية المقترحة",
+      "lat": 14,
+      "lon": -56,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "basalt_volcanic",
+        "silica_rocks"
+      ],
+      "sourceTargetFeature": "الكواكب الصخرية والزهرة - التركيبات الصهارية غير التقليدية",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including basalt_volcanic. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها basalt_volcanic. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    },
+    {
+      "body": "mars",
+      "label": "Elysium Planitia candidate",
+      "labelAr": "سهل إليسيوم المقترح",
+      "lat": 4.5,
+      "lon": 135.9,
+      "radiusKm": 40,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "basalt_volcanic",
+        "silica_rocks"
+      ],
+      "sourceTargetFeature": "الكواكب الصخرية والزهرة - التركيبات الصهارية غير التقليدية",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including basalt_volcanic. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها basalt_volcanic. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ],
+  "44": [
+    {
+      "body": "mars",
+      "label": "Jezero crater candidate",
+      "labelAr": "فوهة جيزيرو المقترحة",
+      "lat": 18.4,
+      "lon": 77.7,
+      "radiusKm": 35,
+      "projection": "equirectangular",
+      "confidence": "proposed",
+      "derivedFromTags": [
+        "basalt_volcanic",
+        "hydrothermal",
+        "paleolake_fluvial",
+        "silica_rocks",
+        "ancient_terrain"
+      ],
+      "sourceTargetFeature": "المريخ - البحيرات البركانية القديمة داخل الفوهات كفوهة جيزيرو",
+      "rationale": "Candidate region selected from the site's recorded target feature and tags, including paleolake_fluvial. Location and relevance are proposals for scientist review, not verified analog matches.",
+      "rationaleAr": "اختيرت المنطقة المرشحة استناداً إلى خاصية الهدف والوسوم المسجلة، ومنها paleolake_fluvial. الموقع ومدى ملاءمته مقترحان لمراجعة العلماء وليسا تطابقاً موثقاً."
+    }
+  ]
+}

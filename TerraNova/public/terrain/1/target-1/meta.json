@@ -1,0 +1,73 @@
+{
+  "status": "ready",
+  "body": "moon",
+  "label": "Lunar south-polar highlands candidate",
+  "coordinates": {
+    "lat": -88.5,
+    "lon": 0
+  },
+  "confidence": "proposed",
+  "rationale": "Candidate region selected from the site's recorded target feature and tags, including polar_permafrost. Location and relevance are proposals for scientist review, not verified analog matches.",
+  "radiusKm": 25,
+  "patchSizeKm": 68.4956249999999,
+  "resolutionMeters": 267.5610351562496,
+  "bbox": {
+    "matrixSet": "default028mm",
+    "matrix": "5",
+    "row": 15,
+    "column": 16,
+    "resolutionMeters": 267.5610351562496,
+    "tileSizeKm": 68.4956249999999,
+    "projection": "south_pole"
+  },
+  "files": {
+    "texture": "texture.png",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "available": true,
+    "file": "elevation.png",
+    "encoding": "normalized grayscale display values",
+    "units": "0–255 image levels; not elevation units",
+    "min": 0,
+    "max": 237,
+    "relief": 237,
+    "meanSlopeDegrees": null,
+    "histogram": [
+      10352,
+      5022,
+      4837,
+      6389,
+      19952,
+      15784,
+      2406,
+      750
+    ],
+    "sampleCount": 65492,
+    "resolutionMeters": 267.5610351562496,
+    "source": "https://trek.nasa.gov/tiles/Moon/SP/LRO_LOLA_Gray_SPole875_5mp_v04/1.0.0/WMTSCapabilities.xml"
+  },
+  "layers": {
+    "texture": "LRO_LOLA_ClrShade_SPole875_5mp_v04",
+    "elevation": "https://trek.nasa.gov/tiles/Moon/SP/LRO_LOLA_Gray_SPole875_5mp_v04/1.0.0/WMTSCapabilities.xml"
+  },
+  "liveRefreshUrl": "https://trek.nasa.gov/tiles/Moon/SP/LRO_LOLA_ClrShade_SPole875_5mp_v04/1.0.0//default/default028mm/5/15/16.png",
+  "elevationImage": {
+    "url": "https://trek.nasa.gov/tiles/Moon/SP/LRO_LOLA_Gray_SPole875_5mp_v04/1.0.0//default/default028mm/5/15/16.png",
+    "tile": {
+      "matrixSet": "default028mm",
+      "matrix": "5",
+      "row": 15,
+      "column": 16,
+      "resolutionMeters": 267.5610351562496,
+      "tileSizeKm": 68.4956249999999,
+      "projection": "south_pole"
+    },
+    "file": "texture.png",
+    "capabilitiesUrl": "https://trek.nasa.gov/tiles/Moon/SP/LRO_LOLA_Gray_SPole875_5mp_v04/1.0.0/WMTSCapabilities.xml",
+    "layer": "LRO_LOLA_Gray_SPole875_5mp_v04",
+    "imageType": "image/png"
+  },
+  "attribution": "NASA / NASA Trek; layer identifiers and capabilities are recorded in metadata.",
+  "fetchedAt": "2026-10-26T07:34:17.962Z"
+}

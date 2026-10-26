@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "White Desert (Farafra Oasis)",
+  "coordinates": {
+    "lat": 27.2,
+    "lon": 28.1,
+    "confidence": "approximate"
+  },
+  "radiusKm": 17.403992187536844,
+  "patchSizeKm": 34.80798437507369,
+  "resolutionMeters": 135.96868896513158,
+  "bbox": {
+    "west": 27.7734375,
+    "south": 27.059125784374057,
+    "east": 28.125,
+    "north": 27.37176730052304
+  },
+  "tile": {
+    "z": 10,
+    "x": 591,
+    "y": 431
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": 14,
+    "max": 339,
+    "relief": 325,
+    "units": "m",
+    "meanSlopeDegrees": 1.7216536525148487,
+    "histogram": [
+      11458,
+      27126,
+      5405,
+      2494,
+      1773,
+      1646,
+      8435,
+      7199
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:30.491Z"
+}

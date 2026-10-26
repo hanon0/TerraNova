@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Clearwater & Sudbury & Haughton & Gow & Whitecourt",
+  "coordinates": {
+    "lat": 56.1,
+    "lon": -74.3,
+    "confidence": "approximate"
+  },
+  "radiusKm": 10.913888939775818,
+  "patchSizeKm": 21.827777879551636,
+  "resolutionMeters": 85.26475734199857,
+  "bbox": {
+    "west": -74.53125,
+    "south": 55.97379820507658,
+    "east": -74.1796875,
+    "north": 56.170022982932046
+  },
+  "tile": {
+    "z": 10,
+    "x": 300,
+    "y": 318
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": 227.66015625,
+    "max": 399,
+    "relief": 171.33984375,
+    "units": "m",
+    "meanSlopeDegrees": 2.216003898468482,
+    "histogram": [
+      41366,
+      7727,
+      5009,
+      3648,
+      2975,
+      3255,
+      1320,
+      236
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:36.900Z"
+}

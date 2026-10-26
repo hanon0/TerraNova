@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Oddanchatram & Sittampundi Anorthosite Complexes & Sambhar Lake",
+  "coordinates": {
+    "lat": 10.5,
+    "lon": 77.5,
+    "confidence": "approximate"
+  },
+  "radiusKm": 19.240213294337117,
+  "patchSizeKm": 38.480426588674234,
+  "resolutionMeters": 150.31416636200873,
+  "bbox": {
+    "west": 77.34375,
+    "south": 10.487811882056686,
+    "east": 77.6953125,
+    "north": 10.83330598364249
+  },
+  "tile": {
+    "z": 10,
+    "x": 732,
+    "y": 481
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": 211,
+    "max": 528,
+    "relief": 317,
+    "units": "m",
+    "meanSlopeDegrees": 0.8174090101671894,
+    "histogram": [
+      7533,
+      24397,
+      29694,
+      3850,
+      35,
+      13,
+      11,
+      3
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:35.633Z"
+}

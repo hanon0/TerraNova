@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Ana Heva Lava Tube",
+  "coordinates": {
+    "lat": -27.1,
+    "lon": -109.3,
+    "confidence": "approximate"
+  },
+  "radiusKm": 17.41957665942701,
+  "patchSizeKm": 34.83915331885402,
+  "resolutionMeters": 136.09044265177351,
+  "bbox": {
+    "west": -109.3359375,
+    "south": -27.37176730052304,
+    "east": -108.984375,
+    "north": -27.059125784374057
+  },
+  "tile": {
+    "z": 10,
+    "x": 201,
+    "y": 592
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": -3256.76171875,
+    "max": 363,
+    "relief": 3619.76171875,
+    "units": "m",
+    "meanSlopeDegrees": 5.883012208327268,
+    "histogram": [
+      19671,
+      14646,
+      14240,
+      4723,
+      2932,
+      2210,
+      2284,
+      4830
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:23.255Z"
+}

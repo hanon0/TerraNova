@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Manjanggul Cave (Jeju Island)",
+  "coordinates": {
+    "lat": 33.53,
+    "lon": 126.77,
+    "confidence": "approximate"
+  },
+  "radiusKm": 16.311719840013357,
+  "patchSizeKm": 32.62343968002671,
+  "resolutionMeters": 127.43531125010435,
+  "bbox": {
+    "west": 126.5625,
+    "south": 33.43144133557529,
+    "east": 126.9140625,
+    "north": 33.72433966174759
+  },
+  "tile": {
+    "z": 10,
+    "x": 872,
+    "y": 410
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": -144.234375,
+    "max": 678,
+    "relief": 822.234375,
+    "units": "m",
+    "meanSlopeDegrees": 1.4590380840035926,
+    "histogram": [
+      31275,
+      16532,
+      7427,
+      4618,
+      3070,
+      1819,
+      698,
+      97
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:23.281Z"
+}

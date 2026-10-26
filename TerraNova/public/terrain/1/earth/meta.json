@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Mistastin (Kamestastin) Lake Crater",
+  "coordinates": {
+    "lat": 55.88333333333333,
+    "lon": -63.31111111111111,
+    "confidence": "verified"
+  },
+  "radiusKm": 10.975229052735221,
+  "patchSizeKm": 21.950458105470442,
+  "resolutionMeters": 85.74397697449392,
+  "bbox": {
+    "west": -63.6328125,
+    "south": 55.77657301866768,
+    "east": -63.28125,
+    "north": 55.97379820507658
+  },
+  "tile": {
+    "z": 10,
+    "x": 331,
+    "y": 319
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": 335.6015625,
+    "max": 646.953125,
+    "relief": 311.3515625,
+    "units": "m",
+    "meanSlopeDegrees": 2.9866340195301917,
+    "histogram": [
+      18485,
+      10690,
+      12067,
+      12832,
+      7155,
+      3148,
+      931,
+      228
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:13.962Z"
+}

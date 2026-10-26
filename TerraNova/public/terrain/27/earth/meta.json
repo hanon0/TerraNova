@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Tenoumer Crater",
+  "coordinates": {
+    "lat": 22.916666666666668,
+    "lon": -10.4,
+    "confidence": "verified"
+  },
+  "radiusKm": 18.02342909313959,
+  "patchSizeKm": 36.04685818627918,
+  "resolutionMeters": 140.80803979015306,
+  "bbox": {
+    "west": -10.546875,
+    "south": 22.59372606392931,
+    "east": -10.1953125,
+    "north": 22.917922936146034
+  },
+  "tile": {
+    "z": 10,
+    "x": 482,
+    "y": 445
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": 231,
+    "max": 335,
+    "relief": 104,
+    "units": "m",
+    "meanSlopeDegrees": 0.6047427562848345,
+    "histogram": [
+      1026,
+      8724,
+      30830,
+      24587,
+      306,
+      34,
+      20,
+      9
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:33.809Z"
+}

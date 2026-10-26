@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Eastern Sahara AHP Dry River Valleys",
+  "coordinates": {
+    "lat": 22,
+    "lon": 29.5,
+    "confidence": "approximate"
+  },
+  "radiusKm": 18.14302170037255,
+  "patchSizeKm": 36.2860434007451,
+  "resolutionMeters": 141.74235703416056,
+  "bbox": {
+    "west": 29.1796875,
+    "south": 21.943045533438177,
+    "east": 29.53125,
+    "north": 22.268764039073965
+  },
+  "tile": {
+    "z": 10,
+    "x": 595,
+    "y": 447
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": 228,
+    "max": 302,
+    "relief": 74,
+    "units": "m",
+    "meanSlopeDegrees": 0.5120046459053692,
+    "histogram": [
+      2395,
+      11746,
+      16007,
+      15100,
+      10275,
+      6960,
+      2435,
+      618
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:32.904Z"
+}

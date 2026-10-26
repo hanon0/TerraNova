@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Fiskenaesset Anorthosite Complex (FAC)",
+  "coordinates": {
+    "lat": 63.1,
+    "lon": -50.7,
+    "confidence": "approximate"
+  },
+  "radiusKm": 8.853187756252222,
+  "patchSizeKm": 17.706375512504444,
+  "resolutionMeters": 69.16552934572049,
+  "bbox": {
+    "west": -50.9765625,
+    "south": 63.07486569058663,
+    "east": -50.625,
+    "north": 63.23362741232568
+  },
+  "tile": {
+    "z": 10,
+    "x": 367,
+    "y": 278
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": -25.73046875,
+    "max": 261.55859375,
+    "relief": 287.2890625,
+    "units": "m",
+    "meanSlopeDegrees": 0.7828953668519893,
+    "histogram": [
+      38308,
+      17056,
+      4338,
+      2996,
+      1226,
+      658,
+      559,
+      395
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:13.896Z"
+}

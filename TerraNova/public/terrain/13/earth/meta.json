@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Qaidam Basin & Dalangtan & Aiken Spring",
+  "coordinates": {
+    "lat": 37.2,
+    "lon": 95,
+    "confidence": "approximate"
+  },
+  "radiusKm": 15.586401247745181,
+  "patchSizeKm": 31.172802495490362,
+  "resolutionMeters": 121.76875974800923,
+  "bbox": {
+    "west": 94.921875,
+    "south": 37.160316546736766,
+    "east": 95.2734375,
+    "north": 37.43997405227058
+  },
+  "tile": {
+    "z": 10,
+    "x": 782,
+    "y": 397
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": 2681,
+    "max": 3315,
+    "relief": 634,
+    "units": "m",
+    "meanSlopeDegrees": 1.6039476257143455,
+    "histogram": [
+      15188,
+      18852,
+      8844,
+      7090,
+      7000,
+      5542,
+      2483,
+      537
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:26.176Z"
+}

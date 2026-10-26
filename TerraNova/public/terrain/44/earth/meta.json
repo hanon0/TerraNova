@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Lake Bagno dell'Acqua (Pantelleria)",
+  "coordinates": {
+    "lat": 36.8,
+    "lon": 12,
+    "confidence": "approximate"
+  },
+  "radiusKm": 15.668614771209295,
+  "patchSizeKm": 31.33722954241859,
+  "resolutionMeters": 122.41105290007262,
+  "bbox": {
+    "west": 11.953125,
+    "south": 36.59788913307021,
+    "east": 12.3046875,
+    "north": 36.87962060502676
+  },
+  "tile": {
+    "z": 10,
+    "x": 546,
+    "y": 399
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": -1397.7265625,
+    "max": 814.76171875,
+    "relief": 2212.48828125,
+    "units": "m",
+    "meanSlopeDegrees": 4.701165769331304,
+    "histogram": [
+      24597,
+      18948,
+      7996,
+      4248,
+      3710,
+      4071,
+      1699,
+      267
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:40.128Z"
+}

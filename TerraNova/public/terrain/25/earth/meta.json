@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Tadrart Rouge & Talemzane Crater",
+  "coordinates": {
+    "lat": 24.8,
+    "lon": 9,
+    "confidence": "approximate"
+  },
+  "radiusKm": 17.763280077636075,
+  "patchSizeKm": 35.52656015527215,
+  "resolutionMeters": 138.77562560653183,
+  "bbox": {
+    "west": 8.7890625,
+    "south": 24.5271348225978,
+    "east": 9.140625,
+    "north": 24.84656534821974
+  },
+  "tile": {
+    "z": 10,
+    "x": 537,
+    "y": 439
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": 988,
+    "max": 1543,
+    "relief": 555,
+    "units": "m",
+    "meanSlopeDegrees": 3.144167270740008,
+    "histogram": [
+      14057,
+      33173,
+      14070,
+      2704,
+      1103,
+      320,
+      83,
+      26
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:33.720Z"
+}

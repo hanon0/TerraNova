@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Goat Paddock & Mount Narryer & Pilbara",
+  "coordinates": {
+    "lat": -22.8,
+    "lon": 116.8,
+    "confidence": "approximate"
+  },
+  "radiusKm": 18.038906827016177,
+  "patchSizeKm": 36.077813654032354,
+  "resolutionMeters": 140.92895958606388,
+  "bbox": {
+    "west": 116.71875,
+    "south": -22.917922936146034,
+    "east": 117.0703125,
+    "north": -22.59372606392931
+  },
+  "tile": {
+    "z": 10,
+    "x": 844,
+    "y": 578
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": 226,
+    "max": 930,
+    "relief": 704,
+    "units": "m",
+    "meanSlopeDegrees": 4.978276605200673,
+    "histogram": [
+      8324,
+      14354,
+      19731,
+      15846,
+      5043,
+      1725,
+      474,
+      39
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:37.905Z"
+}

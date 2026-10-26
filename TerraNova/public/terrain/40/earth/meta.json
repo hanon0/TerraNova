@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Antarctic Dry Valleys & Ventifact Knobs",
+  "coordinates": {
+    "lat": -77.5,
+    "lon": 162,
+    "confidence": "approximate"
+  },
+  "radiusKm": 4.235264228510567,
+  "patchSizeKm": 8.470528457021134,
+  "resolutionMeters": 33.0880017852388,
+  "bbox": {
+    "west": 161.71875,
+    "south": -77.54209596075546,
+    "east": 162.0703125,
+    "north": -77.46602847687328
+  },
+  "tile": {
+    "z": 10,
+    "x": 972,
+    "y": 872
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": 87.703125,
+    "max": 1321.76953125,
+    "relief": 1234.06640625,
+    "units": "m",
+    "meanSlopeDegrees": 9.074605616407961,
+    "histogram": [
+      15680,
+      8440,
+      6559,
+      11202,
+      7933,
+      5386,
+      5535,
+      4801
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:38.114Z"
+}

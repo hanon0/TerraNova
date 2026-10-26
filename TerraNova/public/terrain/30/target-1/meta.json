@@ -1,0 +1,38 @@
+{
+  "status": "ready",
+  "body": "moon",
+  "label": "Tycho crater candidate",
+  "coordinates": {
+    "lat": -43.3,
+    "lon": -11.2
+  },
+  "confidence": "proposed",
+  "rationale": "Candidate region selected from the site's recorded target feature and tags, including impact_crater. Location and relevance are proposals for scientist review, not verified analog matches.",
+  "radiusKm": 35,
+  "patchSizeKm": 85.28442306792041,
+  "resolutionMeters": 333.14227760906414,
+  "bbox": {
+    "matrixSet": "default028mm",
+    "matrix": "6",
+    "row": 47,
+    "column": 60,
+    "resolutionMeters": 333.14227760906414,
+    "tileSizeKm": 85.28442306792041,
+    "projection": "equirectangular"
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": null
+  },
+  "elevation": {
+    "available": false,
+    "reason": "A numeric elevation layer is not available for this body and projection."
+  },
+  "layers": {
+    "texture": "LRO_WAC_Mosaic_Global_303ppd_v02",
+    "elevation": null
+  },
+  "liveRefreshUrl": "https://trek.nasa.gov/tiles/Moon/EQ/LRO_WAC_Mosaic_Global_303ppd_v02/1.0.0//default/default028mm/6/47/60.jpg",
+  "attribution": "NASA / NASA Trek; layer identifiers and capabilities are recorded in metadata.",
+  "fetchedAt": "2026-10-26T07:34:34.789Z"
+}

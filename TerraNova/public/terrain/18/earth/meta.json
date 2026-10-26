@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Bayuda Volcanic Field & El Muweilih Crater",
+  "coordinates": {
+    "lat": 17.5,
+    "lon": 32.5,
+    "confidence": "approximate"
+  },
+  "radiusKm": 18.66221812234093,
+  "patchSizeKm": 37.32443624468186,
+  "resolutionMeters": 145.79857908078853,
+  "bbox": {
+    "west": 32.34375,
+    "south": 17.308687886770024,
+    "east": 32.6953125,
+    "north": 17.644022027872726
+  },
+  "tile": {
+    "z": 10,
+    "x": 604,
+    "y": 461
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": 342,
+    "max": 495,
+    "relief": 153,
+    "units": "m",
+    "meanSlopeDegrees": 1.2511643403923005,
+    "histogram": [
+      1941,
+      8537,
+      14368,
+      17173,
+      14541,
+      7038,
+      1780,
+      158
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:28.213Z"
+}

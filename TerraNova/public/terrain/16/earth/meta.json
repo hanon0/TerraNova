@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Lost Hammer Spring (Axel Heiberg Island)",
+  "coordinates": {
+    "lat": 79.4,
+    "lon": -90.7,
+    "confidence": "approximate"
+  },
+  "radiusKm": 3.5995378150094988,
+  "patchSizeKm": 7.1990756300189975,
+  "resolutionMeters": 28.12138917976171,
+  "bbox": {
+    "west": -90.703125,
+    "south": 79.36770077764092,
+    "east": -90.3515625,
+    "north": 79.43237075914709
+  },
+  "tile": {
+    "z": 10,
+    "x": 254,
+    "y": 124
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": 16.1796875,
+    "max": 1014.8828125,
+    "relief": 998.703125,
+    "units": "m",
+    "meanSlopeDegrees": 11.743436862448823,
+    "histogram": [
+      15047,
+      11546,
+      10372,
+      12916,
+      5484,
+      6201,
+      3635,
+      335
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:28.260Z"
+}

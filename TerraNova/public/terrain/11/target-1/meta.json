@@ -1,0 +1,38 @@
+{
+  "status": "ready",
+  "body": "moon",
+  "label": "Marius Hills candidate",
+  "coordinates": {
+    "lat": 14,
+    "lon": -56
+  },
+  "confidence": "proposed",
+  "rationale": "Candidate region selected from the site's recorded target feature and tags, including lava_tube. Location and relevance are proposals for scientist review, not verified analog matches.",
+  "radiusKm": 30,
+  "patchSizeKm": 42.64221153396021,
+  "resolutionMeters": 166.57113880453207,
+  "bbox": {
+    "matrixSet": "default028mm",
+    "matrix": "7",
+    "row": 54,
+    "column": 88,
+    "resolutionMeters": 166.57113880453207,
+    "tileSizeKm": 42.64221153396021,
+    "projection": "equirectangular"
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": null
+  },
+  "elevation": {
+    "available": false,
+    "reason": "A numeric elevation layer is not available for this body and projection."
+  },
+  "layers": {
+    "texture": "LRO_WAC_Mosaic_Global_303ppd_v02",
+    "elevation": null
+  },
+  "liveRefreshUrl": "https://trek.nasa.gov/tiles/Moon/EQ/LRO_WAC_Mosaic_Global_303ppd_v02/1.0.0//default/default028mm/7/54/88.jpg",
+  "attribution": "NASA / NASA Trek; layer identifiers and capabilities are recorded in metadata.",
+  "fetchedAt": "2026-10-26T07:34:25.099Z"
+}

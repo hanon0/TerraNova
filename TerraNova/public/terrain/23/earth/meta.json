@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Siwa Oasis & Marmarica Formation",
+  "coordinates": {
+    "lat": 29.2,
+    "lon": 25.5,
+    "confidence": "approximate"
+  },
+  "radiusKm": 17.081233794822978,
+  "patchSizeKm": 34.162467589645956,
+  "resolutionMeters": 133.44713902205453,
+  "bbox": {
+    "west": 25.3125,
+    "south": 28.92163128242129,
+    "east": 25.6640625,
+    "north": 29.22889003019423
+  },
+  "tile": {
+    "z": 10,
+    "x": 584,
+    "y": 425
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": -444,
+    "max": 514,
+    "relief": 958,
+    "units": "m",
+    "meanSlopeDegrees": 2.0259495497143702,
+    "histogram": [
+      1,
+      1,
+      2,
+      23204,
+      42326,
+      1,
+      0,
+      1
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:32.801Z"
+}

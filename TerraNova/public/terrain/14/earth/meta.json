@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Makgadikgadi Salt Pans (Sua, Ntwetwe, Nxai)",
+  "coordinates": {
+    "lat": -20.8,
+    "lon": 25.5,
+    "confidence": "verified"
+  },
+  "radiusKm": 18.292555947108145,
+  "patchSizeKm": 36.58511189421629,
+  "resolutionMeters": 142.91059333678237,
+  "bbox": {
+    "west": 25.3125,
+    "south": -20.961439614096836,
+    "east": 25.6640625,
+    "north": -20.632784250388017
+  },
+  "tile": {
+    "z": 10,
+    "x": 584,
+    "y": 572
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": 811,
+    "max": 1004,
+    "relief": 193,
+    "units": "m",
+    "meanSlopeDegrees": 0.12772884251689479,
+    "histogram": [
+      3,
+      2,
+      1,
+      59895,
+      5625,
+      4,
+      2,
+      4
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:25.984Z"
+}

@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Jingpo Lake Volcanic Field (JLVF)",
+  "coordinates": {
+    "lat": 44,
+    "lon": 128.9,
+    "confidence": "approximate"
+  },
+  "radiusKm": 14.075954346275461,
+  "patchSizeKm": 28.151908692550922,
+  "resolutionMeters": 109.96839333027704,
+  "bbox": {
+    "west": 128.671875,
+    "south": 43.834526782236836,
+    "east": 129.0234375,
+    "north": 44.08758502824516
+  },
+  "tile": {
+    "z": 10,
+    "x": 878,
+    "y": 372
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": -513,
+    "max": 972,
+    "relief": 1485,
+    "units": "m",
+    "meanSlopeDegrees": 8.486465271437918,
+    "histogram": [
+      3,
+      1,
+      3,
+      4,
+      20267,
+      33013,
+      11366,
+      879
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:18.901Z"
+}

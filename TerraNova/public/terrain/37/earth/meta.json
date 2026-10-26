@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Meteor (Barringer) Crater",
+  "coordinates": {
+    "lat": 35.03,
+    "lon": -111.02,
+    "confidence": "approximate"
+  },
+  "radiusKm": 16.023189383512456,
+  "patchSizeKm": 32.04637876702491,
+  "resolutionMeters": 125.18116705869106,
+  "bbox": {
+    "west": -111.09375,
+    "south": 34.885930940753155,
+    "east": -110.7421875,
+    "north": 35.17380831799958
+  },
+  "tile": {
+    "z": 10,
+    "x": 196,
+    "y": 405
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": 1452,
+    "max": 1952,
+    "relief": 500,
+    "units": "m",
+    "meanSlopeDegrees": 1.1557305216266314,
+    "histogram": [
+      12639,
+      15524,
+      15396,
+      12896,
+      7120,
+      1440,
+      471,
+      50
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:36.960Z"
+}

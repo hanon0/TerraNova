@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Santa Cruz & Volcán Trillizo Lava Tubes (Galápagos)",
+  "coordinates": {
+    "lat": -0.63,
+    "lon": -90.35,
+    "confidence": "approximate"
+  },
+  "radiusKm": 19.56669634865725,
+  "patchSizeKm": 39.1333926973145,
+  "resolutionMeters": 152.86481522388476,
+  "bbox": {
+    "west": -90.3515625,
+    "south": -0.7031073524364867,
+    "east": -90,
+    "north": -0.35156029399227234
+  },
+  "tile": {
+    "z": 10,
+    "x": 255,
+    "y": 513
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": -1510,
+    "max": 2115,
+    "relief": 3625,
+    "units": "m",
+    "meanSlopeDegrees": 2.8293321620650045,
+    "histogram": [
+      4412,
+      14467,
+      12431,
+      30783,
+      3388,
+      51,
+      2,
+      2
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:25.306Z"
+}

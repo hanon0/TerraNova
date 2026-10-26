@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Araguainha Impact Structure",
+  "coordinates": {
+    "lat": -16.8,
+    "lon": -52.8,
+    "confidence": "approximate"
+  },
+  "radiusKm": 18.732712322767192,
+  "patchSizeKm": 37.465424645534384,
+  "resolutionMeters": 146.34931502161868,
+  "bbox": {
+    "west": -53.0859375,
+    "south": -16.97274101999902,
+    "east": -52.734375,
+    "north": -16.636191878397657
+  },
+  "tile": {
+    "z": 10,
+    "x": 361,
+    "y": 560
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": 400,
+    "max": 777,
+    "relief": 377,
+    "units": "m",
+    "meanSlopeDegrees": 3.59701494246214,
+    "histogram": [
+      6531,
+      27933,
+      18049,
+      7670,
+      2764,
+      1712,
+      689,
+      188
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:37.040Z"
+}

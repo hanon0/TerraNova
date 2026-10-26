@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Chott el Jerid & Chott el Gharsa",
+  "coordinates": {
+    "lat": 33.8,
+    "lon": 8.4,
+    "confidence": "approximate"
+  },
+  "radiusKm": 16.260603745910785,
+  "patchSizeKm": 32.52120749182157,
+  "resolutionMeters": 127.03596676492802,
+  "bbox": {
+    "west": 8.0859375,
+    "south": 33.72433966174759,
+    "east": 8.4375,
+    "north": 34.016241889667015
+  },
+  "tile": {
+    "z": 10,
+    "x": 535,
+    "y": 409
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": -12,
+    "max": 137,
+    "relief": 149,
+    "units": "m",
+    "meanSlopeDegrees": 0.6635573240330215,
+    "histogram": [
+      410,
+      55006,
+      3716,
+      2101,
+      2273,
+      1183,
+      542,
+      305
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:33.868Z"
+}

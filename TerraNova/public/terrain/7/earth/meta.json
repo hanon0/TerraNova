@@ -1,0 +1,52 @@
+{
+  "status": "ready",
+  "body": "earth",
+  "name": "Kazumura Cave & Nahuku-Thurston & HI-SEAS",
+  "coordinates": {
+    "lat": 19.379,
+    "lon": -155.078,
+    "confidence": "verified"
+  },
+  "radiusKm": 18.459248088742953,
+  "patchSizeKm": 36.918496177485906,
+  "resolutionMeters": 144.2128756933043,
+  "bbox": {
+    "west": -155.390625,
+    "south": 19.31114335506464,
+    "east": -155.0390625,
+    "north": 19.642587534013032
+  },
+  "tile": {
+    "z": 10,
+    "x": 70,
+    "y": 455
+  },
+  "files": {
+    "texture": "texture.jpg",
+    "elevation": "elevation.png"
+  },
+  "elevation": {
+    "min": -444.70703125,
+    "max": 2345,
+    "relief": 2789.70703125,
+    "units": "m",
+    "meanSlopeDegrees": 3.401360945502314,
+    "histogram": [
+      28,
+      2657,
+      11364,
+      20574,
+      16649,
+      7691,
+      4919,
+      1654
+    ],
+    "sampleCount": 65536
+  },
+  "layers": {
+    "texture": "Esri World Hillshade raster tile",
+    "elevation": "AWS Terrarium elevation tile"
+  },
+  "attribution": "World Hillshade © Esri; elevation © AWS Terrain Tiles (Terrarium encoding).",
+  "fetchedAt": "2026-10-26T07:34:23.053Z"
+}
