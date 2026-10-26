@@ -4,6 +4,7 @@ import fieldNotesData from './data/field-notes.json'
 import presetData from './data/presets.json'
 import provenanceData from './data/provenance.json'
 import siteLogisticsData from './data/site-logistics.json'
+import analogTargetPairs from './data/analog-target-pairs.json'
 import { TAGS } from './data/tag-definitions.js'
 import { rankAnalogs } from './lib/similarity.js'
 import { locationConfidence } from './lib/locationConfidence.js'
@@ -20,17 +21,24 @@ import ContributePage from './ContributePage.jsx'
 import ReviewPage from './ReviewPage.jsx'
 import MissionPlanner from './MissionPlanner.jsx'
 import WeatherCard from './WeatherCard.jsx'
+import { motion } from 'framer-motion'
 import './App.css'
 
 const TerrainMap = lazy(() => import('./TerrainMap.jsx'))
 const Compare3DPage = lazy(() => import('./Compare3DPage.jsx'))
-const HeroScene = lazy(() => import('./HeroScene.jsx'))
+const PlanetBento = lazy(() => import('./PlanetBento.jsx'))
 
 const analogs = analogSiteSchema.array().parse(analogData)
 const presets = presetSchema.array().parse(presetData)
 const provenance = provenanceSchema.parse(provenanceData)
 const fieldNotes = fieldNoteSchema.array().parse(fieldNotesData)
 const siteLogistics = siteLogisticsSchema.array().parse(siteLogisticsData)
+
+function analogTargetPairsCount(targetBody) {
+  return Object.values(analogTargetPairs)
+    .flat()
+    .filter(({ body: candidateBody }) => candidateBody === targetBody).length
+}
 
 const COPY = {
   en: {
@@ -41,6 +49,7 @@ const COPY = {
     community: 'Community',
     communityStorageError: 'Community submissions unavailable',
     body: 'Target body',
+    earth: 'Earth',
     moon: 'Moon',
     mars: 'Mars',
     both: 'Both',
@@ -60,12 +69,13 @@ const COPY = {
     stopDraw: 'Cancel drawing',
     mapTitle: 'Global analog field sites',
     mapHint: 'Select a marker to inspect a site. Drag on the map to draw an area.',
-    map2d: '2D map',
-    map3d: '3D terrain',
-    map3dLoading: 'Loading 3D terrain map…',
-    mapUnavailable: '3D terrain is unavailable on this device; the 2D map is shown instead.',
-    mapSlow: '3D terrain took too long to initialize; the 2D map is shown instead.',
-    mapInitializationError: '3D terrain could not initialize; the 2D map is shown instead.',
+    map2d: 'Earth map',
+    satellite: 'Satellite',
+    map3d: '3D planets',
+    map3dLoading: 'Loading planetary models…',
+    mapUnavailable: '3D is unavailable on this device; static planetary previews are shown.',
+    mapSlow: '3D performance is low; static previews are shown for smaller planets.',
+    mapInitializationError: '3D could not initialize; static planetary previews are shown.',
     mapTilesError: 'A map or terrain tile could not be loaded. Check the network and try again.',
     terrainCompanion: 'NASA Trek planetary imagery',
     moonMapPlaceholder:
@@ -78,6 +88,7 @@ const COPY = {
       'Earth terrain uses AWS Terrain Tiles (Terrarium) and OpenStreetMap. Planetary layers use NASA Trek and keep their own projection.',
     approximateBadge: 'Approximate location',
     verifiedBadge: 'Verified location',
+    proposedBadge: 'Proposed planetary target',
     noMap: 'No mapped location',
     match: 'Tag match',
     matched: 'Matched',
@@ -139,6 +150,7 @@ const COPY = {
     community: 'مجتمعي',
     communityStorageError: 'المساهمات المجتمعية غير متاحة',
     body: 'الجرم المستهدف',
+    earth: 'الأرض',
     moon: 'القمر',
     mars: 'المريخ',
     both: 'كلاهما',
@@ -158,13 +170,14 @@ const COPY = {
     stopDraw: 'إلغاء الرسم',
     mapTitle: 'مواقع المحاكاة الكوكبية حول العالم',
     mapHint: 'اختر علامة لعرض الموقع. اسحب على الخريطة لرسم منطقة.',
-    map2d: 'خريطة ثنائية الأبعاد',
-    map3d: 'تضاريس ثلاثية الأبعاد',
-    map3dLoading: 'جارٍ تحميل خريطة التضاريس ثلاثية الأبعاد…',
+    map2d: 'خريطة الأرض',
+    satellite: 'القمر الصناعي',
+    map3d: 'الكواكب ثلاثية الأبعاد',
+    map3dLoading: 'جارٍ تحميل النماذج الكوكبية…',
     mapUnavailable:
-      'التضاريس ثلاثية الأبعاد غير متاحة على هذا الجهاز؛ تُعرض الخريطة الثنائية الأبعاد.',
-    mapSlow: 'استغرق تشغيل التضاريس ثلاثية الأبعاد وقتاً طويلاً؛ تُعرض الخريطة الثنائية الأبعاد.',
-    mapInitializationError: 'تعذر تشغيل التضاريس ثلاثية الأبعاد؛ تُعرض الخريطة الثنائية الأبعاد.',
+      'العرض ثلاثي الأبعاد غير متاح؛ تُعرض معاينات كوكبية ثابتة.',
+    mapSlow: 'الأداء ثلاثي الأبعاد منخفض؛ تُعرض معاينات ثابتة للكواكب الصغيرة.',
+    mapInitializationError: 'تعذر تشغيل العرض ثلاثي الأبعاد؛ تُعرض معاينات كوكبية ثابتة.',
     mapTilesError: 'تعذر تحميل إحدى بلاطات الخريطة أو التضاريس. تحقق من الشبكة وحاول مجدداً.',
     terrainCompanion: 'صور NASA Trek للكواكب',
     moonMapPlaceholder:
@@ -177,6 +190,7 @@ const COPY = {
       'تستخدم تضاريس الأرض AWS Terrain Tiles بترميز Terrarium وOpenStreetMap. وتحتفظ طبقات الكواكب بإسقاط NASA Trek الخاص بها.',
     approximateBadge: 'موقع تقريبي',
     verifiedBadge: 'موقع موثق',
+    proposedBadge: 'منطقة كوكبية مقترحة',
     noMap: 'لا يوجد موقع على الخريطة',
     match: 'تطابق الخصائص',
     matched: 'متطابقة',
@@ -292,7 +306,8 @@ function ExplorerApp() {
   const [mobilePanel, setMobilePanel] = useState('map')
   const [isSidePanelOpen, setIsSidePanelOpen] = useState(true)
   const [mapDimensions, setMapDimensions] = useState({ width: 0, height: 0 })
-  const [mapMode, setMapMode] = useState('2d')
+  const [mainBody, setMainBody] = useState('earth')
+  const [mapMode, setMapMode] = useState('3d')
   const [mapNotice, setMapNotice] = useState('')
   const mapCanvasRef = useRef(null)
   const t = COPY[language]
@@ -344,6 +359,11 @@ function ExplorerApp() {
   const countries = [...new Set(siteRecords.map(getCountry))].sort()
   const tagNames = new Map(TAGS.map(([id, en, ar]) => [id, language === 'ar' ? ar : en]))
   const selectedSite = selectedMatch?.site
+  const selectedPlanetCandidate =
+    mainBody === 'earth'
+      ? null
+      : (analogTargetPairs[selectedSite?.id]?.find(({ body: targetBody }) => targetBody === mainBody) ??
+        null)
   const selectedFieldNotes = fieldNotes.find(({ siteId }) => siteId === selectedSite?.id)
   const selectedLogistics = siteLogistics.find(({ siteId }) => siteId === selectedSite?.id)
   const terrainMarkers = useMemo(
@@ -436,6 +456,17 @@ function ExplorerApp() {
     setAreaSites([])
   }
 
+  function selectMainBody(nextBody) {
+    setMainBody(nextBody)
+    setIsDrawing(false)
+    setDrawArea(null)
+    setAreaSites([])
+    if (nextBody !== 'earth') {
+      setMapMode('3d')
+      setMapNotice('')
+    }
+  }
+
   function handleTerrainFallback(reason) {
     setMapMode('2d')
     setIsDrawing(false)
@@ -512,6 +543,18 @@ function ExplorerApp() {
           </a>
         </nav>
         <div className="top-actions">
+          <div className="planet-selector" role="group" aria-label="Focus planet">
+            {['earth', 'moon', 'mars'].map((planet) => (
+              <button
+                key={planet}
+                type="button"
+                aria-pressed={mainBody === planet}
+                onClick={() => selectMainBody(planet)}
+              >
+                {t[planet]}
+              </button>
+            ))}
+          </div>
           <span className="dataset-status">
             <span /> {analogs.length} {t.verifiedRecords.toLowerCase()}
           </span>
@@ -528,12 +571,6 @@ function ExplorerApp() {
         <p className="community-storage-alert" role="alert">
           {t.communityStorageError}: {communityState.error}
         </p>
-      )}
-
-      {page === 'explorer' && (
-        <Suspense fallback={<section className="hero-scene hero-scene-loading" aria-hidden="true" />}>
-          <HeroScene />
-        </Suspense>
       )}
 
       {page === 'methodology' ? (
@@ -757,15 +794,7 @@ function ExplorerApp() {
                     >
                       {t.mobileFilters}
                     </button>
-                    <div className="map-mode-switch" role="group" aria-label="Map view">
-                      <button
-                        type="button"
-                        aria-pressed={mapMode === '2d'}
-                        className={mapMode === '2d' ? 'active' : ''}
-                        onClick={() => selectMapMode('2d')}
-                      >
-                        {t.map2d}
-                      </button>
+                    <div className="map-mode-switch" role="group" aria-label="Planet and map view">
                       <button
                         type="button"
                         aria-pressed={mapMode === '3d'}
@@ -774,41 +803,71 @@ function ExplorerApp() {
                       >
                         {t.map3d}
                       </button>
+                      <button
+                        type="button"
+                        aria-pressed={mapMode === '2d'}
+                        className={mapMode === '2d' ? 'active' : ''}
+                        onClick={() => {
+                          selectMainBody('earth')
+                          selectMapMode('2d')
+                        }}
+                      >
+                        {t.map2d}
+                      </button>
+                      <button
+                        type="button"
+                        aria-pressed={mapMode === 'satellite'}
+                        className={mapMode === 'satellite' ? 'active' : ''}
+                        onClick={() => {
+                          selectMainBody('earth')
+                          selectMapMode('satellite')
+                        }}
+                      >
+                        {t.satellite}
+                      </button>
                     </div>
-                    <button
-                      type="button"
-                      className={isDrawing ? 'draw-button active' : 'draw-button'}
-                      onClick={() => {
-                        setIsDrawing(!isDrawing)
-                        setDrawArea(null)
-                        setAreaSites([])
-                      }}
-                    >
-                      {isDrawing ? (
-                        t.stopDraw
-                      ) : (
-                        <>
-                          <DrawIcon /> {t.area}
-                        </>
-                      )}
-                    </button>
+                    {mapMode !== '3d' && (
+                      <button
+                        type="button"
+                        className={isDrawing ? 'draw-button active' : 'draw-button'}
+                        onClick={() => {
+                          setIsDrawing(!isDrawing)
+                          setDrawArea(null)
+                          setAreaSites([])
+                        }}
+                      >
+                        {isDrawing ? (
+                          t.stopDraw
+                        ) : (
+                          <>
+                            <DrawIcon /> {t.area}
+                          </>
+                        )}
+                      </button>
+                    )}
                   </div>
                 </div>
                 <div className="map-legend">
-                  <span>
-                    <i className="legend-dot verified-dot" />
-                    {t.verifiedBadge}
-                  </span>
-                  <span>
-                    <i className="legend-dot approximate-dot" />
-                    {t.approximateBadge}
-                  </span>
+                  {mainBody === 'earth' ? (
+                    <>
+                      <span>
+                        <i className="legend-dot verified-dot" />
+                        {t.verifiedBadge}
+                      </span>
+                      <span>
+                        <i className="legend-dot approximate-dot" />
+                        {t.approximateBadge}
+                      </span>
+                    </>
+                  ) : (
+                    <span>
+                      <i className="legend-dot approximate-dot" />
+                      {t.proposedBadge}
+                    </span>
+                  )}
                   <span className="map-count">
-                    {
-                      filtered.filter(({ site }) => site.locations.some(({ lat }) => lat !== null))
-                        .length
-                    }{' '}
-                    {t.locations}
+                    {mainBody === 'earth' ? terrainMarkers.length : analogTargetPairsCount(mainBody)}{' '}
+                    {mainBody === 'earth' ? t.locations : t.proposedBadge}
                   </span>
                 </div>
                 <div
@@ -817,7 +876,19 @@ function ExplorerApp() {
                   data-map-width={mapDimensions.width}
                   data-map-height={mapDimensions.height}
                 >
-                  {mapMode === '2d' ? (
+                  {mapMode === '3d' ? (
+                    <Suspense
+                      fallback={<div className="terrain-map-loading">{t.map3dLoading}</div>}
+                    >
+                      <PlanetBento
+                        mainBody={mainBody}
+                        onMainBodyChange={selectMainBody}
+                        markers={terrainMarkers}
+                        selectedSiteId={selectedSite?.id}
+                        onSelectSite={setSelectedId}
+                      />
+                    </Suspense>
+                  ) : mapMode === '2d' ? (
                     <svg
                       viewBox="0 0 900 420"
                       preserveAspectRatio="none"
@@ -910,10 +981,12 @@ function ExplorerApp() {
                       fallback={<div className="terrain-map-loading">{t.map3dLoading}</div>}
                     >
                       <TerrainMap
+                        key={mapMode}
                         markers={terrainMarkers}
                         selectedSiteId={selectedSite?.id}
                         isDrawing={isDrawing}
                         language={language}
+                        isSatellite={mapMode === 'satellite'}
                         onSelectSite={setSelectedId}
                         onDrawArea={handleTerrainArea}
                         onFallback={handleTerrainFallback}
@@ -936,7 +1009,7 @@ function ExplorerApp() {
                   </p>
                 )}
 
-                {(mapMode === '3d' || mapNotice) && (
+                {mapNotice && (
                   <section className="terrain-companion">
                     <div>
                       <h3>{t.terrainCompanion}</h3>
@@ -1026,10 +1099,20 @@ function ExplorerApp() {
                   </div>
                 </section>
                 {selectedSite && (
-                  <section className="detail-panel">
+                  <motion.section
+                    key={`${mainBody}-${selectedSite.id}`}
+                    layout
+                    className="detail-panel"
+                    data-focused-body={mainBody}
+                    initial={{ opacity: 0, x: 10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.22 }}
+                  >
                     <div className="detail-top">
                       <span className="eyebrow">
-                        {selectedSite.isCommunity
+                        {mainBody !== 'earth'
+                          ? `${t[mainBody].toUpperCase()} · ${selectedPlanetCandidate ? 'PROPOSED TARGET' : 'NO MATCHED TARGET'}`
+                          : selectedSite.isCommunity
                           ? t.communityBadge.toUpperCase()
                           : `SITE ${String(selectedSite.id).padStart(2, '0')}`}
                       </span>
@@ -1202,7 +1285,7 @@ function ExplorerApp() {
                         </a>
                       </>
                     )}
-                  </section>
+                  </motion.section>
                 )}
               </div>
             </section>

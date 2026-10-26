@@ -43,8 +43,8 @@ for (const viewport of viewports) {
     await page.goto('/')
     await expect(page.locator('.brand-loader')).toHaveCount(0)
     await expect(page.locator('.topbar')).toBeVisible()
-    await expect(page.locator('.hero-static-system')).toBeVisible()
-    await expect(page.locator('.hero-canvas-wrap canvas')).toHaveCount(0)
+    await expect(page.locator('.planet-bento')).toBeVisible()
+    await expect(page.locator('.planet-bento canvas[data-planetary-canvas]')).toHaveCount(1)
     await expect(page.locator('.map-canvas')).toBeVisible()
 
     const horizontalOverflow = await page.evaluate(
@@ -64,15 +64,6 @@ for (const viewport of viewports) {
     })
   })
 }
-
-test('planetary hero loads the WebGL scene only on request', async ({ page }) => {
-  await page.goto('/')
-  await expect(page.locator('.hero-static-system')).toBeVisible()
-  await expect(page.locator('.hero-canvas-wrap canvas')).toHaveCount(0)
-  await page.getByRole('button', { name: 'Explore 3D overview' }).click()
-  await expect(page.getByRole('button', { name: 'Hide 3D overview' })).toBeVisible()
-  await expect(page.locator('.hero-canvas-wrap canvas')).toBeVisible({ timeout: 30_000 })
-})
 
 test('phone panel tabs reveal controls and ranked sites', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 })
@@ -332,82 +323,87 @@ test('mission planner builds and exports a responsive starting-point checklist',
   await expect(page.locator('.mission-plan')).toBeVisible()
 })
 
-test('3D terrain map stays responsive and falls back explicitly when WebGL is unavailable', async ({
+test('planet bento uses one WebGL context and swaps Moon into the main slot', async ({
   page,
-}) => {
-  test.setTimeout(120_000)
-  const transparentTile = Buffer.from(
-    'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/5k8AAAAASUVORK5CYII=',
-    'base64',
-  )
-  await page.route('**/tile.openstreetmap.org/**', (route) =>
-    route.fulfill({ status: 200, contentType: 'image/png', body: transparentTile }),
-  )
-  await page.route('**/elevation-tiles-prod/**', (route) =>
-    route.fulfill({ status: 200, contentType: 'image/png', body: transparentTile }),
-  )
+}, testInfo) => {
+  await page.addInitScript(() => {
+    const originalGetContext = HTMLCanvasElement.prototype.getContext
+    window.__planetWebglContexts = 0
+    HTMLCanvasElement.prototype.getContext = function (contextType, ...args) {
+      const context = originalGetContext.call(this, contextType, ...args)
+      if (context && ['webgl2', 'webgl', 'experimental-webgl'].includes(contextType)) {
+        window.__planetWebglContexts += 1
+      }
+      return context
+    }
+  })
   await page.goto('/')
-  await expect(page.locator('.brand-loader')).toHaveCount(0)
-  await page.getByRole('button', { name: '3D terrain' }).click()
+  await expect(page.locator('.planet-bento canvas[data-planetary-canvas]')).toHaveCount(1)
+  await expect(page.locator('.planet-bento')).toHaveAttribute('data-models-ready', 'true', {
+    timeout: 30_000,
+  })
 
-  await expect
-    .poll(
-      async () => {
-        return (
-          (await page.locator('.terrain-map-shell').count()) > 0 ||
-          (await page.locator('.terrain-map-notice').count()) > 0
-        )
-      },
-      { timeout: 30000 },
-    )
-    .toBe(true)
+  expect(await page.evaluate(() => window.__planetWebglContexts)).toBe(1)
+  await expect(page.getByTestId('planet-slot-earth')).toHaveClass(/planet-slot-main/)
+  await expect(page.getByTestId('planet-slot-moon')).toHaveClass(/planet-slot-small/)
 
-  const mapRendered = (await page.locator('.terrain-map-shell').count()) > 0
-  if (mapRendered) {
-    await expect(page.locator('.maplibregl-map')).toBeVisible()
-    await expect(page.locator('.maplibregl-ctrl-attrib')).toContainText('OpenStreetMap')
-    await expect(page.locator('.terrain-companion')).toContainText('LRO WAC / LOLA')
-    await expect(page.locator('.terrain-companion')).toContainText('MOLA')
-  } else {
-    await expect(page.locator('.terrain-map-notice')).toContainText('2D map is shown instead')
-    await expect(page.locator('.map-canvas svg')).toBeVisible()
+  for (const viewport of [
+    { name: '375', width: 375, height: 812 },
+    { name: '768', width: 768, height: 1024 },
+    { name: '1440', width: 1440, height: 1000 },
+    { name: '1920', width: 1920, height: 1080 },
+  ]) {
+    await page.setViewportSize({ width: viewport.width, height: viewport.height })
+    await page.waitForTimeout(400)
+    await expect(page.locator('.planet-slot-main')).toBeVisible()
+    expect(
+      await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
+      `planet bento overflow at ${viewport.width}px`,
+    ).toBe(true)
+    await page.screenshot({
+      path: testInfo.outputPath(`planet-bento-${viewport.name}.png`),
+      fullPage: false,
+      animations: 'disabled',
+    })
   }
 
+  await page.setViewportSize({ width: 375, height: 812 })
+  await page.getByTestId('planet-slot-moon').click()
+  await expect(page.locator('.planet-bento')).toHaveAttribute('data-main-body', 'moon')
+  await expect(page.getByTestId('planet-slot-moon')).toHaveClass(/planet-slot-main/)
+  await expect(page.getByTestId('planet-slot-earth')).toHaveClass(/planet-slot-small/)
+  await expect(page.locator('.detail-panel')).toHaveAttribute('data-focused-body', 'moon')
+  expect(await page.locator('.planet-bento canvas[data-planetary-canvas]').count()).toBe(1)
+})
+
+test('planetary viewer falls back to local static previews when WebGL is unavailable', async ({
+  page,
+}) => {
   await page.addInitScript(() => {
     const originalGetContext = HTMLCanvasElement.prototype.getContext
     HTMLCanvasElement.prototype.getContext = function (contextType, ...args) {
-      if (contextType === 'webgl2' || contextType === 'webgl') return null
+      if (['webgl2', 'webgl', 'experimental-webgl'].includes(contextType)) return null
       return originalGetContext.call(this, contextType, ...args)
     }
   })
+  await page.goto('/')
+  await expect(page.locator('.planet-static-preview')).toHaveCount(3, { timeout: 30_000 })
+})
 
-  await page.reload()
-  await expect(page.locator('.brand-loader')).toHaveCount(0)
-  await page.getByRole('button', { name: '3D terrain' }).click()
-  await expect(page.locator('.terrain-map-notice')).toContainText('2D map is shown instead')
+test('Earth map and satellite toggles remain available without the planetary canvas', async ({
+  page,
+}) => {
+  await page.goto('/')
+  await page.getByRole('button', { name: 'Earth map' }).click()
   await expect(page.locator('.map-canvas > svg')).toBeVisible()
+  await expect(page.locator('.planet-bento canvas')).toHaveCount(0)
 
-  for (const viewport of [
-    { name: 'phone-320', width: 320, height: 720 },
-    { name: 'phone-375', width: 375, height: 812 },
-    { name: 'tablet-768', width: 768, height: 1024 },
-    { name: 'tablet-1024', width: 1024, height: 900 },
-    { name: 'desktop-1440', width: 1440, height: 1000 },
-    { name: 'desktop-1920', width: 1920, height: 1080 },
-    { name: 'wide-2560', width: 2560, height: 1440 },
-    { name: 'phone-landscape', width: 844, height: 390 },
-  ]) {
-    await page.setViewportSize({ width: viewport.width, height: viewport.height })
-    const horizontalOverflow = await page.evaluate(
-      () => document.documentElement.scrollWidth > window.innerWidth,
-    )
-    expect(horizontalOverflow, `3D map overflow at ${viewport.width}px`).toBe(false)
-    const mapWidth = await page.locator('.map-canvas').evaluate((element) => {
-      return element.getBoundingClientRect().width
-    })
-    expect(mapWidth, `map container width at ${viewport.width}px`).toBeGreaterThan(0)
-    expect(mapWidth).toBeLessThanOrEqual(viewport.width)
-  }
+  await page.route('**/server.arcgisonline.com/**', (route) =>
+    route.fulfill({ status: 200, contentType: 'image/png', body: Buffer.from('') }),
+  )
+  await page.getByRole('button', { name: 'Satellite', exact: true }).click()
+  await expect(page.locator('.maplibregl-map')).toBeVisible()
+  await expect(page.locator('.planet-bento canvas')).toHaveCount(0)
 })
 
 test('cached NASA 3D comparison stays responsive and labels proposed targets', async ({ page }) => {

@@ -27,6 +27,7 @@ export default function TerrainMap({
   selectedSiteId,
   isDrawing,
   language,
+  isSatellite,
   onSelectSite,
   onDrawArea,
   onFallback,
@@ -68,38 +69,36 @@ export default function TerrainMap({
         style: {
           version: 8,
           sources: {
-            'open-street-map': {
+            'earth-base-map': isSatellite
+              ? {
+                  type: 'raster',
+                  tiles: [
+                    'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+                  ],
+                  tileSize: 256,
+                  attribution: 'Tiles &copy; Esri — Source: Esri, Maxar, Earthstar Geographics',
+                }
+              : {
               type: 'raster',
               tiles: ['https://tile.openstreetmap.org/{z}/{x}/{y}.png'],
               tileSize: 256,
               attribution:
                 '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>',
-            },
-            'terrain-dem': {
-              type: 'raster-dem',
-              tiles: [
-                'https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png',
-              ],
-              tileSize: 256,
-              maxzoom: 15,
-              encoding: 'terrarium',
-              attribution:
-                '&copy; <a href="https://registry.opendata.aws/terrain-tiles/">AWS Terrain Tiles</a>',
-            },
+                },
           },
           layers: [
             {
-              id: 'open-street-map-raster',
+              id: 'earth-base-map-raster',
               type: 'raster',
-              source: 'open-street-map',
+              source: 'earth-base-map',
               paint: { 'raster-opacity': 0.94 },
             },
           ],
         },
         center: [0, 18],
         zoom: 1.35,
-        pitch: 52,
-        maxPitch: 75,
+        pitch: 0,
+        maxPitch: 0,
         minZoom: 1,
         maxZoom: 14,
         pixelRatio: Math.min(
@@ -118,7 +117,6 @@ export default function TerrainMap({
     map.addControl(new NavigationControl({ showCompass: true }), 'top-right')
     const handleLoad = () => {
       window.clearTimeout(loadTimeout)
-      map.setTerrain({ source: 'terrain-dem', exaggeration: 1.35 })
       map.addSource('site-locations', {
         type: 'geojson',
         data: createFeatures(markersRef.current, selectedSiteIdRef.current),
@@ -241,7 +239,7 @@ export default function TerrainMap({
       map.remove()
       mapRef.current = null
     }
-  }, [])
+  }, [isSatellite])
 
   useEffect(() => {
     const map = mapRef.current
