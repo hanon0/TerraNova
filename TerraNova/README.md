@@ -44,15 +44,23 @@ The environmental risk summary presents both the weather-threshold review and th
 
 The logo at `public/terranovalogo.jpeg` supplies the browser favicon, Apple touch icon, social preview image, navigation mark, loader, and footer mark. The dark navy, sky blue, sea green, and terracotta design tokens are sampled from the logo.
 
-## Visual system and planetary hero
+## Visual system and planetary viewer
 
-Tailwind 3 tokens live in `tailwind.config.js`; its preflight reset is disabled to preserve the app's existing responsive form and map styling. CSS variables in `src/index.css` provide matching space, glass, glow, focus, and scrollbar tokens. The home/explorer hero shows a lightweight local-image preview first; React Three Fiber, pointer parallax, the connecting arc, and stars are loaded only when the user activates **Explore 3D overview**. Mobile uses a capped DPR, fewer stars, and no antialiasing. Its local visual-only texture maps are:
+Tailwind 3 tokens live in `tailwind.config.js`; its preflight reset is disabled to preserve the app's existing responsive form and map styling. CSS variables in `src/index.css` provide matching space, glass, glow, focus, and scrollbar tokens. The explorer's three-body Bento viewer uses one React Three Fiber Canvas with manually scissored viewports, so swapping the main planet does not create additional WebGL contexts. Earth is main by default; click a Moon/Mars panel or use the top-bar chips to focus it. Each body keeps its own camera pose. Only the main body has orbit controls and site markers; low-performance devices fall back to local image previews for the smaller panels. The viewer is code-split, caps DPR, and offers the existing flat Earth map and satellite views as alternatives.
+
+The local GLB models used by the viewer are:
+
+- Earth: `public/3d-models/Earth_1_12756.glb`
+- Moon: `public/3d-models/Moon_NASA_LRO_15k_Grid_Small.glb`
+- Mars: `public/3d-models/24881_Mars_1_6792.glb`
+
+These are local visual assets, not engineering data. Confirm the original source and redistribution terms for each GLB before publishing them. The local visual-only preview maps are:
 
 - Earth: NASA Visible Earth's [Blue Marble land surface, shallow water, and shaded topography](https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57730/land_ocean_ice_2048.png).
 - Moon: the two zoom-0 global tiles of NASA Trek's `LRO_WAC_Mosaic_Global_303ppd_v02`.
 - Mars: the two zoom-0 global tiles of NASA Trek's `Mars_MGS_MOLA_ClrShade_merge_global_463m`.
 
-The Moon and Mars hero maps are deliberately coarse 512×256 stitched previews, not measurement products or DEMs. Attribution appears with the hero and in the NASA Trek comparison. The 3D hero and comparison stay code-split; the production build currently reports a large Three.js vendor chunk, so run Lighthouse on the intended deployment before claiming a mobile Performance score. No Lighthouse score is asserted here. List reveal and hero motion respect `prefers-reduced-motion`; the optional light-theme toggle and more elaborate magnetic/shared-element/counter motion are not included.
+The Moon and Mars preview maps are deliberately coarse 512×256 stitched images, not measurement products or DEMs. Their attribution appears in the NASA Trek comparison. The viewer and comparison remain code-split; the production build reports a large Three.js vendor chunk, so run Lighthouse on the intended deployment before claiming a mobile Performance score. No Lighthouse score is asserted here. List reveal and panel motion respect `prefers-reduced-motion`; the optional light-theme toggle and more elaborate magnetic/shared-element/counter motion are not included.
 
 ## Stack
 
@@ -68,7 +76,7 @@ The Moon and Mars hero maps are deliberately coarse 512×256 stitched previews, 
 
 The explorer uses a compact SVG 2D map (no WebGL initialization or canvas DPR cost). A `ResizeObserver` tracks the map container. Phones use map/filter/site bottom tabs, tablets can collapse the filter panel, and desktop uses a three-column workspace. Reduced-motion preferences are respected and the layout is capped at ultrawide widths.
 
-`npm test` runs Vitest and Playwright. Playwright saves viewport screenshots and checks for horizontal overflow at 320, 375, 768, 1024, 1440, 1920, 2560 pixels, and in landscape-phone dimensions; it also checks methodology, mobile panels, and tablet collapse behavior. Install Chromium for local browser tests with `npx playwright install chromium`.
+`npm test` runs Vitest and Playwright. Playwright runs serially because the 3D pages share the available browser WebGL context budget. It saves viewport screenshots and checks for horizontal overflow at 320, 375, 768, 1024, 1440, 1920, 2560 pixels, and in landscape-phone dimensions; it also checks methodology, mobile panels, tablet collapse behavior, one WebGL context for the Bento viewer, and the Moon-to-main swap. Install Chromium for local browser tests with `npx playwright install chromium`.
 
 ### Optional 3D Earth terrain
 
