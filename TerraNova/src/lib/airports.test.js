@@ -83,4 +83,19 @@ describe('nearest airport lookup', () => {
     expect(findNearestAirport(index, { lat: null, lon: null })).toBeNull()
     expect(findNearestAirport({ ...index, available: false }, { lat: 0, lon: 0 })).toBeNull()
   })
+
+  it('ignores malformed airport coordinates instead of throwing or returning invalid distances', () => {
+    const index = makeIndex([
+      airport(1, 0, 0),
+      { ...airport(2, NaN, 0, 'Broken'), lat: Number.NaN },
+      { ...airport(3, 0, Number.NaN, 'Also broken'), lon: Number.NaN },
+    ])
+
+    expect(findNearestAirport(index, { lat: 0, lon: 0 })).toEqual({
+      airport: index.airports[0],
+      distanceKm: 0,
+    })
+    expect(haversineKm(NaN, 0, 0, 0)).toBe(Number.POSITIVE_INFINITY)
+    expect(haversineKm(91, 0, 0, 0)).toBe(Number.POSITIVE_INFINITY)
+  })
 })
